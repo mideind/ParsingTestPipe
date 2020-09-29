@@ -21,4 +21,4 @@ Parsing test pipeline for different parsing schemas.
 + **testfiles**: Bracketed form of automatically parsed files to be tested, both from Greynir in the deep schema (.grdbr) and the partial schema (.grpbr), and IceParser in the partial schema (.ippbr). Created at runtime.
 
 
-The pipeline assumes [evalb](https://nlp.cs.nyu.edu/evalb/) is in the folder ParsingTestPipe/EVALB, and [icenlp](https://github.com/hrafnl/icenlp) is in the folder ParsingTestPipe/icenlp.
+The pipeline assumes [evalb](https://nlp.cs.nyu.edu/evalb/) is in the folder ParsingTestPipe/EVALB, and [IceNLP](https://github.com/hrafnl/icenlp) is in the folder ParsingTestPipe/icenlp.
