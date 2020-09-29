@@ -1,0 +1,59 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+.pytest_cache/
+.mypy_cache/
+*.py[cod]
+*.o
+*.so
+*.exe
+
+# Mypy
+mypy.ini
+
+# Folders needed for testing
+# but shouldn't be distributed here
+EVALB/
+icenlp/
+
+# Folders created at runtime
+genpsd/
+gentag/
+original/
+testfiles/
+reports/
+
+
+# Distribution / packaging
+.Python
+env/
+bin/
+build/
+develop-eggs/
+dist/
+eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+log/
+console/
+fonts/
+
+# Virtual environments
+venv/
+p3*/
+p7*/
+cpython*/
+
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+.DS_Store

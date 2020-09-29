@@ -6,5 +6,5 @@
 (S0 (S (IP (VP (VP (s Kemst)) (ADVP (a ekki)) (PP (a á) (NP (n deild) (PP (a fyrir) (NP (l unga) (l heilabilaða)))))))) (p .))
 (S0 (S (IP (NP-SUBJ (n Hatrið)) (VP (VP-AUX (s mun)) (VP (s sigra))))) (p ,) (e hate) (e will) (e prevail) (p .))
 (S0 (S (IP (PP (a Í) (NP (n minningunni))) (VP (VP (s var)) (NP-PRD (C (c annaðhvort)) (n snjór) (C (c eða)) (n sól))))) (p .))
-(S0 (S (IP (PP (a Af) (NP (f hverju))) (VP (VP (s ertu)) (ADVP (a ekki)) (PP (a með) (NP (l beinar) (n augabrúnir))))) (p ?)))
+(S0 (S (PP (a Af) (NP (f hverju))) (IP (VP (VP (s ertu)) (ADVP (a ekki)) (PP (a með) (NP (l beinar) (n augabrúnir))))) (p ?)))
 (S0 (S (IP (ADVP (a Um)) (VP (VP (s er)) (IP (c að) (VP (VP (s ræða)) (NP-OBJ (n laun) (C (c og)) (n bifreiðahlunnindi))))))) (p .))

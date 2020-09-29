@@ -22,12 +22,12 @@ import helpers
 #Settings.read(os.path.join(basepath, "config", "Greynir.conf"))
 Settings.DEBUG = False
 
-HANDPSD = pathlib.Path().absolute() / 'testcorpus' / 'handpsd'
-GENPSD = pathlib.Path().absolute() / 'testcorpus' / 'genpsd'
-CLEAN = pathlib.Path().absolute() / 'testcorpus' / 'clean'
-BRACKETS = pathlib.Path().absolute() / 'testcorpus' / 'brackets'
-TESTFILES = pathlib.Path().absolute() / 'testcorpus' / 'testfiles'
-REPORTS = pathlib.Path().absolute() / 'testcorpus' / 'reports'
+HANDPSD = pathlib.Path().absolute() / 'test_corpus' / 'handpsd'
+GENPSD = pathlib.Path().absolute() / 'test_corpus' / 'genpsd'
+CLEAN = pathlib.Path().absolute() / 'test_corpus' / 'clean'
+BRACKETS = pathlib.Path().absolute() / 'test_corpus' / 'brackets'
+TESTFILES = pathlib.Path().absolute() / 'test_corpus' / 'testfiles'
+REPORTS = pathlib.Path().absolute() / 'test_corpus' / 'reports'
 
 
 class Maker():
@@ -36,7 +36,7 @@ class Maker():
 		# Hef textaskjöl
 		# Bý til véldjúpþáttuð Greynisskjöl á Annotaldsformi
 		# fyrir hvert skjal í /clean sem grunn fyrir gullþáttun
-		helpers.get_annoparse(CLEAN, GENPSD, '.txt', '.psd', False)
+		#helpers.get_annoparse(CLEAN, GENPSD, '.txt', '.psd', True)
 
 		# hef þá véldjúpþáttuð Greynisskjöl á Annotaldsformi
 		# Handþátta þau og færi yfir í /handpsd með endingunni .dgld
@@ -45,7 +45,7 @@ class Maker():
 		# Tek gullþáttuðu skjölin og færi yfir á svigaform í /brackets
 		print("Transforming goldfiles")
 		helpers.annotald_to_general(HANDPSD, BRACKETS, '.dgld', '.dbr', True, True)
-		helpers.annotald_to_general(HANDPSD, BRACKETS, '.pgld', '.pbr', False, True)
+		helpers.annotald_to_general(HANDPSD, BRACKETS, '.pgld', '.pbr', True, True)
 
 
 class Comparison():
@@ -56,7 +56,7 @@ class Comparison():
 
 		# Hef textaskjöl
 		# Útbý véldjúpþáttuð Greynisskjöl á Annotaldsformi
-		helpers.get_annoparse(CLEAN, GENPSD, ".txt", ".psd", False)
+		helpers.get_annoparse(CLEAN, GENPSD, ".txt", ".psd", True)
 		
 		helpers.get_ipparse(CLEAN, GENPSD, '.txt', '.ippsd', True)
 
@@ -69,7 +69,7 @@ class Comparison():
 		# ("testfile suffix", "goldfile suffix", "output file suffix")
 		tests = [
 			(".ippbr", ".pbr", ".ippout"), 
-			(".grpbr", ".pbr", ".grpout"), 
+			#(".grpbr", ".pbr", ".grpout"), 
 			(".grdbr", ".dbr", ".grdout")
 		]
 		helpers.get_results(BRACKETS, TESTFILES, REPORTS, tests)
