@@ -1,7 +1,8 @@
 # ParsingTestPipe
-Parsing test pipeline for different parsing schemas
+Parsing test pipeline for different parsing schemas.
 
 **helpers.py**: Helper functions for the test pipeline
+
 **corpusmanager.py**: Main test pipeline. 
 + Creates original automatically parsed version of hand-annotated corpora
 + Retrieves automatically parsed versions of text files from Greynir and IceParser
@@ -20,4 +21,4 @@ Parsing test pipeline for different parsing schemas
 + **testfiles**: Bracketed form of automatically parsed files to be tested, both from Greynir in the deep schema (.grdbr) and the partial schema (.grpbr), and IceParser in the partial schema (.ippbr). Created at runtime.
 
 
-The pipeline assumes evalb is in the folder ParsingTestPipe/EVALB, and icenlp is in the folder ParsingTestPipe/icenlp.
+The pipeline assumes [evalb](https://nlp.cs.nyu.edu/evalb/) is in the folder ParsingTestPipe/EVALB, and [icenlp](https://github.com/hrafnl/icenlp) is in the folder ParsingTestPipe/icenlp.
