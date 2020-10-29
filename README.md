@@ -1,6 +1,7 @@
 # ParsingTestPipe
 Parsing test pipeline for different parsing schemas.
 
+## Contents
 **helpers.py**: Helper functions for the test pipeline
 
 **corpusmanager.py**: Main test pipeline. 
@@ -20,13 +21,14 @@ Parsing test pipeline for different parsing schemas.
 + **reports**: Reports from evalb for each gold standard file. Contains results for Greynir in the deep schema (.grdout) and the partial schema (.grpout), and IceParser in the partial schema (.ippout). Created at runtime. *overallresults.out* contains results both overall for each parser and divided by text genre.
 + **testfiles**: Bracketed form of automatically parsed files to be tested, both from Greynir in the deep schema (.grdbr) and the partial schema (.grpbr), and IceParser in the partial schema (.ippbr). Created at runtime.
 
-
+## Dependencies
 The pipeline assumes [evalb](https://nlp.cs.nyu.edu/evalb/) is in the folder ParsingTestPipe/EVALB, and [IceNLP](https://github.com/hrafnl/icenlp) is in the folder ParsingTestPipe/icenlp.
 
 [GreynirPackage](https://github.com/mideind/GreynirPackage) needs to be installed.
 
-*****
-Tests
+## Running the software
 
-To run the tests, run::
+ To run the tests, run:
+```
     $ python -m pytest
+```
