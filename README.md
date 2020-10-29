@@ -22,3 +22,11 @@ Parsing test pipeline for different parsing schemas.
 
 
 The pipeline assumes [evalb](https://nlp.cs.nyu.edu/evalb/) is in the folder ParsingTestPipe/EVALB, and [IceNLP](https://github.com/hrafnl/icenlp) is in the folder ParsingTestPipe/icenlp.
+
+[GreynirPackage](https://github.com/mideind/GreynirPackage) needs to be installed.
+
+*****
+Tests
+
+To run the tests, run::
+    $ python -m pytest
