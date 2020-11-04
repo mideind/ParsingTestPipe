@@ -21,7 +21,7 @@
 	$ git clone https://github.com/mideind/GreynirCorpus
 	$ cd ParsingTestPipe
 	$ ln -s ../GreynirCorpus/ .
-	$ python corpusmanager.py
+	$ python eval.py
 
 
 
@@ -41,6 +41,10 @@ import helpers
 #Settings.read(os.path.join(basepath, "config", "Greynir.conf"))
 Settings.DEBUG = False
 
+_DEV_PATH = pathlib.Path().absolute() / 'GreynirCorpus' / 'devset'
+_TEST_PATH = pathlib.Path().absolute() / 'GreynirCorpus' / 'testset'
+
+
 HANDPSD = pathlib.Path().absolute() / 'test_corpus' / 'handpsd'
 GENPSD = pathlib.Path().absolute() / 'test_corpus' / 'genpsd'
 CLEAN = pathlib.Path().absolute() / 'test_corpus' / 'clean'
@@ -49,23 +53,35 @@ TESTFILES = pathlib.Path().absolute() / 'test_corpus' / 'testfiles'
 REPORTS = pathlib.Path().absolute() / 'test_corpus' / 'reports'
 
 
-class Maker():
+class Comparison():
+	def __init__(self):
+		self.results = {}
 
 	def start(self, overwrite=False):
+
 		# Hef textaskjöl
-		# Bý til véldjúpþáttuð Greynisskjöl á Annotaldsformi
-		# fyrir hvert skjal í /clean sem grunn fyrir gullþáttun
-		#helpers.get_annoparse(CLEAN, GENPSD, '.txt', '.psd', True)
-
-		# hef þá véldjúpþáttuð Greynisskjöl á Annotaldsformi
-		# Handþátta þau og færi yfir í /handpsd með endingunni .dgld
-		# Útbý hlutþáttuð gullskjöl út frá þeim, gef endinguna .pgld
+		# Útbý véldjúpþáttuð Greynisskjöl á Annotaldsformi
+		helpers.get_annoparse(CLEAN, GENPSD, ".txt", ".psd", True)
 		
-		# Tek gullþáttuðu skjölin og færi yfir á svigaform í /brackets
-		print("Transforming goldfiles")
-		helpers.annotald_to_general(HANDPSD, BRACKETS, '.dgld', '.dbr', True, True)
-		# helpers.annotald_to_general(HANDPSD, BRACKETS, '.pgld', '.pbr', True, True)
+		# helpers.get_ipparse(CLEAN, GENPSD, '.txt', '.ippsd', True)
 
+		print("Transforming greynir testfiles")
+		helpers.annotald_to_general(GENPSD, TESTFILES, '.psd', '.grdbr', True, True)
+		
+		# print("Transforming IceParser testfiles")
+		# helpers.ip_to_general(GENPSD, TESTFILES, ".ippsd", ".ippbr", True)
+
+		# ("testfile suffix", "goldfile suffix", "output file suffix")
+		tests = [
+			#(".ippbr", ".pbr", ".ippout"), 
+			(".grdbr", ".dbr", ".grdout")
+		]
+		helpers.get_results(BRACKETS, TESTFILES, REPORTS, tests)
+
+		suffixes = [".grdout",]  # ".grpout", ".ippout"
+		genres = ["reynir_corpus", "althingi", "visindavefur", "textasafn"]
+
+		helpers.combine_reports(REPORTS, suffixes, genres)
 
 
 if __name__ == "__main__":
@@ -76,10 +92,10 @@ if __name__ == "__main__":
 		ans = True
 	else:
 		ans = False
-		
 	start = timer()
-	maker = Maker()
-	maker.start(ans)
+
+	comp = Comparison()
+	comp.start(ans)
 	end = timer()
 	duration = end - start
 	print("")
