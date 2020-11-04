@@ -13,8 +13,6 @@ Parsing test pipeline for different parsing schemas.
 **test_corpus**: Contains the test corpora.
 
 + **brackets**: Bracketed form of gold files.
-+ **clean**: Original text files for parsers.
-+ **extraclean**: Extra text files not currently in gold standard.
 + **genpsd**: Parsed files. Created at runtime by Greynir (.psd) and IceParser (.ippsd). 
 + **gentag**: Tagged files. Created at runtime by IceParser (.tagged).
 + **handpsd**: Hand-annotated files in the deep general schema (.dgld) and the partial general schema (.pdgld).
@@ -30,5 +28,5 @@ The pipeline assumes [evalb](https://nlp.cs.nyu.edu/evalb/) is in the folder Par
 
  To run the tests, run:
 ```
-    $ python -m pytest
+    $ python eval.py
 ```
