@@ -41,62 +41,55 @@ import helpers
 #Settings.read(os.path.join(basepath, "config", "Greynir.conf"))
 Settings.DEBUG = False
 
-_DEV_PATH = pathlib.Path().absolute() / 'GreynirCorpus' / 'devset'
-_TEST_PATH = pathlib.Path().absolute() / 'GreynirCorpus' / 'testset'
+DATA = 'testset'	# Default value, changed to devset if chosen in argparse
+# TODO útfæra að breyta því
+
+CORPUS = pathlib.Path().absolute() / 'GreynirCorpus' / DATA
+
+HANDPSD = pathlib.Path().absolute() / 'data' / DATA / 'handpsd'
+GENPSD = pathlib.Path().absolute() / 'data' / DATA / 'genpsd'
+BRACKETS = pathlib.Path().absolute() / 'data' / DATA / 'brackets'
+TESTFILES = pathlib.Path().absolute() / 'data' / DATA / 'testfiles'
+REPORTS = pathlib.Path().absolute() / 'data' / DATA / 'reports'
+
+def process():
+
+	# TODO tékka á argparse hvort vil devset eða testset
+	print("Retrieving automatic parse trees")
+	helpers.get_annoparse(CORPUS, GENPSD, ".txt", ".psd", False)
+	# helpers.get_ipparse(CORPUS, GENPSD, '.txt', '.ippsd', True)
+
+	print("Transforming automatic parse trees to general bracketed form")
+	helpers.annotald_to_general(GENPSD, TESTFILES, '.psd', '.grdbr', True, True)
+	# helpers.ip_to_general(GENPSD, TESTFILES, ".ippsd", ".ippbr", True)
+
+	print("Retrieving results from evalb")
+	# (testfile suffix, goldfile suffix, output file suffix)
+	tests = [
+		#(".ippbr", ".pbr", ".ippout"), 
+		(".grdbr", ".dbr", ".grdout")
+	]
+	helpers.get_results(BRACKETS, TESTFILES, REPORTS, tests)
 
 
-HANDPSD = pathlib.Path().absolute() / 'test_corpus' / 'handpsd'
-GENPSD = pathlib.Path().absolute() / 'test_corpus' / 'genpsd'
-CLEAN = pathlib.Path().absolute() / 'test_corpus' / 'clean'
-BRACKETS = pathlib.Path().absolute() / 'test_corpus' / 'brackets'
-TESTFILES = pathlib.Path().absolute() / 'test_corpus' / 'testfiles'
-REPORTS = pathlib.Path().absolute() / 'test_corpus' / 'reports'
+	print("Combining reports by genre")
+	suffixes = [".grdout",]  # ".grpout", ".ippout"
+	genres = ["reynir_corpus" ] #  TODO taka þetta út?
 
+	helpers.combine_reports(REPORTS, suffixes, genres)
 
-class Comparison():
-	def __init__(self):
-		self.results = {}
-
-	def start(self, overwrite=False):
-
-		# Hef textaskjöl
-		# Útbý véldjúpþáttuð Greynisskjöl á Annotaldsformi
-		helpers.get_annoparse(CLEAN, GENPSD, ".txt", ".psd", True)
-		
-		# helpers.get_ipparse(CLEAN, GENPSD, '.txt', '.ippsd', True)
-
-		print("Transforming greynir testfiles")
-		helpers.annotald_to_general(GENPSD, TESTFILES, '.psd', '.grdbr', True, True)
-		
-		# print("Transforming IceParser testfiles")
-		# helpers.ip_to_general(GENPSD, TESTFILES, ".ippsd", ".ippbr", True)
-
-		# ("testfile suffix", "goldfile suffix", "output file suffix")
-		tests = [
-			#(".ippbr", ".pbr", ".ippout"), 
-			(".grdbr", ".dbr", ".grdout")
-		]
-		helpers.get_results(BRACKETS, TESTFILES, REPORTS, tests)
-
-		suffixes = [".grdout",]  # ".grpout", ".ippout"
-		genres = ["reynir_corpus", "althingi", "visindavefur", "textasafn"]
-
-		helpers.combine_reports(REPORTS, suffixes, genres)
-
-
-if __name__ == "__main__":
-
-	ans = input("Do you want to overwrite existing files? (y/n)\n")	
-	# TODO eftir að breyta ans í True/False gildi
-	if ans == "y":
-		ans = True
-	else:
-		ans = False
+def main() -> None:
+	#args = parser.parse_args() # TODO
 	start = timer()
 
-	comp = Comparison()
-	comp.start(ans)
+	process()
+
 	end = timer()
 	duration = end - start
+
 	print("")
 	print("Running the program took {:f} seconds, or {:f} minutes.".format(duration, (duration / 60.0)))
+
+if __name__ == "__main__":
+	main()
+

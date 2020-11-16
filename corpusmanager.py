@@ -41,42 +41,34 @@ import helpers
 #Settings.read(os.path.join(basepath, "config", "Greynir.conf"))
 Settings.DEBUG = False
 
-HANDPSD = pathlib.Path().absolute() / 'test_corpus' / 'handpsd'
-GENPSD = pathlib.Path().absolute() / 'test_corpus' / 'genpsd'
-CLEAN = pathlib.Path().absolute() / 'test_corpus' / 'clean'
-BRACKETS = pathlib.Path().absolute() / 'test_corpus' / 'brackets'
-TESTFILES = pathlib.Path().absolute() / 'test_corpus' / 'testfiles'
-REPORTS = pathlib.Path().absolute() / 'test_corpus' / 'reports'
+DATA = 'testset'	# Default value, changed to devset if chosen in argparse
+# TODO útfæra að breyta því
+
+# Outside corpora data
+CORPUS = pathlib.Path().absolute() / 'GreynirCorpus' / DATA
+
+# Corpora data within the pipeline
+GENPSD = pathlib.Path().absolute() / 'data' / DATA / 'genpsd'
+BRACKETS = pathlib.Path().absolute() / 'data' / DATA / 'brackets'
 
 
 class Maker():
 
 	def start(self, overwrite=False):
-		# Hef textaskjöl
-		# Bý til véldjúpþáttuð Greynisskjöl á Annotaldsformi
-		# fyrir hvert skjal í /clean sem grunn fyrir gullþáttun
-		#helpers.get_annoparse(CLEAN, GENPSD, '.txt', '.psd', True)
-
-		# hef þá véldjúpþáttuð Greynisskjöl á Annotaldsformi
-		# Handþátta þau og færi yfir í /handpsd með endingunni .dgld
-		# Útbý hlutþáttuð gullskjöl út frá þeim, gef endinguna .pgld
-		
-		# Tek gullþáttuðu skjölin og færi yfir á svigaform í /brackets
-		print("Transforming goldfiles")
-		helpers.annotald_to_general(HANDPSD, BRACKETS, '.dgld', '.dbr', True, True)
-		# helpers.annotald_to_general(HANDPSD, BRACKETS, '.pgld', '.pbr', True, True)
-
+		print("Transforming handannotated parse trees to general bracketed form")
+		# TODO tékka hér á argparse hvort devset eða testset
+		helpers.annotald_to_general(CORPUS, BRACKETS, '.gld', '.dbr', True, True)
+		# helpers.annotald_to_general(CORPUS, BRACKETS, '.pgld', '.pbr', True, True)
 
 
 if __name__ == "__main__":
 
-	ans = input("Do you want to overwrite existing files? (y/n)\n")	
-	# TODO eftir að breyta ans í True/False gildi
-	if ans == "y":
-		ans = True
-	else:
-		ans = False
-		
+	#ans = input("Do you want to overwrite existing files? (y/n)\n")	# tODO breyta í argparse
+	#if ans == "y":
+	#	ans = True
+	#else:
+	#	ans = False
+	ans = True	
 	start = timer()
 	maker = Maker()
 	maker.start(ans)

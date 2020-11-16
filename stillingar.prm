@@ -83,6 +83,9 @@ EQ_LABEL fn pfn
 EQ_LABEL no person
 EQ_LABEL no sérnafn
 EQ_LABEL no entity
+EQ_LABEL entity person
+EQ_LABEL entity sérnafn
+EQ_LABEL sérnafn person
 EQ_LABEL no fyrirtæki
 EQ_LABEL no gata
 EQ_LABEL lo raðnr
