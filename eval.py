@@ -41,11 +41,11 @@ import helpers
 #Settings.read(os.path.join(basepath, "config", "Greynir.conf"))
 Settings.DEBUG = False
 
-DATA = 'testset'	# Default value, changed to devset if chosen in argparse
+DATA = 'devset'	# Default value, changed to devset if chosen in argparse [devset, testset]
 # TODO útfæra að breyta því
 
-CORPUS = pathlib.Path().absolute() / 'GreynirCorpus' / DATA
-
+TEXTS = pathlib.Path().absolute() / 'GreynirCorpus' / DATA / 'txt' # TODO Change to GreynirCorpus when done
+GOLDPSD = pathlib.Path().absolute() / 'GreynirCorpus' / DATA / 'psd'  # TODO Change to GreynirCorpus when done
 HANDPSD = pathlib.Path().absolute() / 'data' / DATA / 'handpsd'
 GENPSD = pathlib.Path().absolute() / 'data' / DATA / 'genpsd'
 BRACKETS = pathlib.Path().absolute() / 'data' / DATA / 'brackets'
@@ -56,12 +56,18 @@ def process():
 
 	# TODO tékka á argparse hvort vil devset eða testset
 	print("Retrieving automatic parse trees")
-	helpers.get_annoparse(CORPUS, GENPSD, ".txt", ".psd", False)
-	# helpers.get_ipparse(CORPUS, GENPSD, '.txt', '.ippsd', True)
+	helpers.get_annoparse(TEXTS, GENPSD, ".txt", ".psd", False)
+	# helpers.get_ipparse(TEXTS, GENPSD, '.txt', '.ippsd', True)
 
 	print("Transforming automatic parse trees to general bracketed form")
-	helpers.annotald_to_general(GENPSD, TESTFILES, '.psd', '.grdbr', True, True)
+	helpers.annotald_to_general(GENPSD, TESTFILES, '.psd', '.grdbr', True, False)
 	# helpers.ip_to_general(GENPSD, TESTFILES, ".ippsd", ".ippbr", True)
+
+	print("Transforming handannotated parse trees to general bracketed form")
+	# TODO tékka hér á argparse hvort devset eða testset
+	helpers.annotald_to_general(GOLDPSD, BRACKETS, '.gld', '.dbr', True, False)
+	#helpers.annotald_to_general(GOLDPSD, BRACKETS, '.pgld', '.pbr', True, True)
+
 
 	print("Retrieving results from evalb")
 	# (testfile suffix, goldfile suffix, output file suffix)
@@ -74,7 +80,7 @@ def process():
 
 	print("Combining reports by genre")
 	suffixes = [".grdout",]  # ".grpout", ".ippout"
-	genres = ["reynir_corpus" ] #  TODO taka þetta út?
+	genres = ["greynir_corpus" ] #  TODO taka þetta út?
 
 	helpers.combine_reports(REPORTS, suffixes, genres)
 

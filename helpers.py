@@ -77,9 +77,11 @@ GENERALIZE = {
 	"prósenta" : "t",
 	"raðnr" : "t",
 	"ártal" : "t",
+	"amount" : "t",
 	"dagsafs" : "a",
 	"dagsföst" : "a",
 	"tími" : "t",
+	"tímapunktur" : "a", # Skoða dæmin
 	"tímapunkturafs" : "a",
 	"tímapunkturfast" : "a",
 	"uh" : "u",
@@ -157,9 +159,12 @@ GENERALIZE = {
 	"NP-AGE" : "NP",
 	"NP-MEASURE" : "NP",
 	"NP-COMPANY" : "NP",
+	"NP-PERSON" : "NP",
 	"NP-TITLE" : "NP",
 	"NP-SOURCE" : "NP",
 	"NP-PREFIX" : "NP",
+	"NP-EXPLAIN" : "NP",
+	"NP-EXCEPT" : "NP",  # Skoða betur
 	"MWE_PP" : "PP",
 	"PP" : "PP",
 	"PP-SUBJ" : "PP", # Skoða betur
@@ -222,7 +227,6 @@ def get_annoparse(infolder, outfolder, insuffix=".txt", outsuffix=".psd", overwr
 		ptext = infolder / ptext	# Input file
 		pout = p.stem + outsuffix
 		pout = outfolder / pout		# Output file
-		
 		if pout.exists() and not overwrite:
 			continue
 
@@ -348,6 +352,7 @@ def general_clean(trees, deep=True):
 		for line in tree.split("\n"):
 			if not line:
 				continue
+			#print(line)
 			text = [] # Text in each leaf
 			segs = False # Segs found, should skip content of brackets
 			# 1. (META, (COMMENT, ... in SKIP_LINES -- skip line altogether
@@ -372,7 +377,9 @@ def general_clean(trees, deep=True):
 					continue
 				elif item in SKIP_LINES: # Case 1
 					#print("\t0:{}".format(cleantree))
-					break	# Don't collect anything in line					
+					break	# Don't collect anything in line
+				elif item.startswith("http"): # Case 1A
+					break # Don't collect anything in line
 				elif "(" in item:  # Byrja nýjan lið
 					#print("\t1A:{}".format(cleantree))
 					if text: # Write before do anything else
@@ -838,12 +845,30 @@ def combine_reports(reportfolder, suffixes, genres):
 
 		textblob.append("Fjöldi setninga:{}\n".format(numsentsoverall))
 		textblob.append("Fjöldi villusetninga:{}\n".format(numerrorsentsoverall))
-		textblob.append("Recall:{:.2f}\n".format(broverall/numfilesoverall))
-		textblob.append("Precision:{:.2f}\n".format(bpoverall/numfilesoverall))
-		textblob.append("Fskor:{:.2f}\n".format(bfoverall/numfilesoverall))
-		textblob.append("Alveg eins:{:.2f}\n".format(cmoverall/numfilesoverall))
-		textblob.append("Average crossing: {:.2f}\n".format(acoverall/numfilesoverall))
-		textblob.append("Tagging accuracy:{:.2f}\n\n\n".format(taoverall/numfilesoverall))
+		if broverall == 0.0:
+			textblob.append("Recall: N/A\n")
+		else:
+			textblob.append("Recall: {:.2f}\n".format(broverall/numfilesoverall))
+		if bpoverall == 0.0:
+			textblob.append("Precision: N/A\n")
+		else:
+			textblob.append("Precision: {:.2f}\n".format(bpoverall/numfilesoverall))
+		if bfoverall == 0.0:
+			textblob.append("Fskor: N/A\n")
+		else:
+			textblob.append("Fskor: {:.2f}\n".format(bfoverall/numfilesoverall))
+		if cmoverall == 0.0:
+			textblob.append("Alveg eins: N/A\n")
+		else:
+			textblob.append("Alveg eins: {:.2f}\n".format(cmoverall/numfilesoverall))
+		if acoverall == 0.0:
+			textblob.append("Avg crossing: N/A\n")
+		else:
+			textblob.append("Avg crossing: {:.2f}\n".format(acoverall/numfilesoverall))
+		if taoverall == 0.0:
+			textblob.append("Tag accuracy: N/A\n")
+		else:
+			textblob.append("Tag accuracy: {:.2f}\n".format(taoverall/numfilesoverall))
 
 
 	print("Writing overall report")
