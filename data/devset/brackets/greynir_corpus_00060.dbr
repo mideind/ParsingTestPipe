@@ -3,7 +3,7 @@
 (S0 (S (IP (NP-SUBJ (t Sjötíu_prósent) (NP-POSS (f þeirra)) (CP-REL (C (c sem)) (IP (VP (VP (s leita)) (PP (a til) (NP (n Stígamóta))))))) (VP (VP (s voru)) (NP-PRD (VP (VP (s beitt)) (NP-IOBJ (n kynferðisofbeldi)) (PP (a í) (NP (n æsku)))))))) (p .))
 (S0 (S (IP (CP (IP (ADVP (a Þá)) (VP (VP (s eiga)) (NP-SUBJ (n foreldrar)) (NP-OBJ (f það) (ADVP (a til)) (IP (c að) (VP (VP (s slaka)) (ADVP (a á)))))))) (CP (p ,) (VP (s segir)) (NP (n Berglind))))) (p .))
 (S0 (S (NP (f Hvaða)) (IP (NP (n stjórnmálamenn) (C (c og)) (n konur) (p ,) (l innlendar) (C (c sem)) (l erlendar) (p ,)) (VP (VP (s metur)) (NP-SUBJ (f þú)) (ADVP (a mest)))) (p ?)))
-(S0 (S (IP (NP-SUBJ (n Árásarmennirnir)) (VP (VP (s stungu)) (ADVP (a af)) (PP (a á) (NP (l blárri) (n Renault) (n Clio) (n bifreið) (CP-REL (C (c sem)) (IP (NP-SUBJ (l þriðji) (n maðurinn)) (VP (s ók))))))))) (p .))
+(S0 (S (IP (NP-SUBJ (n Árásarmennirnir)) (VP (VP (s stungu)) (ADVP (a af)) (PP (a á) (NP (l blárri) (n Renault_Clio) (n bifreið) (CP-REL (C (c sem)) (IP (NP-SUBJ (l þriðji) (n maðurinn)) (VP (s ók))))))))) (p .))
 (S0 (S (IP (NP-SUBJ (l Hægri) (n fóturinn) (PP (a á) (NP (f mér)))) (VP (VP (s fór)) (PP (a ofan) (a í) (NP (l sjóðandi) (l heitt) (n vatnið))) (C (c og)) (VP (s festist))))) (p .))
 (S0 (S (IP (NP-SUBJ (NP (n Deutsche) (n bank))) (VP (VP (s er)) (ADVP (a ekki)) (NP-PRD (l eini) (l erlendi) (n bankinn) (CP-REL (C (c sem)) (IP (VP (NP-PRD (s nafngreindur)) (VP (s er)) (PP (a í) (NP (n málinu)))))))))) (p .))
 (S0 (S (IP (NP-SUBJ (n Tónleikarnir)) (VP (VP (s gengu)) (ADVP (a hins_vegar)) (ADVP (a mjög) (a vel)) (C (c og)) (VP (VP (s eru)) (ADVP (a sennilega)) (NP-PRD (l stærsti) (n rappviðburður) (NP-POSS (n Íslands))))))) (p .))

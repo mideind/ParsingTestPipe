@@ -1,5 +1,5 @@
 (S0 (S (IP (NP-SUBJ (f Sá) (n frestur)) (VP (VP (s var)) (NP-PRD (ADVP (a þó) (a reyndar) (a síðar)) (VP (s framlengdur)) (ADVP (a til) (a 15._mars)))))) (p .))
-(S0 (S (NP-SUBJ (n Tökur) (PP (a á) (NP (n myndinni)))) (VP (s hófust)) (ADVP (a í) (NP (n dag))) (PP (a í) (NP (n kvikmyndaveri) (NP-POSS (n Warner) (n Bros)))) (p .)))
+(S0 (S (NP-SUBJ (n Tökur) (PP (a á) (NP (n myndinni)))) (VP (s hófust)) (ADVP (a í) (NP (n dag))) (PP (a í) (NP (n kvikmyndaveri) (NP-POSS (n Warner_Bros)))) (p .)))
 (S0 (S (NP (n Íslands-_og_bikarmeistararnir)) (VP (s fá)) (ADVP (a því)) (NP-OBJ (NP-POSS (n ágætis)) (n veganesti) (PP (a inn) (a í) (NP (n Íslandsmótsins)))) (x .)))
 (S0 (S (IP (PP (a Í) (NP (n staðinn))) (VP (VP (VP (s fékk)) (NP-SUBJ (f ég)) (NP-OBJ (n urmul))) (PP (a af) (NP (n gjöfum) (PP (a frá) (NP (l fallegu) (n fólki)))))))) (p .))
 (S0 (S (IP (ADVP (a Nú)) (VP (VP (VP (s er)) (NP-PRD (ADVP (a langt)) (VP (s liðið))))) (ADVP (ADVP (a á)) (a ágúst)))) (C (c og)) (S (IP (ADVP (a ekkert)) (VP (VP-AUX (s hefur)) (VP (s gerst))))) (p .))

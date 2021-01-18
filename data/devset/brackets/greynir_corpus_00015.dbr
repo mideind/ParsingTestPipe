@@ -1,5 +1,5 @@
 (S0 (S (IP (PP (a Við) (NP (n fullgildingu) (NP-POSS (n samningsins)))) (VP (VP (s virkjast)) (NP-SUBJ (f þetta) (n eftirlitskerfi))))) (p .))
-(S0 (S (IP (NP-SUBJ (n) (NP (p ,) (n rektor) (NP-POSS (n Listaháskólans)) (p .))))))
+(S0 (S (IP (NP-SUBJ (n Fríða_Björk_Ingvarsdóttir) (NP (p ,) (n rektor) (NP-POSS (n Listaháskólans)) (p .))))))
 (S0 (S (IP (NP-SUBJ (n Fjárhæð) (NP-POSS (n styrks) (CP-REL (C (c sem)) (IP (VP (VP (s sótt)) (VP-AUX (s er)) (ADVP (a um))))))))) (p .))
 (S0 (S (IP (PP (a Á) (NP (f þetta))) (VP (VP (s bendir)) (NP-SUBJ (n uppruni) (NP-POSS (n orðsins) (NP (n hörgur))))))) (p .))
 (S0 (S (IP (NP-SUBJ (f Við)) (VP (VP (s erum)) (NP-PRD (a mjög) (l ánægð) (PP (a með) (NP (f það))))))) (p .))

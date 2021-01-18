@@ -1,5 +1,5 @@
 (S0 (S (IP (PP (a Samkvæmt) (NP (n upplýsingum) (PP (a frá) (NP (n Versus))))) (VP (VP (s er)) (NP-SUBJ (n lögmannsstofan)) (NP-PRD (s hætt) (NP-ADP (n rekstri)))))) (p .))
-(S0 (S (p *) (IP (NP-SUBJ (n Jasmín_Erla_Ingadóttir)) (VP (VP (s leikur)) (ADVP (a ekki)) (PP (a með) (NP (n Fylki)) (PP (a vegna) (NP (n meiðsla))))))) (p .))
+(S0 (S (IP (NP-SUBJ (n Jasmín_Erla_Ingadóttir)) (VP (VP (s leikur)) (ADVP (a ekki)) (PP (a með) (NP (n Fylki)) (PP (a vegna) (NP (n meiðsla))))))) (p .))
 (S0 (S (IP (NP-SUBJ (v Mbl.is)) (VP (VP-AUX (s hefur)) (ADVP (a einnig)) (VP (VP (s fengið)) (NP-OBJ (n upplýsingar) (PP (a um) (NP (l fleiri) (n seinkanir)))))))) (p .))
 (S0 (S (IP (PP (a Samkvæmt) (NP (n skýrslunni))) (VP (VP (s búa)) (NP-SUBJ (t tvö_prósent) (NP-POSS (n þjóðarinnar))) (PP (a við) (NP (l alvarlegan) (n skort)))))) (p .))
 (S0 (S (IP (ADVP (a Þar)) (VP (VP (s hafði)) (NP-SUBJ (f hún)) (ADVP (a sennilega)) (PP (a á) (NP (n réttu)) (IP (c að) (VP (s standa))))))) (p .))

@@ -41,7 +41,7 @@ import helpers
 #Settings.read(os.path.join(basepath, "config", "Greynir.conf"))
 Settings.DEBUG = False
 
-DATA = 'testset'	# Default value, changed to devset if chosen in argparse
+DATA = 'devset'	# Default value, changed to devset if chosen in argparse
 # TODO útfæra að breyta því
 
 # Outside corpora data

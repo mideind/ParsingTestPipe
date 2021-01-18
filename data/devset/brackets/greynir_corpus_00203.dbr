@@ -7,4 +7,4 @@
 (S0 (S (IP (NP-SUBJ (f Það)) (VP (VP (s er)) (NP-PRD (a nokkuð) (l ljóst))))) (p .))
 (S0 (S (NP (f Hvaða) (n verkfæri)) (IP (VP (VP (s nota)) (NP-SUBJ (n krakkarnir))))) (p ?))
 (S0 (S (NP (f Hver)) (IP (VP (VP (s er)) (NP-PRD (n uppáhaldsmaturinn) (f þinn))))) (p ?))
-(S0 (S (IP (NP-SUBJ (n Árásarmaðurinn)) (VP (VP (s hét)) (NP-PRD (n Anis) (n Amri))))) (p .))
+(S0 (S (IP (NP-SUBJ (n Árásarmaðurinn)) (VP (VP (s hét)) (NP-PRD (n Anis_Amri))))) (p .))

@@ -6,5 +6,5 @@
 (S0 (S (IP (NP-SUBJ (NP (n Biskup) (NP-POSS (n Íslands)))) (VP (VP (VP (s tjáði)) (NP-OBJ (f sig))) (ADVP (a á_liðnu_ári)) (PP (a um) (NP (f ýmis) (l brýn) (n samfélagsmál)))))) (p .))
 (S0 (S (IP (NP-SUBJ (n Aðgerðaáætlun) (PP (a um) (NP (n eflingu) (NP-POSS (l stafrænnar) (n þjónustu))))) (VP (VP (VP (s var)) (NP-PRD (VP (s samþykkt)) (PP (a á) (NP (n ríkisstjórnarfundi))))) (ADVP (a í_morgun))))) (p .))
 (S0 (S (IP (NP-SUBJ (f Ég)) (VP (VP (s kvartaði)) (PP (a yfir) (NP (n armbandinu))) (PP (a til) (NP (n Clearsprings))))) (C (c en)) (ADVP (a ekkert)) (VP (VP (s var)) (NP-PRD (VP (s gert))))) (p .))
-(S0 (S (NP (NP-PRD (s Tilkynnt)) (VP (s var)) (PP (a um) (NP (n eld) (PP (a í) (NP (n íþróttahúsi) (NP-POSS (n Þorlákshafnar))))))) (ADVP (t klukkan_15) (p :) (t 24)) (NP (PP (a í) (NP (n dag)))) (p .)))
+(S0 (S (NP (NP-PRD (s Tilkynnt)) (VP (s var)) (PP (a um) (NP (n eld) (PP (a í) (NP (n íþróttahúsi) (NP-POSS (n Þorlákshafnar))))))) (ADVP (t klukkan_15:24)) (NP (PP (a í) (NP (n dag)))) (p .)))
 (S0 (S (IP (NP-SUBJ (n Erdogan)) (VP (VP (s krefst)) (NP-OBJ (f þess) (IP (ADVP (a hins_vegar)) (CP-THT (C (c að)) (IP (NP-SUBJ (n Bandaríkin)) (VP (VP (s framselji)) (NP-OBJ (n Gülen)) (ADVP (f hið) (l fyrsta)))))))))) (p .))

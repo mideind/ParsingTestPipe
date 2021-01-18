@@ -5,6 +5,6 @@
 (S0 (S (IP (VP (VP (s Finnur)) (NP-SUBJ (f þú)) (PP (a fyrir) (NP (f því) (CP-THT (C (c að)) (IP (NP-SUBJ (n fólk)) (VP (VP (s er)) (IP (c að) (VP (VP (s sækjast)) (ADVP (a meira)) (PP (a í) (NP (f þetta) (n nám))))))))))))) (p ?))
 (S0 (S (IP (VP (VP (s Dregið)) (VP-AUX (s var)) (PP (a í) (NP (NP-POSS (t 8) (p —) (n liða)) (n úrslit) (NP-POSS (n Borgunarbikars) (NP-POSS (n karla))))) (ADVP (a í) (NP (n hádeginu)) (a í) (NP (n dag)))))) (p .))
 (S0 (S (IP (NP-SUBJ (f Allt) (n hráefni) (CP-REL (C (c sem)) (IP (NP-SUBJ (f þeir)) (VP (VP (s vinna)) (a með))))) (VP (VP (s er)) (NP-PRD (l hreint) (n hráefni) (C (c og)) (l unnið) (PP (a frá) (NP (n grunni))))))) (p .))
-(S0 (S (IP (NP-SUBJ (n Þingkonan) (p ,) (NP (n Laetitia) (n Avia)) (p ,)) (VP (VP-AUX (s hefur)) (VP (VP (s lagt)) (ADVP (a fram)) (NP-OBJ (n kæru)) (PP (a hjá) (NP (n lögreglunni) (PP (a í) (NP (n París))))))))) (p .))
+(S0 (S (IP (NP-SUBJ (n Þingkonan) (p ,) (NP (n Laetitia_Avia)) (p ,)) (VP (VP-AUX (s hefur)) (VP (VP (s lagt)) (ADVP (a fram)) (NP-OBJ (n kæru)) (PP (a hjá) (NP (n lögreglunni) (PP (a í) (NP (n París))))))))) (p .))
 (S0 (S (IP (NP-SUBJ (n Gjaldskýli) (CP-ADV (C (a eins) (c og)) (PP (a við) (NP (n Hvalfjarðargöng))))) (VP (VP-AUX (s verða)) (ADVP (a ekki)) (VP (VP (s sett)) (ADVP (a upp)) (PP (a til) (IP (c að) (VP (VP (s innheimta)) (NP-OBJ (n veggjöldin))))))))) (p .))
 (S0 (S (IP (NP-SUBJ (f Ég)) (VP (VP (VP (s er)) (NP-PRD (l góður)) (PP (a sem) (NP (n læknir) (C (c og)) (n borgarstjóri)))) (C (c en)) (VP (VP (s er)) (NP-PRD (a alls) (f enginn) (n tónlistarmaður)))))) (p .))

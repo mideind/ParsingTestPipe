@@ -1,5 +1,5 @@
 (S0 (S (IP (NP-SUBJ (n Árangur) (p ,) (n gagnsæi) (C (c og)) (n ábyrgð)) (VP (VP (s einkenna)) (NP-OBJ (l íslenska) (n þróunarsamvinnu))))))
-(S0 (S (IP (NP-SUBJ (n Ihor) (n Kopyshynskyi)) (VP (VP (s var)) (NP-PRD (l markahæstur) (NP-POSS (n Akureyringa))) (PP (a með) (NP (t sex) (n mörk)))))) (p .))
+(S0 (S (IP (NP-SUBJ (n Ihor_Kopyshynskyi)) (VP (VP (s var)) (NP-PRD (l markahæstur) (NP-POSS (n Akureyringa))) (PP (a með) (NP (t sex) (n mörk)))))) (p .))
 (S0 (S (IP (VP (VP (s Minnist)) (NP-SUBJ (f hún)) (PP (a á) (NP (n Hatara))) (PP (a í) (NP (f þessu) (n samhengi)))))) (p .))
 (S0 (S (IP (NP-SUBJ (n Tæknibyltingin)) (VP (VP (s er)) (IP (c að) (VP (VP (s gjörbreyta)) (NP-OBJ (NP-POSS (f okkar)) (l daglega) (n lífi))))))) (p .))
 (S0 (S (IP (NP-SUBJ (n Sýslumaðurinn) (PP (a á) (NP (n höfuðborgarsvæðinu)))) (VP (VP-AUX (s hafði)) (ADVP (a áður)) (VP (VP (s hafnað)) (NP-OBJ (n kröfunni)))))) (p .))

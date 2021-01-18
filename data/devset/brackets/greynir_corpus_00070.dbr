@@ -7,4 +7,4 @@
 (S0 (S (IP (NP-SUBJ (a Í_það_minnsta) (t þrettán) (n alríkisrannsóknir)) (VP (VP (s standa)) (ADVP (a nú)) (ADVP (a yfir)) (PP (a vegna) (NP (n hegðunar) (NP-POSS (f hans)) (PP (a í) (NP (n embætti)))))))) (p .))
 (S0 (S (IP (NP-SUBJ (n Hulda)) (VP (VP (s segir)) (CP-THT (C (c að)) (IP (NP-SUBJ (n Norðanstúlkur)) (VP (VP (s leyfi)) (NP-IOBJ (f sér)) (NP-OBJ (IP (c að) (VP (VP (s dreyma)) (PP (a um) (IP (c að) (VP (VP (s komast)) (PP (a í) (NP (n úrslitakeppnina))))))))))))))) (p .))
 (S0 (S (IP (NP-SUBJ (f Þetta)) (VP (VP (s stóreykur)) (ADVP (a líka)) (NP-OBJ (n valfrelsi) (NP-POSS (n neytenda)))))) (p ,) (S (IP (NP-SUBJ (f þeir)) (VP (VP (s fá)) (NP-OBJ (l meira) (PP (a af) (NP (n vörum))))))) (p .))
-(S0 (S (IP (NP-SUBJ (n Kolbrún)) (VP (VP (s birti)) (NP-OBJ (l opna) (n bréfið) (PP (a til) (NP (n alþingismanna)))) (PP (a á) (NP (n Facebook) (p -) (n síðu) (f sinni))) (ADVP (PP (a í) (NP (n dag))))))) (p .))
+(S0 (S (IP (NP-SUBJ (n Kolbrún)) (VP (VP (s birti)) (NP-OBJ (l opna) (n bréfið) (PP (a til) (NP (n alþingismanna)))) (PP (a á) (NP (n Facebook-síðu) (f sinni))) (ADVP (PP (a í) (NP (n dag))))))) (p .))

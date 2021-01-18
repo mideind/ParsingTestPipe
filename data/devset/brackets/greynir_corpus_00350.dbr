@@ -7,4 +7,4 @@
 (S0 (S (C (c Og))) (S (IP (NP-SUBJ (f hann)) (VP (VP (s talar)) (NP-OBJ (n máli) (NP-POSS (n landsins))) (PP (a með) (NP (n eindæmum)) (ADVP (a vel)))))) (p .))
 (S0 (S (IP (NP-SUBJ (n Jónas_Snæbjörnsson) (p ,) (NP (n framkvæmdastjóri) (NP-POSS (n þróunarsviðs) (NP-POSS (n Vegagerðarinnar)))) (p ,)) (VP (VP (s segir)) (NP-OBJ (f þetta))))) (p :))
 (S0 (S (IP (NP-SUBJ (f Þessi) (n réttur)) (VP (VP (s er)) (PP (a til) (NP (n staðar)) (ADVP (a víða) (PP (a á) (NP (n Norðurlöndunum)))))))) (p .))
-(S0 (S (IP (NP (n Djöfull)) (CP-REL (C (c sem)) (IP (NP-SUBJ (f mér)) (VP (VP (s fannst)) (NP-OBJ (f það)) (NP-PRD (a sjúklega) (l vandræðalegt))))))) (p .) (p “))
+(S0 (S (IP (NP (n Djöfull)) (CP-REL (C (c sem)) (IP (NP-SUBJ (f mér)) (VP (VP (s fannst)) (NP-OBJ (f það)) (NP-PRD (a sjúklega) (l vandræðalegt))))))) (p .))

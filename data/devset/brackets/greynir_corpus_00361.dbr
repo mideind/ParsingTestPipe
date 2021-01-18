@@ -1,6 +1,6 @@
 (S0 (S (IP (ADVP (a Svo)) (VP (VP (s fer)) (NP-SUBJ (f ég)) (PP (a til) (NP (n Póllands))) (PP (a með) (NP (n dóttur) (f minni) (C (c og)) (l fleirum)))))) (p .))
 (S0 (S (IP (PP (a Á) (NP (n gólfi))) (VP (VP (s sigraði)) (NP-SUBJ (n Eyþór_Örn_Baldursson))))) (C (c og)) (S (IP (NP-SUBJ (n Arnþór_Daði_Jónsson)) (VP (VP (s vann)) (NP-OBJ (n keppni) (PP (a á) (NP (n bogahesti))))))) (p .))
-(S0 (S (IP (p „) (NP-IOBJ (n Manninum) (f mínum)) (VP (VP (s var)) (NP-PRD (VP (s boðin))) (NP-SUBJ (l frí) (n áskrift)) (ADVP (a í) (NP (t tvo) (n mánuði)))))) (p .))
+(S0 (S (IP (NP-IOBJ (n Manninum) (f mínum)) (VP (VP (s var)) (NP-PRD (VP (s boðin))) (NP-SUBJ (l frí) (n áskrift)) (ADVP (a í) (NP (t tvo) (n mánuði)))))) (p .))
 (S0 (S (IP (NP-SUBJ (f Sá) (l portúgalski)) (VP (VP (s var)) (ADVP (a ekkert)) (IP (c að) (VP (VP (s sjá)) (NP-OBJ (l margt) (l jákvætt)) (PP (a í) (NP (n leiknum)))))))) (p .))
 (S0 (S (IP (NP-SUBJ (f Þær)) (VP (VP (s sökuðu)) (NP-OBJ (NP (n sr.)) (n Ólaf)) (PP (a um) (IP (c að) (VP (VP-AUX (s hafa)) (VP (VP (s brotið)) (PP (a gegn) (NP (f þeim)))))))))) (p .))
 (S0 (S (IP (ADVP (a Kannski)) (NP-SUBJ (CP-THT (C (c að)) (IP (NP-SUBJ (f það)) (VP (VP (s var)) (NP-PRD (l langt) (CP-ADV (C (c síðan)) (IP (NP-SUBJ (f við)) (VP (VP (s spiluðum)) (PP (a á) (NP (n Laugardalsvelli))))))))))))) (p .))

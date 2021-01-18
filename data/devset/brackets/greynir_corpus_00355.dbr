@@ -1,6 +1,6 @@
 (S0 (S (IP (NP-SUBJ (t 10.) (n tíundin)) (VP (VP (s á)) (NP-PRD (a tilfinnanlega) (l meira) (CP-ADV (C (c en)) (NP (t 9))) (NP (p &#40;) (t 41%) (p &#41;)))))))
 (S0 (S (IP (ADVP (a Síðast) (C (c en)) (a ekki_síst)) (VP (VP (s ber)) (IP (c að) (VP (VP (s nefna)) (NP-OBJ (n námamennina) (PP (a í) (NP (n Chile))))))))) (p .))
-(S0 (S (IP (ADVP (a Að_neðan)) (VP (VP-AUX (s má)) (VP (VP (s sjá)) (NP-OBJ (NP-OBJ (n Facebook) (n færslu) (NP-POSS (n Króla))) (PP (a um) (NP (n málið)))))))) (p .))
+(S0 (S (IP (ADVP (a Að) (a neðan)) (VP (VP-AUX (s má)) (VP (VP (s sjá)) (NP-OBJ (NP-OBJ (n Facebook) (n færslu) (NP-POSS (n Króla))) (PP (a um) (NP (n málið)))))))) (p .))
 (S0 (S (IP (NP-PRD (l Augljóst)) (VP (s var)) (NP-SUBJ (CP-THT (C (c að)) (IP (NP-SUBJ (f þetta)) (VP (VP (s var)) (NP (f allt)) (VP (VP (s planað)) (PP (a hjá) (NP (n Trump)))))))))) (p .))
 (S0 (S (IP (NP-SUBJ (f Það)) (VP (VP (s voru)) (NP-PRD (n mistök))))) (C (c og)) (S (IP (VP (VP-AUX (s hefur)) (NP-SUBJ (f það)) (VP (VP (s verið)) (NP-PRD (s lagað)))))) (p .) (p &#41;))
 (S0 (S (IP (ADVP (a Líklega)) (VP (VP (s þarf)) (NP-SUBJ (f eitthvert) (l stórfellt) (n átak) (CP-REL (C (c sem)) (IP (VP (VP (s krefst)) (NP-OBJ (n samvinnu) (NP-POSS (f allra)))))))))) (p .))

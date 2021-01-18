@@ -1,6 +1,6 @@
 (S0 (S (IP (NP (n Styrkir) (C (c og)) (n sjóðir)))))
 (S0 (S (IP (NP (n Stjörnuspá) (NP-POSS (n Siggu_Kling))))))
-(S0 (S (IP (NP (n ) (PP (a fyrir) (NP (n Ísland)))))))
+(S0 (S (IP (NP (n Þjóðaröryggisstefna) (PP (a fyrir) (NP (n Ísland)))))))
 (S0 (S (IP (NP (n Uppgjör) (NP-POSS (t tólftu) (n umferðarinnar))))))
 (S0 (S (IP (NP (n Ferðamennska) (PP (a á) (NP (n Íslandi)))))))
 (S0 (S (IP (NP (n Reglur) (PP (a um) (NP (n starfshætti)))))))

@@ -5,6 +5,6 @@
 (S0 (S (IP (NP-SUBJ (f Það)) (VP (VP-AUX (s getur)) (ADVP (a ekki)) (VP (VP (s leitað)) (PP (a til) (NP (n dómstóla)))) (CP-ADV (C (c því)) (IP (NP-SUBJ (f það)) (VP (VP (s er)) (NP-PRD (a svo) (l dýrt)))))))) (p .))
 (S0 (S (IP (ADVP (a Nánar)) (VP (VP (s er)) (NP-SUBJ (VP (s fjallað))) (PP (a um) (NP (n meirihlutamyndanir) (PP (a eftir) (NP (n sveitastjórnarkosningarnar))))) (PP (a í) (NP (n Morgunblaðinu))) (ADVP (a í) (NP (n dag)))))) (p .))
 (S0 (S (IP (NP-SUBJ (n Fólk) (PP (a með) (NP (n kvíða)))) (VP (VP-AUX (s vill)) (ADVP (a gjarnan)) (VP (VP (s reyna)) (IP (c að) (VP (VP (s losna)) (PP (a undan) (NP (l ákveðnum) (n aðstæðum))))))))) (p .))
-(S0 (S (IP (p „) (NP-SUBJ (f Mér)) (VP (VP (s finnst)) (NP-OBJ (f þetta)) (NP-PRD (l frábær) (n kynslóð) (CP-REL (C (c sem)) (IP (VP (VP (s er)) (IP (c að) (VP (VP (s alast)) (ADVP (a upp))))))))))) (p .))
+(S0 (S (IP (NP-SUBJ (f Mér)) (VP (VP (s finnst)) (NP-OBJ (f þetta)) (NP-PRD (l frábær) (n kynslóð) (CP-REL (C (c sem)) (IP (VP (VP (s er)) (IP (c að) (VP (VP (s alast)) (ADVP (a upp))))))))))) (p .))
 (S0 (S (IP (NP-SUBJ (a Um) (t 75.000) (n þjóðvarðliðar) (p ,) (n lögreglumenn) (p ,) (n slökkviliðs-_og_strandgæslumenn)) (VP (VP (s taka)) (NP-OBJ (n þátt) (PP (a í) (NP (n hjálpar-_og_leitarstörfum))))))) (p .))
 (S0 (ADVP (C (c Því))) (S (IP (NP-SUBJ (f ég)) (VP (VP-AUX (s má)) (ADVP (a ekki)) (VP (VP (s segja)) (NP-OBJ (CP-QUE (NP (f hvað)) (IP (NP-SUBJ (f sá) (CP-REL (C (c sem)) (IP (VP (VP (s nauðgaði)) (NP-OBJ (f mér)))))) (VP (s heitir))))))))) (p .))

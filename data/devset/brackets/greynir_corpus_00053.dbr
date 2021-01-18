@@ -7,4 +7,4 @@
 (S0 (S (IP (VP (NP-OBJ (n Uppskriftina)) (VP (s gaf))) (NP-SUBJ (n Svavar_Örn) (NP (n hárgreiðslumaður))))) (C (c og)) (S (IP (VP (VP (VP (s hefur)) (NP-SUBJ (f hann)) (NP-OBJ (l mikla) (n þökk)) (ADVP (a fyrir)))))) (p .))
 (S0 (S (IP (ADVP (a Svo)) (VP (VP (s segja)) (NP-SUBJ (f þeir)) (NP-IOBJ (f mér)) (NP-OBJ (CP-THT (C (c að)) (IP (NP-SUBJ (f þetta)) (VP (VP (s verði)) (NP-PRD (ADVP (a bara)) (VP (s tekið)) (PP (a af) (NP (f mér))))))))))) (p .))
 (S0 (S (IP (CP-ADV (C (c Ef)) (IP (NP-SUBJ (n a)) (VP (VP (s er)) (NP-PRD (n ambátt))) (C (c og)) (NP-SUBJ (n b)) (VP (VP (s er)) (NP-PRD (n drottning))))) (IP (VP (VP (s þurrkast)) (NP-PRD (n titlarnir)) (ADVP (a út)))))) (p .))
-(S0 (S (NP (f Hann)) (VP (s segir)) (NP-OBJ (CP-THT (C (c að)) (IP (NP-SUBJ (n lögregla)) (VP (VP-AUX (s hafi)) (VP (s fengið)) (NP-OBJ (n upplýsingar) (PP (a um) (NP (n sprengjuhótunina)) (ADVP (a klukkan_21) (p :) (t 33)))))))) (p .)))
+(S0 (S (NP (f Hann)) (VP (s segir)) (NP-OBJ (CP-THT (C (c að)) (IP (NP-SUBJ (n lögregla)) (VP (VP-AUX (s hafi)) (VP (s fengið)) (NP-OBJ (n upplýsingar) (PP (a um) (NP (n sprengjuhótunina)) (ADVP (a klukkan_21:33)))))))) (p .)))

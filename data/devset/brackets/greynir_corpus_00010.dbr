@@ -1,4 +1,4 @@
-(S0 (S (IP (NP-SUBJ (n)) (VP (VP (s vinnur)) (NP-OBJ (n leiksigur))))) (p .))
+(S0 (S (IP (NP-SUBJ (n Katrín_Halldóra_Sigurðardóttir)) (VP (VP (s vinnur)) (NP-OBJ (n leiksigur))))) (p .))
 (S0 (S (IP (NP-SUBJ (n Typpavasabuxurnar)) (NP-PRD (f það) (l flottasta) (PP (a í) (NP (n sumar))))) (p ?)))
 (S0 (S (IP (NP-SUBJ (l Fjölmargir)) (VP (VP (s líta)) (PP (a á) (NP (f hann))) (PP (a sem) (NP (n þjóðhetju)))))))
 (S0 (S (IP (NP-SUBJ (n Michael_Jordan)) (NP-PRD (l bestur) (NP-POSS (f allra) (n tíma)))) (p ?)))

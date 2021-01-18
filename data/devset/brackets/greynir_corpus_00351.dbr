@@ -1,4 +1,4 @@
-(S0 (S (IP (ADVP (a Aðeins)) (a á_eftir) (IP (c að) (VP (VP (s ganga)) (PP (a frá) (NP (n smáatriðum) (PP (a í_kringum) (NP (n samninginn))))))))) (p .))
+(S0 (S (IP (ADVP (a Aðeins)) (VP (s á) (a eftir) (IP (c að) (VP (VP (s ganga)) (PP (a frá) (NP (n smáatriðum) (PP (a í_kringum) (NP (n samninginn)))))))))) (p .))
 (S0 (S (IP (NP-SUBJ (t Tíu) (n lögreglu-_og_sérsveitarmenn)) (VP (VP (s tóku)) (NP-OBJ (n þátt)) (PP (a í) (NP (n aðgerðinni))) (ADVP (a í) (NP (n dag)))))) (p .))
 (S0 (S (IP (NP-SUBJ (f Hann)) (VP (VP (s tekur)) (ADVP (a fram)) (NP-OBJ (CP-THT (C (c að)) (IP (NP-SUBJ (n rannsókninni)) (VP (VP (s sé)) (ADVP (a ekki)) (NP-PRD (s lokið))))))))) (p .))
 (S0 (S (IP (VP (VP (s Var)) (NP-SUBJ (f þetta)) (NP-PRD (NP-POSS (f hans)) (l flottasta) (n mark) (PP (a í) (NP (NP-POSS (n Blika)) (n treyjunni))))))) (p ?))

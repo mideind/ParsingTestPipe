@@ -1,6 +1,6 @@
 (S0 (S (IP (NP-SUBJ (f Það)) (VP (VP-AUX (s hefur)) (NP-SUBJ (a aldrei) (f neinn)) (VP (VP (s átt)) (NP-OBJ (f mig)))))) (p .))
 (S0 (S (IP (NP-SUBJ (n Gunnar_Sigurðsson) (PP (a á) (NP (n Akranesi)))) (VP (VP (s er)) (NP-PRD (n varaformaður))))) (p .))
-(S0 (S (IP (VP (VP (s Segir)) (NP-IOBJ (l langstærsta) (n sönnunargagn) (NP-POSS (e Bitcoin) (p -) (n málsins))) (NP-OBJ (l ómarktækt))))))
+(S0 (S (IP (VP (VP (s Segir)) (NP-IOBJ (l langstærsta) (n sönnunargagn) (NP-POSS (e Bitcoin-málsins))) (NP-OBJ (l ómarktækt))))))
 (S0 (S (IP (NP-SUBJ (n Þátttakendur)) (VP (VP (s voru)) (ADVP (a víðsvegar) (a að)) (PP (a af) (NP (n landinu)))))) (p .))
 (S0 (S (IP (NP-SUBJ (f Enginn)) (VP (VP (s vissi)) (NP-OBJ (CP-QUE (ADVP (a hvar)) (IP (NP-SUBJ (f hann)) (VP (s var)))))))) (p .))
 (S0 (S (IP (VP (VP (s Hélt)) (NP-OBJ (CP-THT (C (c að)) (IP (NP-SUBJ (n fjölskyldan)) (VP (VP (s væri)) (IP (c að) (VP (VP (s brenna)) (ADVP (a inni))))))))))))

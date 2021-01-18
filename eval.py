@@ -23,6 +23,19 @@
 	$ ln -s ../GreynirCorpus/ .
 	$ python eval.py
 
+	To measure the parsers' performance on the test set:
+	$ python eval.py -m
+
+	To measure the parsers' performance on the test set
+	excluding malformed sentences:
+	$ python eval.py -m -x
+
+	To parse the entire development corpus:
+	$ python eval.py
+
+	To parse 10 files in the developmet corpus:
+	$ python eval.py -n 10
+
 
 
 """
@@ -42,10 +55,37 @@ import helpers
 Settings.DEBUG = False
 
 DATA = 'devset'	# Default value, changed to devset if chosen in argparse [devset, testset]
-# TODO útfæra að breyta því
 
-TEXTS = pathlib.Path().absolute() / 'GreynirCorpus' / DATA / 'txt' # TODO Change to GreynirCorpus when done
-GOLDPSD = pathlib.Path().absolute() / 'GreynirCorpus' / DATA / 'psd'  # TODO Change to GreynirCorpus when done
+# Define the command line arguments
+
+parser = argparse.ArgumentParser(
+    description=(
+        "This program evaluates the parsing performance "
+        "of various parsers"
+    )
+)
+#parser.add_argument(
+#    "-n",
+#    "--number",
+#    type=int,
+#    default=0,
+#    help="number of files to process (default=all)",
+#)
+parser.add_argument(
+    "-m",
+    "--measure",
+    action="store_true",
+    help="run measurements on test corpus and output results only",
+)
+parser.add_argument(
+    "-x",
+    "--exclude",
+    action="store_true",
+    help="Exclude malformed sentences",
+)
+
+TEXTS = pathlib.Path().absolute() / 'GreynirCorpus' / DATA / 'txt'
+GOLDPSD = pathlib.Path().absolute() / 'GreynirCorpus' / DATA / 'psd'
 HANDPSD = pathlib.Path().absolute() / 'data' / DATA / 'handpsd'
 GENPSD = pathlib.Path().absolute() / 'data' / DATA / 'genpsd'
 BRACKETS = pathlib.Path().absolute() / 'data' / DATA / 'brackets'
@@ -54,38 +94,44 @@ REPORTS = pathlib.Path().absolute() / 'data' / DATA / 'reports'
 
 def process():
 
-	# TODO tékka á argparse hvort vil devset eða testset
 	print("Retrieving automatic parse trees")
-	helpers.get_annoparse(TEXTS, GENPSD, ".txt", ".psd", False)
+	helpers.get_annoparse(TEXTS, GENPSD, ".txt", ".psd", True)
+	# helpers.get_icenlpparse(TEXTS, GENPSD, '.txt', '.inpsd', True)
 	# helpers.get_ipparse(TEXTS, GENPSD, '.txt', '.ippsd', True)
 
 	print("Transforming automatic parse trees to general bracketed form")
-	helpers.annotald_to_general(GENPSD, TESTFILES, '.psd', '.grdbr', True, False)
-	# helpers.ip_to_general(GENPSD, TESTFILES, ".ippsd", ".ippbr", True)
+	helpers.annotald_to_general(GENPSD, TESTFILES, '.psd', '.grdbr', True, True)
+	# helpers.icenlp_to_general(GENPSD, TESTFILES, ".inpsd", ".inpbr", True)
+	# helpers.annotald_to_general(GENPSD, TESTFILES, ".ippsd", ".ipdbr", True, True) # FOR ICEPAHC, should work
 
 	print("Transforming handannotated parse trees to general bracketed form")
 	# TODO tékka hér á argparse hvort devset eða testset
-	helpers.annotald_to_general(GOLDPSD, BRACKETS, '.gld', '.dbr', True, False)
-	#helpers.annotald_to_general(GOLDPSD, BRACKETS, '.pgld', '.pbr', True, True)
-
+	helpers.annotald_to_general(GOLDPSD, BRACKETS, '.gld', '.dbr', True, True)
+	#helpers.annotald_to_general(GOLDPSD, BRACKETS, '.pgld', '.inpbr', True, True)
+	#helpers.annotald_to_general(GOLDPSD, BRACKETS, '.gld', '.ipdbr', True, True)
 
 	print("Retrieving results from evalb")
 	# (testfile suffix, goldfile suffix, output file suffix)
 	tests = [
-		#(".ippbr", ".pbr", ".ippout"), 
+		#(".inpbr", ".inpbr", ".inpout"), 
+		#(".ipdbr", ".ipdbr", ".ipdout"), 
 		(".grdbr", ".dbr", ".grdout")
 	]
 	helpers.get_results(BRACKETS, TESTFILES, REPORTS, tests)
 
 
 	print("Combining reports by genre")
-	suffixes = [".grdout",]  # ".grpout", ".ippout"
+	suffixes = [".grdout",]  # ".grpout", ".inpout", "ipdout"
 	genres = ["greynir_corpus" ] #  TODO taka þetta út?
 
 	helpers.combine_reports(REPORTS, suffixes, genres)
 
 def main() -> None:
-	#args = parser.parse_args() # TODO
+	args = parser.parse_args() 
+	if args.measure:
+		DATA = 'testset'
+	global EXCLUDE
+	EXCLUDE = args.exclude
 	start = timer()
 
 	process()

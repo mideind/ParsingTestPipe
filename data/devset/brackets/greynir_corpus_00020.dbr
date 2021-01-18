@@ -7,4 +7,4 @@
 (S0 (S (IP (NP-SUBJ (l Nýja) (n félagið)) (VP (VP-AUX (s hafi)) (VP (ADVP (a þá)) (VP (s yfirtekið)) (NP-OBJ (l áhvílandi) (n veðskuldir)))))) (p .))
 (S0 (S (IP (NP-SUBJ (e Variety)) (VP (VP (s greindi)) (NP-SUBJ (l fyrst)) (PP (a frá) (NP (f þessu))) (ADVP (a í) (NP (n dag)))))) (p .))
 (S0 (S (IP (PP (a Um) (NP (l norðanvert) (n landið))) (VP (VP (s er)) (NP-PRD (n hálka) (C (c eða)) (n hálkublettir))))) (p .))
-(S0 (S (IP (NP-SUBJ (l Palestínska) (n lögreglan)) (VP (VP-AUX (s hefur)) (VP (VP (s hert)) (NP-OBJ (n öryggisráðstafanir)) (PP (a vegna) (NP (n ))))))) (p .))
+(S0 (S (IP (NP-SUBJ (l Palestínska) (n lögreglan)) (VP (VP-AUX (s hefur)) (VP (VP (s hert)) (NP-OBJ (n öryggisráðstafanir)) (PP (a vegna) (NP (n ferðamannafjöldans))))))) (p .))

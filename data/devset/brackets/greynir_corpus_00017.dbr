@@ -1,4 +1,4 @@
-(S0 (S (IP (VP (VP (s Steikið)) (ADVP (PP (a í) (NP (t 10) (n mínútur)))) (PP (a á) (NP (n )))))) (p .))
+(S0 (S (IP (VP (VP (s Steikið)) (ADVP (PP (a í) (NP (t 10) (n mínútur)))) (PP (a á) (NP (n miðlungshita)))))) (p .))
 (S0 (S (IP (NP-SUBJ (l Fyrstu) (l bresku) (n farþegar) (NP-POSS (n vetrarins))) (VP (NP-PRD (VP (s lentir))) (PP (a á) (NP (n Akureyri)))))))
 (S0 (S (IP (NP-SUBJ (a Ekki) (a svo) (l langt)) (PP (a frá) (NP (e London))) (PP (a til) (NP (n Íslands))))))
 (S0 (S (IP (NP-SUBJ (n Stefán_Rafn) (C (c og)) (n félagar)) (VP (VP (s töpuðu)) (PP (a gegn) (NP (e PSG)))))))
