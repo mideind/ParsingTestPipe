@@ -531,7 +531,7 @@ def combine_reports(reportfolder, suffixes, genres, nocat):
 			single = False
 			sentid = ""
 			singleblob.append("{}\n".format(preport))
-			singleblob.append("id\tF1\t\tRecall\tPrec.\tTag Acc.  Length\n")
+			singleblob.append("\tid\tF1\t\tRecall\tPrec.\tTag Acc.  Length\n")
 			for line in pin.readlines():
 				if single:
 					if "===" in line: # Reached start of summary
@@ -543,12 +543,13 @@ def combine_reports(reportfolder, suffixes, genres, nocat):
 					sentrecall = float(sults[3])
 					sentprec = float(sults[4])
 					senttags = float(sults[10])
+					warning = ""
 					f1 = 0.0
 					if sentprec + sentrecall > 0.0:
 						f1 = 2 * sentprec * sentrecall / (sentprec + sentrecall)
-
-					singleblob.append(f"{sentid}\t{f1:1.2f}\t{sentrecall:1.2f}\t{sentprec:1.2f}\t{senttags:1.2f}\t  {sentlength:.2f}\n")
-					
+					if f1 < 70.0:
+						warning = "WARNING"
+					singleblob.append(f"\t{sentid}\t{f1:1.2f}\t{sentrecall:1.2f}\t{sentprec:1.2f}\t{senttags:1.2f}\t  {sentlength:.2f}\t{warning}\n")
 					single = False
 				if "====" in line:
 					single = True

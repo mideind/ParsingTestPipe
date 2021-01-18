@@ -85,22 +85,29 @@ parser.add_argument(
     help="Skip category results",
 )
 
+parser.add_argument(
+	"-ow",
+	"--overwrite",
+	action="store_true",
+	help="Overwrite existing files",
+)
+
 def process():
 
 	print("Retrieving automatic parse trees")
-	helpers.get_annoparse(TEXTS, GENPSD, ".txt", ".psd", False)
-	# helpers.get_icenlpparse(TEXTS, GENPSD, '.txt', '.inpsd', True)
-	# helpers.get_ipparse(TEXTS, GENPSD, '.txt', '.ippsd', True)
+	helpers.get_annoparse(TEXTS, GENPSD, ".txt", ".psd", OVERWRITE)
+	# helpers.get_icenlpparse(TEXTS, GENPSD, '.txt', '.inpsd', OVERWRITE)
+	# helpers.get_ipparse(TEXTS, GENPSD, '.txt', '.ippsd', OVERWRITE)
 
 	print("Transforming automatic parse trees to general bracketed form")
-	helpers.annotald_to_general(GENPSD, TESTFILES, '.psd', '.grdbr', True, True, EXCLUDE)
-	# helpers.icenlp_to_general(GENPSD, TESTFILES, ".inpsd", ".inpbr", True)
-	# helpers.annotald_to_general(GENPSD, TESTFILES, ".ippsd", ".ipdbr", True, True) # FOR ICEPAHC, should work
+	helpers.annotald_to_general(GENPSD, TESTFILES, '.psd', '.grdbr', True, OVERWRITE, EXCLUDE)
+	# helpers.icenlp_to_general(GENPSD, TESTFILES, ".inpsd", ".inpbr", OVERWRITE, EXCLUDE)
+	# helpers.annotald_to_general(GENPSD, TESTFILES, ".ippsd", ".ipdbr", True, OVERWRITE, EXCLUDE) # FOR ICEPAHC, should work
 
 	print("Transforming handannotated parse trees to general bracketed form")
-	helpers.annotald_to_general(GOLDPSD, BRACKETS, '.gld', '.dbr', True, True, EXCLUDE)
-	#helpers.annotald_to_general(GOLDPSD, BRACKETS, '.pgld', '.inpbr', True, True)
-	#helpers.annotald_to_general(GOLDPSD, BRACKETS, '.gld', '.ipdbr', True, True)
+	helpers.annotald_to_general(GOLDPSD, BRACKETS, '.gld', '.dbr', True, OVERWRITE, EXCLUDE)
+	#helpers.annotald_to_general(GOLDPSD, BRACKETS, '.pgld', '.inpbr', OVERWRITE, True)
+	#helpers.annotald_to_general(GOLDPSD, BRACKETS, '.gld', '.ipdbr', OVERWRITE, True)
 
 	print("Retrieving results from evalb")
 	# (testfile suffix, goldfile suffix, output file suffix)
@@ -125,13 +132,8 @@ def main() -> None:
 		DATA = 'testset'
 	else:
 		DATA = 'devset'
-	global TEXTS
-	global GOLDPSD
-	global HANDPSD
-	global GENPSD
-	global BRACKETS
-	global TESTFILES
-	global REPORTS
+	global TEXTS, GOLDPSD, HANDPSD, GENPSD, BRACKETS, TESTFILES, REPORTS
+
 	TEXTS = pathlib.Path().absolute() / 'GreynirCorpus' / DATA / 'txt'
 	GOLDPSD = pathlib.Path().absolute() / 'GreynirCorpus' / DATA / 'psd'
 	HANDPSD = pathlib.Path().absolute() / 'data' / DATA / 'handpsd'
@@ -140,10 +142,13 @@ def main() -> None:
 	TESTFILES = pathlib.Path().absolute() / 'data' / DATA / 'testfiles'
 	REPORTS = pathlib.Path().absolute() / 'data' / DATA / 'reports'
 
-	global EXCLUDE
+	global EXCLUDE, NOCAT, OVERWRITE
+
 	EXCLUDE = args.exclude
-	global NOCAT
 	NOCAT = args.nocat
+	OVERWRITE = args.overwrite
+
+
 	start = timer()
 
 	process()
