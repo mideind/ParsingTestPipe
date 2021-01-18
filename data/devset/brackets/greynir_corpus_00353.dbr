@@ -7,4 +7,4 @@
 (S0 (S (IP (NP-SUBJ (n Kanada)) (VP (VP (s mætir)) (ADVP (a þá)) (NP-OBJ (n Nýja-Sjálandi)) (PP (a í) (NP (n E-riðli))) (ADVP (t klukkan_19:00))))) (p .))
 (S0 (S (IP (NP-SUBJ (l Næsta) (n mál) (PP (a á) (NP (n dagskrá)))) (VP (VP (s voru)) (NP-SUBJ (n sveitarstjórnarkosningar)) (ADVP (a í) (NP (n lok) (NP-POSS (a maí_2018))))))) (p .))
 (S0 (S (IP (NP-SUBJ (n Skaðsemi) (NP-POSS (n þáttanna))) (VP (VP (s nær)) (PP (ADVP (a langt)) (ADVP (a út)) (a fyrir) (NP (f þessa) (n þætti)))))) (p .))
-(S0 (S (IP (NP-SUBJ (f Hann)) (NP-OBJ (CP-THT (C (c að)) (IP (VP (VP (s segja)) (VP-AUX (s megi)) (NP-OBJ (CP-THT (C (c að)) (IP (NP-SUBJ (f hver) (n fangagangur)) (VP (VP (s sé)) (NP-PRD (l sjálfbær)))))))))))) (p .))
+(S0-X (S (IP (NP-SUBJ (f Hann)) (NP-OBJ (CP-THT (C (c að)) (IP (VP (VP (s segja)) (VP-AUX (s megi)) (NP-OBJ (CP-THT (C (c að)) (IP (NP-SUBJ (f hver) (n fangagangur)) (VP (VP (s sé)) (NP-PRD (l sjálfbær)))))))))))) (p .))

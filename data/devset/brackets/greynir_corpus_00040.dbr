@@ -1,5 +1,5 @@
 (S0 (S (IP (NP-SUBJ (f Hann)) (VP (VP (s lést)) (ADVP (a 29._ágúst) (f sama) (n ár)) (p ,) (NP (NP (t 51) (n árs)) (l gamall))))) (p .))
-(S0 (S (IP (NP-SUBJ (e Dijon)) (VP (VP (s er)) (ADVP (a nú)) (PP (a í) (NP (l fimmtánda) (n sæti) (NP-POSS (n delidarinnar)))) (PP (a með) (NP (t tíu) (n stig)))))) (p .))
+(S0-X (S (IP (NP-SUBJ (e Dijon)) (VP (VP (s er)) (ADVP (a nú)) (PP (a í) (NP (l fimmtánda) (n sæti) (NP-POSS (n delidarinnar)))) (PP (a með) (NP (t tíu) (n stig)))))) (p .))
 (S0 (S (IP (NP-SUBJ (n Samgönguráðherra)) (VP (VP (s fól)) (NP-OBJ (a einmitt) (n nefndinni)) (IP (c að) (VP (VP (s skoða)) (NP-OBJ (n leiðir) (PP (a til) (NP (l sérstakrar) (n fjármögnunar))))))))) (p .))
 (S0 (S (IP (ADVP (a Svo)) (VP (VP-AUX (s getur)) (ADVP (a líka)) (ADVP (a vel)) (VP (s verið)) (NP-SUBJ (CP-THT (C (c að)) (IP (NP-SUBJ (n breyting)) (VP (VP (s verði)) (ADVP (a þar)) (ADVP (a á))))))))) (p .))
 (S0 (S (IP (ADVP (a Hér)) (VP (VP-AUX (s má)) (ADVP (a þó)) (VP (s sjá)) (NP-OBJ (n lista) (PP (a yfir) (NP (n sjónvarpsrétthafa) (PP (a í) (NP (f öðrum) (n löndum))))))))) (p .))

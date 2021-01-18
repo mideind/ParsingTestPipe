@@ -7,4 +7,4 @@
 (S0 (S (IP (NP-SUBJ (n Lögregla)) (VP (VP (s varar)) (NP-OBJ (n fólk)) (PP (a við) (IP (c að) (VP (VP (s vera)) (NP-PRD (a á) (NP (n ferli))))))))) (C (c og)) (S (IP (NP-SUBJ (l mikil) (n óvissa)) (VP (s ríkir)))) (p .))
 (S0 (S (IP (NP-OBJ (f Þetta)) (VP (VP (s segir)) (NP-SUBJ (n Trausti_Jónsson) (NP (n veðurfræðingur))) (PP (a í) (NP (n yfirför) (f sinni) (PP (a um) (NP (n veðrið) (ADVP (a í) (NP (n sumar)))))))))) (p .))
 (S0 (S (IP (NP-SUBJ (f Við)) (VP (VP (s erum)) (ADVP (a alltaf)) (IP (c að) (VP (VP (s hleypa)) (NP-OBJ (n liðum)) (PP (ADVP (a inn)) (a í) (NP (n leikina))))) (ADVP (a aftur_og_aftur))))) (p .))
-(S0 (S (NP (NP (n Chairman_Fred_Ridley)) (n announces) (NP-POSS (n the) (NP-POSS (n establishment) (NP-POSS (a of) (n the) (NP-POSS (n Augusta_National_Women's_Amateur_Championship)))))) (p .)))
+(S0-X (S (NP (NP (n Chairman_Fred_Ridley)) (n announces) (NP-POSS (n the) (NP-POSS (n establishment) (NP-POSS (a of) (n the) (NP-POSS (n Augusta_National_Women's_Amateur_Championship)))))) (p .)))

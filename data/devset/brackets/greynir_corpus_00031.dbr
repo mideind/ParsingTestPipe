@@ -2,7 +2,7 @@
 (S0 (S (IP (ADVP (a Ekki)) (PP (a á) (NP (n lífi))) (CP-ADV (C (c ef)) (IP (NP-SUBJ (f hann)) (VP-AUX (s hefði)) (VP (VP (s verið)) (NP-PRD (f einn)) (ADVP (a heima))))))))
 (S0 (S (IP (NP-SUBJ (f Þessi) (n deild)) (VP (VP (s er)) (NP-PRD (a fáránlega) (l sterk) (C (c og)) (l jöfn))))) (p .))
 (S0 (S (IP (ADVP (a Þar_að_auki)) (VP (VP (s framleiðir)) (NP-SUBJ (f hann)) (NP-OBJ (f sína) (l eigin) (n fatalínu))))) (p .))
-(S0 (ADVP (IP (NP-SUBJ (n Bítið)) (p -))) (S (IP (NP-SUBJ (n Borgin)) (PP (a með) (NP (f allt) (PP (a niðrum) (NP (f sig))))) (PP (a í) (NP (n Braggamálinu))))))
+(S0-X (ADVP (IP (NP-SUBJ (n Bítið)) (p -))) (S (IP (NP-SUBJ (n Borgin)) (PP (a með) (NP (f allt) (PP (a niðrum) (NP (f sig))))) (PP (a í) (NP (n Braggamálinu))))))
 (S0 (S (IP (NP-SUBJ (n Fylgi) (NP-POSS (n ríkisstjórnarinnar))) (VP (VP (s stendur)) (PP (a í) (NP (n stað)))))) (p —) (S (IP (NP-SUBJ (n Samfylkingin)) (VP (VP (s sækir)) (ADVP (a á))))))
 (S0 (S (IP (NP-SUBJ (n Magaóþægindi)) (VP (VP (s eru)) (NP-PRD (l algeng) (p ,) (a jafnvel) (n hægðatregða) (C (c eða)) (n niðurgangur))))) (p .))
 (S0 (S (IP (VP (VP (s Fara)) (ADVP (a síður)) (PP (a í) (NP (n skimun))) (CP-ADV (C (c en)) (IP (NP-SUBJ (n konur) (PP (a á) (NP (f öðrum) (n Norðurlöndum))))))))))

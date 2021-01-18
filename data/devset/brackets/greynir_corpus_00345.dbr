@@ -5,6 +5,6 @@
 (S0 (S (IP (NP-SUBJ (f Þau)) (VP (VP (s nýttu)) (NP-OBJ (n tækifærið) (PP (a til) (IP (c að) (VP (VP (s tæma)) (NP-OBJ (n geymsluna))))))))) (p .))
 (S0 (S (IP (NP-SUBJ (f Þessi) (n lærdómur)) (VP (VP (s fær)) (NP-OBJ (l lítið) (n svigrúm) (PP (a í) (NP (n pólitíkinni))))))) (p .))
 (S0 (S (IP (NP-SUBJ (f Hún)) (VP (VP (s varð)) (NP (f sjálf)) (PP (a fyrir) (NP (n heimilisofbeldi))) (ADVP (a um) (NP (n árabil)))))) (p .))
-(S0 (S (IP (NP-SUBJ (l Nauðsynlegt)) (IP (c að) (VP (VP (s koma)) (PP (a í) (NP (n veg) (PP (a fyrir) (NP (l frekari) (n skaða))))))))))
+(S0-X (S (IP (NP-SUBJ (l Nauðsynlegt)) (IP (c að) (VP (VP (s koma)) (PP (a í) (NP (n veg) (PP (a fyrir) (NP (l frekari) (n skaða))))))))))
 (S0 (S (IP (NP-SUBJ (n Travis_Scott)) (VP (VP (s er)) (NP-PRD (VP (s komin)) (PP (a með) (NP (n fiðrildi) (PP (a á) (NP (n fótinn))))))))) (p .))
 (S0 (S (IP (NP-SUBJ (n Könnunin)) (VP (VP (s var)) (NP-PRD (s framkvæmd)) (ADVP (NP (n dagana)) (a 15.) (PP (a til) (NP (a 22._júlí))))))) (p .))

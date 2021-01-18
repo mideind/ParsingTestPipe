@@ -3,7 +3,7 @@
 (S0 (S (IP (NP-IOBJ (n Manninum) (f mínum)) (VP (VP (s var)) (NP-PRD (VP (s boðin))) (NP-SUBJ (l frí) (n áskrift)) (ADVP (a í) (NP (t tvo) (n mánuði)))))) (p .))
 (S0 (S (IP (NP-SUBJ (f Sá) (l portúgalski)) (VP (VP (s var)) (ADVP (a ekkert)) (IP (c að) (VP (VP (s sjá)) (NP-OBJ (l margt) (l jákvætt)) (PP (a í) (NP (n leiknum)))))))) (p .))
 (S0 (S (IP (NP-SUBJ (f Þær)) (VP (VP (s sökuðu)) (NP-OBJ (NP (n sr.)) (n Ólaf)) (PP (a um) (IP (c að) (VP (VP-AUX (s hafa)) (VP (VP (s brotið)) (PP (a gegn) (NP (f þeim)))))))))) (p .))
-(S0 (S (IP (ADVP (a Kannski)) (NP-SUBJ (CP-THT (C (c að)) (IP (NP-SUBJ (f það)) (VP (VP (s var)) (NP-PRD (l langt) (CP-ADV (C (c síðan)) (IP (NP-SUBJ (f við)) (VP (VP (s spiluðum)) (PP (a á) (NP (n Laugardalsvelli))))))))))))) (p .))
+(S0-X (S (IP (ADVP (a Kannski)) (NP-SUBJ (CP-THT (C (c að)) (IP (NP-SUBJ (f það)) (VP (VP (s var)) (NP-PRD (l langt) (CP-ADV (C (c síðan)) (IP (NP-SUBJ (f við)) (VP (VP (s spiluðum)) (PP (a á) (NP (n Laugardalsvelli))))))))))))) (p .))
 (S0 (S (IP (NP-SUBJ (n Forfeðrum) (NP-POSS (f okkar)) (C (c og)) (n formæðrum)) (VP (VP (s var)) (NP-PRD (VP (s tekið))) (NP (l opnum) (n örmum)) (PP (a í) (NP (n Vesturheimi)))))) (p .))
 (S0 (S (IP (NP-SUBJ (n Nauðgunarkæra) (PP (a gegn) (NP (NP (n knattspyrnumanninum) (C (c og)) (n ofurstjörnunni)) (n Cristiano_Ronaldo)))) (VP (VP-AUX (s hefur)) (VP (VP (s verið)) (NP-PRD (VP (s felld))) (ADVP (a niður)))))) (p .))
 (S0 (S (IP (NP-SUBJ (n Kennararnir)) (VP (VP (s ræddu)) (ADVP (a einnig)) (PP (a um) (NP (n brottfall) (NP-POSS (n nemenda)) (PP (a úr) (NP (n íþróttum))) (PP (a vegna) (NP (n álags)))))))) (p .))

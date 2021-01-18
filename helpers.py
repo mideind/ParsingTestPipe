@@ -78,6 +78,7 @@ GENERALIZE = {
 	"raðnr" : "t",
 	"ártal" : "t",
 	"amount" : "t",
+	"sequence" : "t",
 	"dagsafs" : "a",
 	"dagsföst" : "a",
 	"tími" : "t",
@@ -284,7 +285,7 @@ def get_ipparse(infolder, outfolder, insuffix=".txt", outsuffix=".ippsd", overwr
 	pass
 
 # Get general parse trees for each parsing schema
-def annotald_to_general(infolder, outfolder, insuffix, outsuffix, deep=True, overwrite=False):
+def annotald_to_general(infolder, outfolder, insuffix, outsuffix, deep=True, overwrite=False, exclude=False):
 	
 	for p in infolder.iterdir():
 		if p.suffix != insuffix:
@@ -307,7 +308,7 @@ def annotald_to_general(infolder, outfolder, insuffix, outsuffix, deep=True, ove
 		treetext = util.scrubText(treetext)
 		trees = treetext.strip().split("\n\n")
 
-		outtrees = general_clean(trees, deep)
+		outtrees = general_clean(trees, deep, exclude)
 		pout.write_text(outtrees)
 
 def icenlp_to_general(infolder, outfolder, insuffix=".inpsd", outsuffix=".inpbr", overwrite=False):
@@ -331,7 +332,7 @@ def icenlp_to_general(infolder, outfolder, insuffix=".inpsd", outsuffix=".inpbr"
 		outtrees = general_ipclean(trees)
 		pout.write_text(outtrees)
 
-def general_clean(trees, deep=True):
+def general_clean(trees, deep=True, exclude=False):
 	# Forvinnsla 
 	outtrees = "" # All partial trees for file
 	text = []
@@ -382,7 +383,10 @@ def general_clean(trees, deep=True):
 						segs = True
 						phrases.push(phrase)
 						continue
-					phrase = GENERALIZE[phrase]
+					if exclude and phrase == "S0-X":
+						pass
+					else:
+						phrase = GENERALIZE[phrase]
 					if not phrase or phrase in NOT_INCLUDED:
 						skips +=1
 						phrases.push(phrase)
@@ -478,7 +482,7 @@ def general_ipclean(trees):
 		outtrees = outtrees + cleantree + "\n" 
 	return outtrees
 
-def get_results(goldfolder, testfolder, reportfolder, tests):
+def get_results(goldfolder, testfolder, reportfolder, tests, exclude=False):
 	evalbpath = pathlib.Path().absolute() / 'EVALB' / 'evalb'
 	if not evalbpath.exists:
 		print("Evalb cannot be found. Exiting.")
@@ -493,12 +497,16 @@ def get_results(goldfolder, testfolder, reportfolder, tests):
 				pout = pgold.stem + tri[2]
 				pout = reportfolder / pout
 
+				if exclude:
+					delete_lines(pgold, ptest, goldfolder, testfolder)
+
+
 				evalbcmd = str(evalbpath) + EVALBCOMMAND + " {} {} > {}".format(pgold, ptest, pout)
 				print("Comparing {}\n\t and {}".format(pgold, ptest))
 				skil = subprocess.Popen([evalbcmd], shell=True, stdout=subprocess.PIPE).communicate()[0]
 				print(skil)
 
-def combine_reports(reportfolder, suffixes, genres):
+def combine_reports(reportfolder, suffixes, genres, nocat):
 	# TODO:
 	# Telja hve margar setningar byrja á S0-X
 	# Bæta við skoðun á setningarhlutverki -- NP-OBJ, ... En þarf sérniðurstöður fyrir það, sérútgáfu af to_brackets...
@@ -512,12 +520,40 @@ def combine_reports(reportfolder, suffixes, genres):
 	ac = []  # Average crossing
 	filenames = []
 	filepath = pathlib.Path().absolute() / reportfolder / 'allresults.out'
+	singleblob = []
 
+
+	singleblob.append("Results for each sentence\n")
 	# Sækja nauðsynlegar grunnupplýsingar
 	for preport in reportfolder.iterdir():
 		with preport.open(mode='r') as pin:
 			filenames.append(preport)
+			single = False
+			sentid = ""
+			singleblob.append("{}\n".format(preport))
+			singleblob.append("id\tF1\t\tRecall\tPrec.\tTag Acc.  Length\n")
 			for line in pin.readlines():
+				if single:
+					if "===" in line: # Reached start of summary
+						single = False
+						continue  
+					sults = line.split()
+					sentid = sults[0]
+					sentlength = float(sults[1])
+					sentrecall = float(sults[3])
+					sentprec = float(sults[4])
+					senttags = float(sults[10])
+					f1 = 0.0
+					if sentprec + sentrecall > 0.0:
+						f1 = 2 * sentprec * sentrecall / (sentprec + sentrecall)
+
+					singleblob.append(f"{sentid}\t{f1:1.2f}\t{sentrecall:1.2f}\t{sentprec:1.2f}\t{senttags:1.2f}\t  {sentlength:.2f}\n")
+					
+					single = False
+				if "====" in line:
+					single = True
+
+				# Summary
 				if line.startswith("Number of sentence "):
 					numsents.append(float(line.split(" ")[-1]))
 				if line.startswith("Number of Error sentence "):
@@ -580,27 +616,27 @@ def combine_reports(reportfolder, suffixes, genres):
 			cmoverall+=cmall
 			acoverall+=acall
 			taoverall+=taall
+			if not nocat: # Skip results by category
+				textblob.append("=== {} ===\n".format(fileid))
+				if numfiles == 0:
+					textblob.append("Engin skjöl í flokki\n")
+					continue
 
-			textblob.append("=== {} ===\n".format(fileid))
-			if numfiles == 0:
-				textblob.append("Engin skjöl í flokki\n")
-				continue
+				textblob.append("Fjöldi setninga:{}\n".format(numsentsall))
+				textblob.append("Fjöldi villusetninga:{}\n".format(numerrorsentsall))
+				textblob.append("Recall:{:.2f}\n".format(brall/numfiles))
+				textblob.append("Precision:{:.2f}\n".format(bpall/numfiles))
+				textblob.append("Fskor:{:.2f}\n".format(bfall/numfiles))
+				textblob.append("Alveg eins:{:.2f}\n".format(cmall/numfiles))
+				textblob.append("Average crossing: {:.2f}\n".format(acall/numfiles))
+				textblob.append("Tagging accuracy:{:.2f}\n\n\t".format(taall/numfiles))
+				textblob.append("\n\t".join(filestrings))
+				textblob.append("\n\n")
 
-			textblob.append("Fjöldi setninga:{}\n".format(numsentsall))
-			textblob.append("Fjöldi villusetninga:{}\n".format(numerrorsentsall))
-			textblob.append("Recall:{:.2f}\n".format(brall/numfiles))
-			textblob.append("Precision:{:.2f}\n".format(bpall/numfiles))
-			textblob.append("Fskor:{:.2f}\n".format(bfall/numfiles))
-			textblob.append("Alveg eins:{:.2f}\n".format(cmall/numfiles))
-			textblob.append("Average crossing: {:.2f}\n".format(acall/numfiles))
-			textblob.append("Tagging accuracy:{:.2f}\n\n\t".format(taall/numfiles))
-			textblob.append("\n\t".join(filestrings))
-			textblob.append("\n\n")
-		textblob.append("\n\n|||||||||||||||||||||||||||||||||||||||||||||\n\n")
 		textblob.append("=== Heildin{} ===\n".format(suff))
 
 		if numfilesoverall == 0:
-			textblob.append("Engin skjöl í flokki\n")
+			textblob.append("Engin skjöl\n")
 			
 
 		textblob.append("Fjöldi setninga:{}\n".format(numsentsoverall))
@@ -632,7 +668,9 @@ def combine_reports(reportfolder, suffixes, genres):
 
 
 	print("Writing overall report")
+	textblob = textblob + ["\n\n"] + singleblob
 	filepath.write_text("".join(textblob))
+
 
 # Not needed in ParsingTestPipe, only if text files are needed from bracketed files.
 def br_to_txt(infolder, outfolder, insuffix=".dbr", outsuffix=".txt", overwrite=False):
@@ -667,6 +705,37 @@ def br_to_txt(infolder, outfolder, insuffix=".dbr", outsuffix=".txt", overwrite=
 			txt.append(" ".join(clean))
 
 		pout.write_text("\n".join(txt))
+
+def delete_lines(pgold, ptest, goldfolder, testfolder):
+	""" Deletes lines containing S0-X in brackets so they are excluded from evaluation """
+	skipped = []
+	i = 0
+	fakegold = pgold.stem + '.bak'
+	fakegold = goldfolder / fakegold
+	faketest = ptest.stem + '.bak'
+	faketest = testfolder / faketest
+	with open(pgold, 'r') as orgfile, open(fakegold, 'w') as fakefile:
+		for line in orgfile:
+			if "S0-X" in line:
+				skipped.append(i)
+			else:
+				fakefile.write(line)
+			i +=1
+
+		if skipped:
+			with open(ptest, 'r') as orgfile, open(faketest, 'w') as fakefile:
+				j = 0
+				for line in orgfile:
+					if j not in skipped:
+						fakefile.write(line)
+					j +=1
+
+			os.remove(pgold)
+			os.rename(fakegold, pgold)
+			os.remove(ptest)
+			os.rename(faketest, ptest)
+		else:
+			os.remove(fakegold)
 
 
 

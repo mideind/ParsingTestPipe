@@ -33,16 +33,18 @@
 	To parse the entire development corpus:
 	$ python eval.py
 
-	To parse 10 files in the developmet corpus:
+	To parse 10 files in the development corpus:
 	$ python eval.py -n 10
 
-
+	To skip results for each category and only give overall results:
+	$ python eval.py -m -c
 
 """
 
 import pathlib
 from timeit import default_timer as timer
 import subprocess
+import argparse
 
 from reynir import Settings
 from reynir.simpletree import SimpleTree
@@ -54,8 +56,6 @@ import helpers
 #Settings.read(os.path.join(basepath, "config", "Greynir.conf"))
 Settings.DEBUG = False
 
-DATA = 'devset'	# Default value, changed to devset if chosen in argparse [devset, testset]
-
 # Define the command line arguments
 
 parser = argparse.ArgumentParser(
@@ -64,13 +64,7 @@ parser = argparse.ArgumentParser(
         "of various parsers"
     )
 )
-#parser.add_argument(
-#    "-n",
-#    "--number",
-#    type=int,
-#    default=0,
-#    help="number of files to process (default=all)",
-#)
+
 parser.add_argument(
     "-m",
     "--measure",
@@ -84,29 +78,27 @@ parser.add_argument(
     help="Exclude malformed sentences",
 )
 
-TEXTS = pathlib.Path().absolute() / 'GreynirCorpus' / DATA / 'txt'
-GOLDPSD = pathlib.Path().absolute() / 'GreynirCorpus' / DATA / 'psd'
-HANDPSD = pathlib.Path().absolute() / 'data' / DATA / 'handpsd'
-GENPSD = pathlib.Path().absolute() / 'data' / DATA / 'genpsd'
-BRACKETS = pathlib.Path().absolute() / 'data' / DATA / 'brackets'
-TESTFILES = pathlib.Path().absolute() / 'data' / DATA / 'testfiles'
-REPORTS = pathlib.Path().absolute() / 'data' / DATA / 'reports'
+parser.add_argument(
+    "-c",
+    "--nocat",
+    action="store_true",
+    help="Skip category results",
+)
 
 def process():
 
 	print("Retrieving automatic parse trees")
-	helpers.get_annoparse(TEXTS, GENPSD, ".txt", ".psd", True)
+	helpers.get_annoparse(TEXTS, GENPSD, ".txt", ".psd", False)
 	# helpers.get_icenlpparse(TEXTS, GENPSD, '.txt', '.inpsd', True)
 	# helpers.get_ipparse(TEXTS, GENPSD, '.txt', '.ippsd', True)
 
 	print("Transforming automatic parse trees to general bracketed form")
-	helpers.annotald_to_general(GENPSD, TESTFILES, '.psd', '.grdbr', True, True)
+	helpers.annotald_to_general(GENPSD, TESTFILES, '.psd', '.grdbr', True, True, EXCLUDE)
 	# helpers.icenlp_to_general(GENPSD, TESTFILES, ".inpsd", ".inpbr", True)
 	# helpers.annotald_to_general(GENPSD, TESTFILES, ".ippsd", ".ipdbr", True, True) # FOR ICEPAHC, should work
 
 	print("Transforming handannotated parse trees to general bracketed form")
-	# TODO tékka hér á argparse hvort devset eða testset
-	helpers.annotald_to_general(GOLDPSD, BRACKETS, '.gld', '.dbr', True, True)
+	helpers.annotald_to_general(GOLDPSD, BRACKETS, '.gld', '.dbr', True, True, EXCLUDE)
 	#helpers.annotald_to_general(GOLDPSD, BRACKETS, '.pgld', '.inpbr', True, True)
 	#helpers.annotald_to_general(GOLDPSD, BRACKETS, '.gld', '.ipdbr', True, True)
 
@@ -117,21 +109,41 @@ def process():
 		#(".ipdbr", ".ipdbr", ".ipdout"), 
 		(".grdbr", ".dbr", ".grdout")
 	]
-	helpers.get_results(BRACKETS, TESTFILES, REPORTS, tests)
+	helpers.get_results(BRACKETS, TESTFILES, REPORTS, tests, EXCLUDE)
 
 
 	print("Combining reports by genre")
 	suffixes = [".grdout",]  # ".grpout", ".inpout", "ipdout"
 	genres = ["greynir_corpus" ] #  TODO taka þetta út?
 
-	helpers.combine_reports(REPORTS, suffixes, genres)
+	helpers.combine_reports(REPORTS, suffixes, genres, NOCAT)
 
 def main() -> None:
 	args = parser.parse_args() 
+	global DATA
 	if args.measure:
 		DATA = 'testset'
+	else:
+		DATA = 'devset'
+	global TEXTS
+	global GOLDPSD
+	global HANDPSD
+	global GENPSD
+	global BRACKETS
+	global TESTFILES
+	global REPORTS
+	TEXTS = pathlib.Path().absolute() / 'GreynirCorpus' / DATA / 'txt'
+	GOLDPSD = pathlib.Path().absolute() / 'GreynirCorpus' / DATA / 'psd'
+	HANDPSD = pathlib.Path().absolute() / 'data' / DATA / 'handpsd'
+	GENPSD = pathlib.Path().absolute() / 'data' / DATA / 'genpsd'
+	BRACKETS = pathlib.Path().absolute() / 'data' / DATA / 'brackets'
+	TESTFILES = pathlib.Path().absolute() / 'data' / DATA / 'testfiles'
+	REPORTS = pathlib.Path().absolute() / 'data' / DATA / 'reports'
+
 	global EXCLUDE
 	EXCLUDE = args.exclude
+	global NOCAT
+	NOCAT = args.nocat
 	start = timer()
 
 	process()
