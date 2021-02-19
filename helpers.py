@@ -507,8 +507,6 @@ def get_results(goldfolder, testfolder, reportfolder, tests, exclude=False):
 				print(skil)
 
 def combine_reports(reportfolder, suffixes, genres, nocat):
-	# TODO:
-	# Telja hve margar setningar byrja á S0-X
 	# Bæta við skoðun á setningarhlutverki -- NP-OBJ, ... En þarf sérniðurstöður fyrir það, sérútgáfu af to_brackets...
 	numsents = []
 	numerrorsents = []
@@ -547,7 +545,7 @@ def combine_reports(reportfolder, suffixes, genres, nocat):
 					f1 = 0.0
 					if sentprec + sentrecall > 0.0:
 						f1 = 2 * sentprec * sentrecall / (sentprec + sentrecall)
-					if f1 < 70.0:
+					if f1 < 20.0:
 						warning = "WARNING"
 					singleblob.append(f"\t{sentid}\t{f1:1.2f}\t{sentrecall:1.2f}\t{sentprec:1.2f}\t{senttags:1.2f}\t  {sentlength:.2f}\t{warning}\n")
 					single = False
@@ -631,7 +629,7 @@ def combine_reports(reportfolder, suffixes, genres, nocat):
 				textblob.append("Alveg eins:{:.2f}\n".format(cmall/numfiles))
 				textblob.append("Average crossing: {:.2f}\n".format(acall/numfiles))
 				textblob.append("Tagging accuracy:{:.2f}\n\n\t".format(taall/numfiles))
-				textblob.append("\n\t".join(filestrings))
+				#textblob.append("\n\t".join(filestrings))
 				textblob.append("\n\n")
 
 		textblob.append("=== Heildin{} ===\n".format(suff))
