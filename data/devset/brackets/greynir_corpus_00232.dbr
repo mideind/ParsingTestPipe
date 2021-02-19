@@ -5,6 +5,5 @@
 (S0 (S (NP (l Opinn) (n fundur) (PP (a í) (NP (n stjórnskipunar-_og_eftirlitsnefnd))) (PP (a um) (NP (n skýrslu) (NP-POSS (n rannsóknarnefndar) (PP (a um) (NP (n Íbúðalánasjóð)))))) (ADVP (a 08.11.2013)))))
 (S0 (S (IP (NP-SUBJ (n Bergman)) (p ,) (VP (VP (s hefur)) (NP-OBJ (f engan) (n áhuga) (PP (a á) (NP (n börnunum))))))) (p ,) (S (IP (NP-SUBJ (n tímarnir)) (VP (VP-AUX (s hafa)) (VP (s breyst))))) (p .))
 (S0 (S (IP (NP-SUBJ (n Sáttasemjari)) (VP (VP-AUX (s hefur)) (VP (VP (s boðað)) (NP-OBJ (n Primera_Air_Nordic)) (ADVP (a fjórum_sinnum)) (PP (a á) (NP (n sáttafund))))))) (p .))
-(S0-X (S (IP (ADVP (a Allst)) (VP (VP (s átti)) (NP-SUBJ (f hann)) (NP-OBJ (n símasamtöl) (PP (a við) (NP (t fimm) (n þjóðarleiðtoga) (PP (a til) (NP (n viðbótar)))))) (ADVP (a í) (NP (n dag))))) (p .)))
 (S0 (S (IP (NP-SUBJ (n Magnús_Geir_Þórðarson) (NP (n útvarpsstjóri))) (VP (VP (s sagði)) (IP (NP-SUBJ (n RÚV)) (PP (a að) (NP (l vissu) (n leyti))) (VP (VP (s vera)) (NP-PRD (n spegil))))))) (p .))
 (S0 (S (IP (ADVP (a Eftir) (NP (f það))) (VP (VP-AUX (s var)) (ADVP (a ekki) (a aftur)) (VP (VP (s rætt)) (PP (a um) (NP (n skýrsluna))) (PP (a á) (NP (n vettvangi) (NP-POSS (n Sjálfstæðisflokksins)))))))) (p .))

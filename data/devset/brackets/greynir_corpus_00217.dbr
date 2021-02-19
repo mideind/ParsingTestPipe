@@ -6,5 +6,4 @@
 (S0 (S (IP (NP-SUBJ (n Meðaltal) (NP-POSS (n brottfalls) (PP (a úr) (NP (n skólum))) (PP (a í) (NP (n Evrópu))))) (VP (VP (s er)) (NP-PRD (t 11%))))) (p .))
 (S0 (S (IP (VP (VP (s Fjallað)) (VP-AUX (s var)) (PP (a um) (NP (n málið))) (PP (a í) (NP (n fréttum) (NP-POSS (n Stöðvar_2))))))) (p .))
 (S0 (S (IP (NP-SUBJ (n Sigurður)) (VP (VP (VP (s þýddi)) (NP-PRD (f ýmis) (n rit))) (C (c og)) (VP (VP (s ritstýrði)) (NP-OBJ (n fjölda) (NP-POSS (n bóka))))))) (p .))
-(S0-X (S (IP (NP-SUBJ (n VR)) (VP (VP (s er)) (NP-PRD (a með) (NP (l öfluga) (NP-POSS (n starfs) (C (c og)) (n endurenntunar)) (n sjóði)))))) (p .))
 (S0 (S (IP (NP-SUBJ (f Sumir) (n leikir)) (VP (VP (s eru)) (NP-PRD (a bara) (l ómögulegir) (IP (c að) (VP (s dæma))))))) (p .))

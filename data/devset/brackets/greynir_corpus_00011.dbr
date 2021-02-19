@@ -4,7 +4,6 @@
 (S0 (S (IP (VP (VP-AUX (s Vilja)) (VP (VP (s hefja)) (NP-OBJ (n samtal)) (PP (a á) (NP (l nýjum) (n grunni))))))))
 (S0 (S (IP (NP-SUBJ (n Miðstöð) (NP-POSS (n innanlandsflugsins))) (VP (VP-AUX (s mun)) (VP (VP (s fara)) (PP (a úr) (NP (n Vatnsmýrinni))))))))
 (S0 (S (IP (VP (VP (s Hlakkar)) (PP (a til) (IP (c að) (VP (VP (s sjá)) (NP-OBJ (n viðbrögð) (NP-POSS (n karla))))))))))
-(S0-X (S (IP (NP-SUBJ (n Guðmundur_Árni)) (VP (VP (s jafnar)) (ADVP (a hinu) (a megin))))) (p .))
 (S0 (S (IP (NP-SUBJ (n Samningur) (NP-POSS (n Hamréns))) (VP (VP (s er)) (ADVP (a til) (NP (t tveggja) (n ára)))))))
 (S0 (S (IP (NP-SUBJ (f Þetta)) (VP (VP (s er)) (NP-PRD (a bara) (l æðislegt))))) (p .))
 (S0 (S (IP (NP (n Persónuupplýsingum) (NP-POSS (t 143_milljóna))) (VP (VP (s stolið)) (PP (a af) (NP (n hökkurum)))))))

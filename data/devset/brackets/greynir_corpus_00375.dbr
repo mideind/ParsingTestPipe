@@ -1,5 +1,4 @@
 (S0 (S (IP (NP-SUBJ (n Aron)) (VP (VP (s æfir)) (ADVP (a í) (NP (n dag)))))) (C (c og)) (S (IP (NP-SUBJ (n þátttaka) (NP-POSS (f hans)) (PP (a í) (NP (n leiknum)))) (VP (VP (s verður)) (NP-PRD (f ekkert) (n vandamál))))) (p .))
-(S0-X (S (IP (ADVP (a Á) (NP (l næsta) (n ári))) (VP (VP-AUX (s munu)) (NP-SUBJ (f flestar) (n stofnanir)) (VP (VP (s vinna)) (NP-OBJ (n ársáætlanir) (f sínar) (PP (a í) (NP (l nýja) (n kerf)))))))) (p …))
 (S0 (S (IP (NP-SUBJ (n Keflavík)) (VP (VP (s skoraði)) (NP-OBJ (a aðeins) (t tvö) (n stig)) (PP (a á) (NP (f þeim) (n kafla))) (PP (a gegn) (NP (t 20) (PP (a hjá) (NP (n gestunum)))))))) (p .))
 (S0 (S (IP (NP-SUBJ (f Hann)) (VP (VP-AUX (s hefur)) (VP (VP (s stokkið)) (ADVP (a lengst)) (NP-OBJ (t 7,14) (n metra)) (ADVP (a í_ár))) (C (c en)) (VP (VP (s á)) (ADVP (a best)) (NP-OBJ (t 7,77) (n metra)))))) (p .))
 (S0 (S (IP (VP (VP (s Verður)) (NP-SUBJ (f hún)) (ADVP (a þó)) (PP (a með) (NP (f öðru) (n sniði) (CP-ADV (C (c en)) (IP (NP-SUBJ (n gestir) (NP-POSS (n lúxushótela))) (VP (VP (s eiga)) (IP (c að) (VP (s venjast))))))))))) (p .))

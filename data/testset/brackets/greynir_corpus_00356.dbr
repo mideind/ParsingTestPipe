@@ -1,5 +1,5 @@
 (S0 (S (IP (ADVP (a Heldur)) (VP (VP (s spurði)) (NP-SUBJ (f þau))) (p :))) (S (NP (f Hvað)) (IP (VP (VP-AUX (s má)) (ADVP (a svo)) (VP (VP (s bjóða)) (NP-OBJ (f honum)))) (p ?))))
-(S0 (S (IP (CP-ADV (VP (VP (s Verði)) (NP-SUBJ (f þeir)) (VP (s samþykktir)))) (IP (VP (VP (s sé)) (NP-SUBJ (n gildistími) (NP-POSS (f þeirra))) (ADVP (a 1._september_2017) (PP (a til) (NP (a 31._mars_2019)))))))) (p .))
+(S0 (S (IP (CP-ADV (IP (VP (VP (s Verði)) (NP-SUBJ (f þeir)) (VP (s samþykktir))))) (VP (VP (s sé)) (NP-SUBJ (n gildistími) (NP-POSS (f þeirra))) (ADVP (a 1._september_2017) (PP (a til) (NP (a 31._mars_2019))))))) (p .))
 (S0 (S (IP (p „) (NP-SUBJ (f Þetta)) (VP (VP (s er)) (NP (n vonum)) (ADVP (a framar) (IP (c að) (VP (VP (s vera)) (PP (a í) (NP (n toppbaráttunni)))))))) (p .)))
 (S0 (S (IP (PP (a Varðandi) (NP (n ritstjórastöðuna))) (VP (VP (s sagði)) (NP-SUBJ (n Steingrímur)) (ADVP (a ekki)) (PP (a við) (NP (n Önnu_Kolbrúnu)) (IP (c að) (VP (s sakast))))))) (p .))
 (S0 (S) (IP (NP-SUBJ (n Íslandsbanki)) (VP (VP (s gefur)) (ADVP (a út)) (NP-OBJ (n skuldabréf)) (PP (a til) (NP (t fjögurra) (NP-POSS (n ára)))) (PP (a að) (NP (n fjárhæð) (n 1.000_milljónir_sænskra_króna))))))

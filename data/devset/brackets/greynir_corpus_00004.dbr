@@ -1,6 +1,5 @@
 (S0 (S (IP (NP-SUBJ (n Jafntefli)) (VP (VP (s fleytti)) (NP-OBJ (n Besiktas)) (ADVP (a áfram))))))
 (S0 (S (IP (VP (VP-AUX (s Hefði)) (VP (VP (s stokkið)) (PP (a á) (NP (e Stuttgart))))))))
-(S0-X (S (IP (NP-SUBJ (n Águsta)) (VP (NP-PRD (VP (s ráðin))) (PP (a til) (NP (n Eignaumsjónar)))))))
 (S0 (S (IP (NP-SUBJ (f Það)) (VP (VP (s er)) (NP-PRD (l hægt))))) (p .))
 (S0 (S (IP (ADVP (a Hvar)) (VP (VP (s eru)) (NP-SUBJ (n peningarnir))) (p ?))))
 (S0 (S (IP (NP-SUBJ (l Mikilvægt)) (c að) (VP (VP (s halda)) (NP-OBJ (n stillingu))))))

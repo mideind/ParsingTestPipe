@@ -1,4 +1,3 @@
-(S0-X (S (IP (NP-SUBJ (l Stærstu) (l bresku) (n bankarnir) (C (c og)) (n tryggingafyrirtæki)) (VP (VP-AUX (s hafa)) (VP (VP (s skrifað)) (PP (a undir) (NP (n áskorun) (PP (a um) (IP (c að) (VP (s fjölga)) (NP-OBJ (n kon)))))))))))
 (S0 (S (IP (NP-SUBJ (n Landeldi) (PP (a með) (NP (n geldfiski)))) (VP (VP (s er)) (ADVP (a nú)) (NP-PRD (l byrjað) (PP (a í) (NP (l stórum) (n stíl)))) (PP (a í) (NP (n Noregi) (C (c og)) (n Kanada)))))) (p .))
 (S0 (S (IP (NP-SUBJ (n Couto)) (VP (VP (VP (s tekur)) (NP-OBJ (n þátt))) (PP (a í) (NP (n skiptingu) (NP-POSS (n lífvarða) (PP (a fyrir_utan) (NP (n höllina)))))) (ADVP (a á) (n mánudag)) (ADVP (t klukkan_11))))) (p .))
 (S0 (S (IP (NP-SUBJ (n Arnar_Freyr)) (VP (VP (s er)) (NP-PRD (n línumaður)) (p ,) (NP (l uppalinn) (n Framari)) (C (c og)) (VP (s er)) (NP-PRD (l samningsbundinn) (NP-ADP (n liðinu)) (ADVP (a til) (t 2018)))))) (p .))
@@ -6,5 +5,4 @@
 (S0 (S (IP (NP-SUBJ (n Þjálfarinn)) (VP (VP-AUX (VP (s hefði)) (VP (s viljað))) (VP (VP (s sjá)) (IP (NP-SUBJ (f sína) (n menn)) (VP (VP (s ná)) (NP-OBJ (l fleiri) (n hraðaupphlaupum)) (PP (a í) (NP (n leiknum))) (ADVP (a í_kvöld)))))))) (p .))
 (S0 (S (IP (VP (PP (a Á) (NP (f öllum) (n deildum) (p ,) (CP-ADV (C (c nema)) (NP (n krabbameinsdeildinni))) (p ,))) (VP (s séu)) (NP-SUBJ (n sjúklingar)) (PP (a á) (NP (n göngum) (C (c eða)) (n kaffistofum)))))) (p .))
 (S0 (S (IP (NP-SUBJ (n Jón_Gunnarsson)) (VP (VP (s tók)) (PP (a undir) (NP (f það) (PP (a í) (NP (n ávarpi) (f sínu))))) (C (c og)) (VP (VP (s sagði)) (NP-OBJ (n verkið) (a einstaklega) (l mikilvægt)))))) (p .))
-(S0-X (ADVP (C (c En))) (VP (s snúm) (NP-OBJ (f okkur) (PP (a að) (NP (n spurningunni) (PP (a um) (NP (t 7.) (n daginn))) (C (c og)) (PP (a af) (NP (f hverju) (a ekki) (n sunnudagur)))))) (p .)))
 (S0 (S (IP (NP-SUBJ (n Ákvörðun) (PP (a um) (NP (n stofnun) (NP-POSS (n þjóðhagsráðs))))) (VP (VP (s var)) (NP-PRD (s tekin) (ADVP (t árið_2015)) (p ,) (NP (k m.a.) (PP (a að) (NP (n frumkvæði) (n ASÍ))))) (p .)))))

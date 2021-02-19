@@ -1,4 +1,4 @@
-(S0 (S (IP (VP (VP (s Blandið)) (NP-OBJ (a svo) (n Ísbúanum)) (ADVP (a samanvið))) (C (c og)) (VP (VP (s hrærið)) (CP-THT (C (a þangað) (a til) (c að)) (IP (NP-SUBJ (f hann)) (VP (VP (s leysist)) (ADVP (a upp)))))))) (p .))
+(S0 (S (IP (VP (VP (s Blandið)) (NP-OBJ (a svo) (n Ísbúanum)) (ADVP (a samanvið))) (C (c og)) (VP (VP (s hrærið)) (CP-ADV (C (a þangað) (a til) (c að)) (IP (NP-SUBJ (f hann)) (VP (VP (s leysist)) (ADVP (a upp)))))))) (p .))
 (S0 (S (IP (NP-SUBJ (f Við)) (VP (VP (s erum)) (NP-PRD (l búin) (IP (c að) (VP (s æfa)) (ADVP (a vel))))))) (C (c og)) (S (IP (NP-SUBJ (n laugin)) (VP (VP (s er)) (NP-PRD (ADVP (a rosalega)) (l fín))))) (p .))
 (S0 (S (IP (NP-SUBJ (n Tómas)) (VP (VP (VP-AUX (s hefur)) (VP (VP (s náð)) (NP-OBJ (l fínum) (n árangri) (PP (a á) (NP (l alþjóðlegum) (n vettvangi)))))) (C (c og)) (VP (VP (s stefnir)) (ADVP (a enn)) (ADVP (a hærra)))))) (p .))
 (S0 (S (IP (NP-SUBJ (n Jólagjafir) (PP (a frá) (NP (n Íslandi)))) (VP (VP (s bárust)) (PP (a til) (NP (n barna) (PP (a um) (NP (f allan) (n heim))))) (PP (a um) (NP (l síðustu) (n jól)))))) (p .))

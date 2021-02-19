@@ -7,4 +7,4 @@
 (S0 (S (IP (ADVP (a Þar) (a fyrir_utan)) (VP (VP-AUX (s eru)) (NP-PRD (VP (s keyptir))) (NP-SUBJ (f nokkur) (t þúsund) (n dagskammtar) (PP (a af) (NP (n svefnlyfjum)))) (PP (a fyrir) (NP (n vistmenn))))) (p .)))
 (S0 (S (IP (NP-SUBJ (n Framendinn)) (VP (VP (s var)) (IP (VP (c að) (VP (s detta)) (a af) (NP (f honum)))) (C (c og)) (IP (NP-SUBJ (f annað) (n frambrettið)) (VP (c að) (VP (s rifna)) (ADVP (a upp)))))) (p .)))
 (S0 (S (IP (NP-SUBJ (l Mikilvægt)) (VP (VP (s er)) (IP (c að) (VP (VP (s ljúka)) (NP-OBJ (n heildarstefnu) (PP (a um) (NP (n heilbrigðismál)))) (PP (a með) (NP (n framtíðarsýn) (PP (a um) (NP (n heilsu) (NP-POSS (n þjóðarinnar))))))))))) (p .))
-(S0 (S (IP (VP (VP (s Heldurðu)) (CP-THT (IP (C (c að)) (NP-SUBJ (f hann)) (VP (VP (s fari)) (ADVP (a fljótlega)) (PP (a til) (NP (f einhvers) (PP (a af) (NP (l stóru) (n liðunum) (PP (a í) (NP (n Evrópu))))))))))) (p ?))))
+(S0 (S (IP (VP (VP (s Heldurðu)) (NP-OBJ (CP-THT (IP (C (c að)) (NP-SUBJ (f hann)) (VP (VP (s fari)) (ADVP (a fljótlega)) (PP (a til) (NP (f einhvers) (PP (a af) (NP (l stóru) (n liðunum) (PP (a í) (NP (n Evrópu)))))))))))) (p ?))))

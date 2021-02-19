@@ -1,6 +1,5 @@
 (S0 (S (IP (PP (a Á) (NP (n höfuðborgarsvæðinu))) (VP (VP (s er)) (NP-SUBJ (l margt) (l skemmtilegt) (C (c og)) (l áhugavert) (IP (c að) (VP (s skoða)))) (PP (a fyrir) (NP (n fjölskyldur) (PP (a á) (NP (n flandri)))))))) (p .))
 (S0 (S (IP (NP-SUBJ (f Við)) (VP (VP-AUX (s höfum)) (VP (VP (s verið)) (IP (c að) (VP (VP (s endurskipuleggja)) (NP-OBJ (n reksturinn) (C (c og)) (ADVP (a þá)) (C (c bæði)) (n efnahagsreikning) (C (c og)) (n rekstrarreikning)))))))) (p .))
-(S0-X (S (IP (NP-SUBJ (f Þessu) (n ummæli)) (VP (VP (s komu)) (NP-ADP (n Birni_Val_Gíslasyni) (NP (p ,) (n varaformanni) (NP-POSS (n VG)))) (p ,) (PP (a nokkuð) (a á) (NP (l óvart))))) (p .)))
 (S0 (S (IP (NP-SUBJ (n Ársfundur) (NP-POSS (n Sjúkrahússins) (PP (a á) (NP (n Akureyri))))) (VP (VP-AUX (s var)) (VP (VP (s haldinn)) (ADVP (a í) (NP (n dag))))))) (C (c og)) (S (IP (VP (VP-AUX (s var)) (NP-SUBJ (l ný) (n ársskýrsla)) (VP (s kynnt))))) (p .))
 (S0 (S (IP (VP (VP (s Finnur)) (NP-SUBJ (f þú)) (PP (a fyrir) (NP (f því) (CP-THT (C (c að)) (IP (NP-SUBJ (n fólk)) (VP (VP (s er)) (IP (c að) (VP (VP (s sækjast)) (ADVP (a meira)) (PP (a í) (NP (f þetta) (n nám))))))))))))) (p ?))
 (S0 (S (IP (VP (VP (s Dregið)) (VP-AUX (s var)) (PP (a í) (NP (NP-POSS (t 8) (p —) (n liða)) (n úrslit) (NP-POSS (n Borgunarbikars) (NP-POSS (n karla))))) (ADVP (a í) (NP (n hádeginu)) (a í) (NP (n dag)))))) (p .))

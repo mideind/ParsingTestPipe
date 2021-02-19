@@ -1,4 +1,4 @@
-(S0 (S (IP (NP-SUBJ (f Allir) (PP (a í) (NP (n þorpinu)))) (VP (VP (s vissu)) (ADVP (a þó)) (NP-OBJ (CP-QUE (IP (NP-SUBJ (f hver)) (VP (VP (s ætti)) (NP-OBJ (f hvaða) (n stein))))))))) (p .))
+(S0 (S (IP (NP-SUBJ (f Allir) (PP (a í) (NP (n þorpinu)))) (VP (VP (s vissu)) (ADVP (a þó)) (NP-OBJ (CP-QUE (NP (f hver)) (IP (VP (VP (s ætti)) (NP-OBJ (f hvaða) (n stein))))))))) (p .))
 (S0 (S (NP (a Einnig) (l fyrrgreindar) (n persónuupplýsingar) (PP (a um) (NP (n nöfn) (C (c og)) (n heimilisföng) (NP-POSS (f ýmissa) (n aðila))))) (p .)))
 (S0 (S (IP (NP-SUBJ (f Hún)) (VP (VP (s telur)) (IP (NP-SUBJ (n ráðamenn)) (VP (VP (s hafa)) (NP-OBJ (l litla) (n þekkingu) (PP (a á) (NP (n kjörum) (NP-POSS (l aldraðra)))))))))) (p .))
 (S0 (S (IP (NP-SUBJ (n Meðlimir) (NP-POSS (f hennar))) (VP (VP (s eigi)) (IP (c að) (VP (VP (s nota)) (NP-OBJ (f þessa) (n forréttindastöðu)) (PP (a til) (NP (l góðs)))))))) (p .))
@@ -7,4 +7,4 @@
 (S0 (S (IP (NP-SUBJ (n Fyrirtækið)) (VP (VP (s var)) (NP-PRD (f það) (l eina) (CP-REL (C (c sem)) (IP (VP (VP (s skilaði)) (NP-OBJ (n tilboði) (PP (a í) (NP (n verkið))))))))))) (p .))
 (S0 (S (IP (NP-SUBJ (n Daniel_Ricciardo)) (VP (VP (s varð)) (NP-PRD (l annar) (l fljótastur)) (PP (a á) (NP (NP (n Red_Bull)) (n bílnum))))) (p .)))
 (S0 (S (IP (NP-SUBJ (n Hörður_Björgvin_Magnússon)) (VP (VP (s skoraði)) (NP-OBJ (n sigurmarkið)) (ADVP (a undir) (NP (n lok) (NP-POSS (l venjulegs) (n leiktíma))))))) (p .))
-(S0 (S (IP (NP-SUBJ (n Ásakanir) (PP (a um) (CP-QUE (IP (NP-SUBJ (f hver)) (VP (VP (s dragi)) (NP-OBJ (n lappirnar)) (PP (a í) (NP (f hverju)))))))) (VP (VP (s ganga)) (PP (a á) (NP (n víxl)))))) (p .))
+(S0 (S (IP (NP-SUBJ (n Ásakanir) (PP (a um) (NP (CP-QUE (NP-SUBJ (f hver)) (IP (VP (VP (s dragi)) (NP-OBJ (n lappirnar)) (PP (a í) (NP (f hverju))))))))) (VP (VP (s ganga)) (PP (a á) (NP (n víxl)))))) (p .))
