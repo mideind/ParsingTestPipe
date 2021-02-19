@@ -1,0 +1,8 @@
+(S0 (S (IP (NP-SUBJ (n Loforð) (NP-POSS (n frambjóðenda)) (PP (a um) (NP (n grunnlaun)))) (VP (VP (s voru)) (NP-PRD (a á_bilinu) (t 480_þúsund) (PP (a á) (NP (n mánuði))) (PP (a til) (NP (t 650_þúsund))))))) (p .))
+(S0 (S (IP (NP (l Aðspurður) (PP (a að) (NP (f því) (CP-QUE (C (c hvort) (c að)) (IP (NP-SUBJ (n keppninni)) (VP (VP (s verði)) (NP-PRD (VP (s sjónvarpað))))))))) (VP (VP (s svarar)) (NP-SUBJ (f hann)) (ADVP (a játandi))))) (p .))
+(S0 (S (IP (NP-SUBJ (f Önnur) (n lægð)) (VP (VP (VP (s bíður)) (ADVP (a þó)) (NP-OBJ (n átekta))) (C (c og)) (VP (VP-AUX (s mun)) (VP (VP (s koma)) (PP (a yfir) (NP (n landið))) (ADVP (a á_morgun))))))) (p .))
+(S0 (S (IP (NP-SUBJ (f Við)) (VP (VP (s erum)) (IP (c að) (VP (VP (s vinna)) (PP (a með) (NP (ADJP (f nokkrum) (l reyndum) (l innlendum) (C (c og)) (l erlendum)) (n blaðamönnum)))))))) (p .))
+(S0 (S (IP (NP-SUBJ (n Ferðamálaráðuneyti) (NP-POSS (n Ísraels))) (VP (VP (s segir)) (NP-OBJ (C (c að)) (IP (NP-SUBJ (a um) (t 120_þúsund) (n ferðamenn)) (VP (VP (s heimsæki)) (NP-OBJ (n landið)) (ADVP (a í) (NP (f þessum) (n mánuði))))))))) (p .))
+(S0 (S (IP (PP (a Meðal) (NP (l margvíslegra) (n hæfileika) (CP-REL (C (c sem)) (IP (NP-SUBJ (n formaður) (NP-POSS (n Miðflokksins))) (VP (VP (s er)) (NP-PRD (VP (s búinn)))))))) (VP (VP (s er)) (NP-SUBJ (l ótvíræð) (n skáldgáfa))))) (p .))
+(S0 (S (IP (NP-SUBJ (f Við)) (VP (VP (s erum)) (PP (a með) (NP (l frábæra) (n leikmenn) (PP (a í) (NP (f þessu) (n liði))) (C (c og)) (l góða) (n liðsheild)))))) (p .))
+(S0 (S (IP (PP (ADVP (a Hægra_megin)) (a við) (NP (n plaggið))) (VP (VP (s hangir)) (NP-SUBJ (f annað) (PP (a til) (NP (n viðbótar))) (p ,) (PP (a um) (NP (n orðuveitingu) (PP (a frá) (NP (n Ólafi_Noregskonungi))))))))) (p .))

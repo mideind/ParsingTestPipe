@@ -1,12 +1,31 @@
 #!/usr/bin/env python
+"""
+	Originally cmp_parse.py, adapted to needs here
+	Read in text files from test_corpus/clean, one by one
+	Generate parse with Annotald, keep in test_corpus/genpsd
+	Compare each file to its counterpart in test_corpus/handpsd
+	Generate evalb report for each file, in evalb_reports
+	Read in results for each file, combine into one report with only results, by genre and overall
 
-# Originally cmp_parse.py, adapted to needs here
-# Read in text files from test_corpus/clean, one by one
-# Generate parse with Annotald, keep in test_corpus/genpsd
-# Compare each file to its counterpart in test_corpus/handpsd
-# Generate evalb report for each file, in evalb_reports
-# Read in results for each file, combine into one report with only results, by genre and overall
+	This program uses a parsed Icelandic corpus (https://github.com/mideind/GreynirCorpus)
+	to evaluate the performance of different parsers.
 
+	The program compares a test set of hand-parsed texts in Penn Treebank format to an automatically
+	parsed output for the same texts. Evalb is used to evaluate the performance.
+
+	A normal way to onfigure this program is to clone the GreynirCorpus repository (from the
+	above path) into a separate directory, and then place a symlink to it in the main directory.
+	For example:
+
+	$ cd github
+	$ git clone https://github.com/mideind/GreynirCorpus
+	$ cd ParsingTestPipe
+	$ ln -s ../GreynirCorpus/ .
+	$ python corpusmanager.py
+
+
+
+"""
 
 import pathlib
 from timeit import default_timer as timer
@@ -22,79 +41,37 @@ import helpers
 #Settings.read(os.path.join(basepath, "config", "Greynir.conf"))
 Settings.DEBUG = False
 
-HANDPSD = pathlib.Path().absolute() / 'test_corpus' / 'handpsd'
-GENPSD = pathlib.Path().absolute() / 'test_corpus' / 'genpsd'
-CLEAN = pathlib.Path().absolute() / 'test_corpus' / 'clean'
-BRACKETS = pathlib.Path().absolute() / 'test_corpus' / 'brackets'
-TESTFILES = pathlib.Path().absolute() / 'test_corpus' / 'testfiles'
-REPORTS = pathlib.Path().absolute() / 'test_corpus' / 'reports'
+DATA = 'devset'	# Default value, changed to devset if chosen in argparse
+# TODO útfæra að breyta því
+
+# Outside corpora data
+CORPUS = pathlib.Path().absolute() / 'GreynirCorpus' / DATA
+
+# Corpora data within the pipeline
+GENPSD = pathlib.Path().absolute() / 'data' / DATA / 'genpsd'
+BRACKETS = pathlib.Path().absolute() / 'data' / DATA / 'brackets'
 
 
 class Maker():
 
 	def start(self, overwrite=False):
-		# Hef textaskjöl
-		# Bý til véldjúpþáttuð Greynisskjöl á Annotaldsformi
-		# fyrir hvert skjal í /clean sem grunn fyrir gullþáttun
-		#helpers.get_annoparse(CLEAN, GENPSD, '.txt', '.psd', True)
-
-		# hef þá véldjúpþáttuð Greynisskjöl á Annotaldsformi
-		# Handþátta þau og færi yfir í /handpsd með endingunni .dgld
-		# Útbý hlutþáttuð gullskjöl út frá þeim, gef endinguna .pgld
-		
-		# Tek gullþáttuðu skjölin og færi yfir á svigaform í /brackets
-		print("Transforming goldfiles")
-		helpers.annotald_to_general(HANDPSD, BRACKETS, '.dgld', '.dbr', True, True)
-		helpers.annotald_to_general(HANDPSD, BRACKETS, '.pgld', '.pbr', True, True)
-
-
-class Comparison():
-	def __init__(self):
-		self.results = {}
-
-	def start(self, overwrite=False):
-
-		# Hef textaskjöl
-		# Útbý véldjúpþáttuð Greynisskjöl á Annotaldsformi
-		helpers.get_annoparse(CLEAN, GENPSD, ".txt", ".psd", True)
-		
-		helpers.get_ipparse(CLEAN, GENPSD, '.txt', '.ippsd', True)
-
-		print("Transforming greynir testfiles")
-		helpers.annotald_to_general(GENPSD, TESTFILES, '.psd', '.grdbr', True, True)
-		
-		print("Transforming IceParser testfiles")
-		helpers.ip_to_general(GENPSD, TESTFILES, ".ippsd", ".ippbr", True)
-
-		# ("testfile suffix", "goldfile suffix", "output file suffix")
-		tests = [
-			(".ippbr", ".pbr", ".ippout"), 
-			#(".grpbr", ".pbr", ".grpout"), 
-			(".grdbr", ".dbr", ".grdout")
-		]
-		helpers.get_results(BRACKETS, TESTFILES, REPORTS, tests)
-
-		suffixes = [".grdout", ".ippout"]  # ".grpout", 
-		genres = ["reynir_corpus", "althingi", "visindavefur", "textasafn"]
-
-		helpers.combine_reports(REPORTS, suffixes, genres)
+		print("Transforming handannotated parse trees to general bracketed form")
+		# TODO tékka hér á argparse hvort devset eða testset
+		helpers.annotald_to_general(CORPUS, BRACKETS, '.gld', '.dbr', True, True)
+		# helpers.annotald_to_general(CORPUS, BRACKETS, '.pgld', '.pbr', True, True)
 
 
 if __name__ == "__main__":
 
-	ans = input("Do you want to overwrite existing files? (y/n)\n")	
-	# TODO eftir að breyta ans í True/False gildi
-	if ans == "y":
-		ans = True
-	else:
-		ans = False
+	#ans = input("Do you want to overwrite existing files? (y/n)\n")	# tODO breyta í argparse
+	#if ans == "y":
+	#	ans = True
+	#else:
+	#	ans = False
+	ans = True	
 	start = timer()
 	maker = Maker()
 	maker.start(ans)
-
-
-	comp = Comparison()
-	comp.start(ans)
 	end = timer()
 	duration = end - start
 	print("")
