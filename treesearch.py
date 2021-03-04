@@ -41,17 +41,20 @@ parser.add_argument(
 def collect_and_search(infolder, pattern):
 	""" Collect trees and retrieve search matches """
 	# Read trees and store for searching
+	i = 0
 	for p in infolder.iterdir():
+		if i%10 == 0:
+			print(">>>>>>>>>>>>>>>>>>>>{} files finished!".format(i))
 		pin = infolder / p
-		print(p)
+		print(p.stem)
 		treetext = pin.read_text()
 		for each in treetext.split("\n\n"):
 			#print(each)
 			at = AnnoTree(each)
-			#print(at._id_local)
+			print(at._id_local)
 			simple = at.as_simple_tree()
 			#print(simple.view)
-
+		i+=1
 
 
 def main() -> None:
@@ -60,7 +63,7 @@ def main() -> None:
 	args = parser.parse_args() 
 	patt = args.pattern
 	# TODO skilgreina part - dev eða test
-	psdpath = pathlib.Path().absolute() / 'GreynirCorpus' / 'devset' / 'psd'
+	psdpath = pathlib.Path().absolute() / 'GreynirCorpus' / 'testset' / 'psd'
 	collect_and_search(psdpath, patt)
 
 
