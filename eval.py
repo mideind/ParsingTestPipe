@@ -136,7 +136,6 @@ def main() -> None:
 
 	TEXTS = pathlib.Path().absolute() / 'GreynirCorpus' / DATA / 'txt'
 	GOLDPSD = pathlib.Path().absolute() / 'GreynirCorpus' / DATA / 'psd'
-	HANDPSD = pathlib.Path().absolute() / 'data' / DATA / 'handpsd'
 	GENPSD = pathlib.Path().absolute() / 'data' / DATA / 'genpsd'
 	BRACKETS = pathlib.Path().absolute() / 'data' / DATA / 'brackets'
 	TESTFILES = pathlib.Path().absolute() / 'data' / DATA / 'testfiles'

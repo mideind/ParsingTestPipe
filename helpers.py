@@ -232,7 +232,7 @@ def get_annoparse(infolder, outfolder, insuffix=".txt", outsuffix=".psd", overwr
 		if pout.exists() and not overwrite:
 			continue
 
-		command = "annoparse -i {} -o {}".format(ptext, pout)
+		command = "annoparse -i {} -o {} -s".format(ptext, pout)
 		skil = subprocess.Popen([command], shell=True, stdout=subprocess.PIPE).communicate()[0]
 		print(skil)
 

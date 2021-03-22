@@ -43,10 +43,10 @@ def collect_and_search(infolder, pattern):
 	# Read trees and store for searching
 	i = 0
 	for p in infolder.iterdir():
-		if i%10 == 0:
-			print(">>>>>>>>>>>>>>>>>>>>{} files finished!".format(i))
+		#if i%10 == 0:
+			#print(">>>>>>>>>>>>>>>>>>>>{} files finished!".format(i))
 		pin = infolder / p
-		print(p.stem)
+		#print(p.stem)
 		treetext = pin.read_text()
 		for each in treetext.split("\n\n"):
 			#print(each)
