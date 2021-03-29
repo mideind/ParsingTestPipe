@@ -7,4 +7,4 @@
 (S0 (S (IP (NP-SUBJ (f Ég)) (VP (VP-AUX (s er)) (ADVP (a ekki)) (NP-PRD (VP (s búin)) (IP (c að) (VP (VP (s fá)) (NP-OBJ (n svar)) (PP (a við) (NP (f því))))))))) (p .))
 (S0 (S (NP (f Hvað)) (IP (VP (VP (s á)) (IP (c að) (VP (s gera)) (PP (a við) (NP (n landamærin) (PP (a milli) (NP (n Írlands) (C (c og)) (n Norður-Írlands))))))))) (p ?))
 (S0 (S (IP (NP-SUBJ (f Við)) (VP (VP-AUX (s höfum)) (ADVP (a ekki)) (VP (s ákveðið)) (NP-OBJ (CP-QUE (NP (f hvað)) (IP (VP (VP-AUX (s skuli)) (VP (s taka)) (PP (a til) (NP (n bragð)))))))))) (p .))
-(S0 (S (IP (CP (IP (ADVP (a Þannig) (c að)) (NP-SUBJ (f það)) (VP (VP (s væri)) (NP-PRD (a alveg) (l tilvalið))))) (p ,) (C (VP (s segir)) (NP-SUBJ (n Kristján))))) (p .))
+(S0 (S (IP (CP (IP (ADVP (a Þannig) (c að)) (NP-SUBJ (f það)) (VP (VP (s væri)) (NP-PRD (a alveg) (l tilvalið))))) (p ,) (CP (VP (s segir)) (NP-SUBJ (n Kristján))))) (p .))

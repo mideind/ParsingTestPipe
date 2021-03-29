@@ -1,6 +1,6 @@
 (S0 (S (IP (ADVP (a Hérna)) (VP (VP-AUX (VP (s hefur)) (VP (s verið))) (NP-PRD (s gengið) (l lengra) (CP-ADV (C (c en)) (NP (f það) (CP-REL (C (c sem)) (IP (NP-SUBJ (n Svanurinn)) (VP (VP (s setur)) (NP-OBJ (f okkur))))))))))) (p .))
 (S0 (S (IP (NP-SUBJ (l Helstu) (n mál) (PP (a úr) (NP (n heimi) (NP-POSS (n upplýsingatækni) (PP (a í) (NP (n skólastarfi))))))) (VP (VP (s voru)) (NP-PRD (VP (s rædd)) (PP (a á) (NP (n ráðstefnunni))))))) (p .))
-(S0 (S (IP (NP-SUBJ (n Héraðsdómur) (NP-POSS (n Reykjavíkur)) (C (c og)) (NP (n EFTA)) (n dómstóllinn)) (VP (VP (VP-AUX (s höfðu)) (ADVP (a áður)) (VP (s komist))) (PP (a að) (NP (l sambærilegri) (n niðurstöðu)))))) (p .))
+(S0 (S (IP (NP-SUBJ (n Héraðsdómur) (NP-POSS (n Reykjavíkur)) (C (c og)) (NP (k EFTA)) (n dómstóllinn)) (VP (VP (VP-AUX (s höfðu)) (ADVP (a áður)) (VP (s komist))) (PP (a að) (NP (l sambærilegri) (n niðurstöðu)))))) (p .))
 (S0 (S (IP (ADVP (a Ekki)) (VP (VP-AUX (s hefur)) (VP (s farið)) (NP-SUBJ (a fram) (f önnur) (n rannsókn) (PP (a með) (NP (f þessu) (n sniði)))) (ADVP (a síðan)) (ADVP (a þá))))) (p .))
 (S0 (S (IP (ADVP (a Á) (NP (l síðustu) (n árum))) (VP (VP-AUX (s hefur)) (NP-SUBJ (n Keflavíkurflugvöllur)) (VP (VP (s hlotið)) (NP-OBJ (n fjölda) (NP-POSS (n viðurkenninga) (PP (a frá) (NP (n Alþjóðasamtökum) (NP-POSS (n flugvalla)))))))))) (p .))
 (S0 (S (IP (VP (VP (s Sjá)) (VP (s má)) (NP-OBJ (n spádóm) (NP-POSS (n Datous) (PP (a á) (NP (n vef) (NP-POSS (e South_China_Morning_Post)))))) (ADVP (a hér))))) (p .))

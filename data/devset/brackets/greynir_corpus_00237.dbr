@@ -5,6 +5,6 @@
 (S0 (S (IP (ADVP (a Svo)) (VP (VP (s er)) (IP (c að) (VP (s koma)) (NP-SUBJ (n ljósleiðari))))) (C (c og)) (NP-SUBJ (f hann)) (VP (VP (s kostar)) (NP-OBJ (t 300_þúsund)) (PP (n á) (NP (n býli))))) (p .))
 (S0 (S (IP (NP-SUBJ (n Dauðarefsing)) (VP (VP (s er)) (PP (a við) (NP (n smygli))) (PP (a á) (NP (a svo) (l miklu) (n magni) (PP (a af) (NP (n kannabisefnum))))) (PP (a í) (NP (n Indónesíu)))))) (p .))
 (S0 (S (IP (PP (a Samhliða) (NP (f því) (CP-THT (C (c að)) (IP (NP-SUBJ (n geitin)) (VP (VP (s fari)) (PP (a á) (NP (f sinn) (n stað)))))))) (VP (VP (VP (s koma)) (NP-SUBJ (n jólin))) (PP (a í) (NP (n IKEA)))))) (p .))
-(S0 (S (IP (NP-SUBJ (f Hún)) (VP (VP (VP (s var)) (IP (c að) (VP (VP (s ljúka)) (NP-OBJ (NP (n MBA)) (n gráðu) (PP (a frá) (NP (n Háskóla) (NP-POSS (n Íslands)))))))) (ADVP (a nú)) (ADVP (a í) (n vor))))) (p .))
+(S0 (S (IP (NP-SUBJ (f Hún)) (VP (VP (VP (s var)) (IP (c að) (VP (VP (s ljúka)) (NP-OBJ (NP (k MBA)) (n gráðu) (PP (a frá) (NP (n Háskóla) (NP-POSS (n Íslands)))))))) (ADVP (a nú)) (ADVP (a í) (n vor))))) (p .))
 (S0 (S (IP (NP-SUBJ (n Romero)) (VP (VP (s fékk)) (NP-OBJ (l hægan) (n dauðdaga) (PP (a í) (NP (n faðmi) (NP-POSS (n fjölskyldu) (f sinnar) (p ;) (n konu) (C (c og)) (n dóttur)))))))) (p .))
 (S0 (S (IP (PP (a Eftir) (NP (f því) (CP-REL (C (c sem)) (IP (NP-SUBJ (n verð)) (VP (s hækkar)))))) (VP (VP (s sé)) (NP-PRD (l líklegra) (CP-THT (C (c að)) (IP (NP-SUBJ (n fólk)) (VP (VP (s leiti)) (PP (a að) (NP (n staðkvæmdarvöru)))))))))) (p .))
