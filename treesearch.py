@@ -53,7 +53,7 @@ def collect_and_search(infolder, pattern):
 			at = AnnoTree(each)
 			print(at._id_local)
 			simple = at.as_simple_tree()
-			#print(simple.view)
+			print(simple.view)
 		i+=1
 
 
