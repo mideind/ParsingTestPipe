@@ -22,6 +22,7 @@ from annotald.annotree import AnnoTree as AT
 from reynir.simpletree import SimpleTree, AnnoTree
 #from reynir.simpletree import AnnoTreeToSimpleTree
 
+ALLTREES = set()
 
 
 parser = argparse.ArgumentParser(
@@ -32,40 +33,84 @@ parser = argparse.ArgumentParser(
 
 parser.add_argument(
     "-p",
-    "--pattern",
+    "--patterns",
+    nargs="*",
     type=str,
-    default="",
-    help="Retrieve matches for syntax search pattern"
+    default=[""],
+    help="Retrieve matches for syntax search pattern. Form is: \"pattern1\" \"pattern2\" ..."
 )
 
-def collect_and_search(infolder, pattern):
-	""" Collect trees and retrieve search matches """
-	# Read trees and store for searching
+
+# Úttaksform
+# Bara idnúmer
+# Bæði idnúmer og hluttré
+# idnúmer og allt tréð
+
+parser.add_argument(
+	"-of",
+	"--outputformat",
+	type=int,
+	default=1,
+	help="Output format.\n1: Only id number is shown.\n2: id number and partial tree matching pattern is shown.\n3: id number and full tree is shown."
+)
+
+
+def collect(infolder):
+	""" Collect trees and store for searching """
 	i = 0
 	for p in infolder.iterdir():
-		#if i%10 == 0:
-			#print(">>>>>>>>>>>>>>>>>>>>{} files finished!".format(i))
+		if i%10 == 0:
+			print(">>>>>>>>>>>>>>>>>>>>{} files finished!".format(i))
 		pin = infolder / p
 		#print(p.stem)
 		treetext = pin.read_text()
 		for each in treetext.split("\n\n"):
 			#print(each)
 			at = AnnoTree(each)
-			print(at._id_local)
+			#print(at._id_local)
 			simple = at.as_simple_tree()
-			print(simple.view)
+			#print(simple.view)
+			if not simple:
+				continue
+			ALLTREES.add((simple, at._id_local))
 		i+=1
 
-
+def search(patterns, resultpath, outputformat):
+	""" Retrieve search matches from tree collection """
+	i = 0
+	for patt in patterns:
+		textblob = []
+		for tree, treeid in ALLTREES:
+			ms = [x for x in tree.all_matches(patt)]
+			if not ms:
+				continue
+			# Found match(es), storing information
+			textblob.append(treeid+"\n")
+			if outputformat == 1:
+				continue
+			elif outputformat == 3:
+				textblob.append(tree+"\n\n")
+			elif outputformat == 2:
+				for m in ms:
+					textblob.append(m.view+"\n\n")
+		filename = "pattern{}.out".format(i)
+		filepath = resultpath / filename
+		filepath.write_text("".join(textblob))
+		i +=1
 def main() -> None:
 	""" Main program """
 	# Parse the command line arguments
+	psdpath = pathlib.Path().absolute() / 'GreynirCorpus' / 'devset' / 'psd'
+	resultpath = pathlib.Path().absolute() / 'searchresults'
+	print("Commencing tree collection")
+	collect(psdpath)
+	print("Tree collection complete!")
 	args = parser.parse_args() 
-	patt = args.pattern
+	patts = args.patterns
+	outputformat = args.outputformat
 	# TODO skilgreina part - dev eða test
-	psdpath = pathlib.Path().absolute() / 'GreynirCorpus' / 'testset' / 'psd'
-	collect_and_search(psdpath, patt)
-
+	print("Commencing tree search by patterns")
+	search(patts, resultpath, outputformat)
 
 if __name__ == "__main__":
 	main()
