@@ -8,8 +8,18 @@
 	A description of search pattern syntax can be found at 
 	https://greynir.is/doc/patterns.html
 
+	A normal way to configure this program is to clone the GreynirCorpus repository into a 
+	separate directory, and then place a symlink to it in the main directory.
+
+	For example:
+
+	$ cd github
+	$ git clone https://github.com/mideind/GreynirCorpus
+	$ cd ParsingTestPipe
+	$ ln -s ../GreynirCorpus/ .
+
 	To run the program:
-	$ python treesearch.py
+	$ python treesearch.py -of [outputformat] -p "pattern1" "pattern2"
 
 """
 import pathlib
@@ -23,6 +33,11 @@ from reynir.simpletree import SimpleTree, AnnoTree
 #from reynir.simpletree import AnnoTreeToSimpleTree
 
 ALLTREES = set()
+
+DEVGOLD = pathlib.Path().absolute() / 'GreynirCorpus' / 'devset' / 'psd'
+TESTGOLD = pathlib.Path().absolute() / 'GreynirCorpus' / 'testset' / 'psd'
+DEVAUTO = pathlib.Path().absolute() / 'data' / 'devset' / 'genpsd' 
+TESTAUTO = pathlib.Path().absolute() / 'data' / 'testset' / 'genpsd' 
 
 
 parser = argparse.ArgumentParser(
@@ -71,15 +86,19 @@ def collect(infolder):
 			simple = at.as_simple_tree()
 			#print(simple.view)
 			if not simple:
+				# Couldn't read as a tree.
+				print("FEKK EKKI: {}".format(pin))
 				continue
 			ALLTREES.add((simple, at._id_local))
 		i+=1
 
 def search(patterns, resultpath, outputformat):
 	""" Retrieve search matches from tree collection """
-	i = 0
+	i = 1
+	print(len(ALLTREES))
 	for patt in patterns:
 		textblob = []
+		textblob.append(patt+"\n")
 		for tree, treeid in ALLTREES:
 			ms = [x for x in tree.all_matches(patt)]
 			if not ms:
@@ -88,11 +107,11 @@ def search(patterns, resultpath, outputformat):
 			textblob.append(treeid+"\n")
 			if outputformat == 1:
 				continue
-			elif outputformat == 3:
-				textblob.append(tree+"\n\n")
 			elif outputformat == 2:
 				for m in ms:
 					textblob.append(m.view+"\n\n")
+			elif outputformat == 3:
+				textblob.append(tree+"\n\n")
 		filename = "pattern{}.out".format(i)
 		filepath = resultpath / filename
 		filepath.write_text("".join(textblob))
@@ -100,17 +119,53 @@ def search(patterns, resultpath, outputformat):
 def main() -> None:
 	""" Main program """
 	# Parse the command line arguments
-	psdpath = pathlib.Path().absolute() / 'GreynirCorpus' / 'devset' / 'psd'
-	resultpath = pathlib.Path().absolute() / 'searchresults'
-	print("Commencing tree collection")
-	collect(psdpath)
-	print("Tree collection complete!")
+	global ALLTREES 
 	args = parser.parse_args() 
 	patts = args.patterns
 	outputformat = args.outputformat
-	# TODO skilgreina part - dev eða test
+
+	"""
+	# Gold version of development set
+	psdpath = DEVGOLD
+	resultpath = pathlib.Path().absolute() / 'searchresults' / 'devgold'
+	print("Commencing tree collection")
+	collect(psdpath)
+	print("Tree collection complete!")
 	print("Commencing tree search by patterns")
 	search(patts, resultpath, outputformat)
+
+	# Gold version of test set
+	ALLTREES = set()
+	psdpath = TESTGOLD
+	resultpath = pathlib.Path().absolute() / 'searchresults' / 'testgold'
+	print("Commencing tree collection")
+	collect(psdpath)
+	print("Tree collection complete!")
+	print("Commencing tree search by patterns")
+	search(patts, resultpath, outputformat)
+	"""
+
+	# Automatically parsed version of development set
+	ALLTREES = set()
+	psdpath = DEVAUTO
+	resultpath = pathlib.Path().absolute() / 'searchresults' / 'devauto'
+	print("Commencing tree collection")
+	collect(psdpath)
+	print("Tree collection complete!")
+	print("Commencing tree search by patterns")
+	search(patts, resultpath, outputformat)
+
+	# Automatically parsed version of test set
+	ALLTREES = set()
+	psdpath = TESTAUTO
+	resultpath = pathlib.Path().absolute() / 'searchresults' / 'testauto'
+	print("Commencing tree collection")
+	collect(psdpath)
+	print("Tree collection complete!")
+	print("Commencing tree search by patterns")
+	search(patts, resultpath, outputformat)
+
+
 
 if __name__ == "__main__":
 	main()

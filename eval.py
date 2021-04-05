@@ -13,7 +13,7 @@
 	The program compares a test set of hand-parsed texts in Penn Treebank format to an automatically
 	parsed output for the same texts. Evalb is used to evaluate the performance.
 
-	A normal way to onfigure this program is to clone the GreynirCorpus repository (from the
+	A normal way to configure this program is to clone the GreynirCorpus repository (from the
 	above path) into a separate directory, and then place a symlink to it in the main directory.
 	For example:
 
