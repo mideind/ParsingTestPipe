@@ -25,14 +25,14 @@
 import pathlib
 import argparse
 from timeit import default_timer as timer
-
+from collections import defaultdict
 #import annotald.treedrawing as TD
 
 from annotald.annotree import AnnoTree as AT
 from reynir.simpletree import SimpleTree, AnnoTree
 #from reynir.simpletree import AnnoTreeToSimpleTree
 
-ALLTREES = set()
+ALLTREES = defaultdict(set)
 
 DEVGOLD = pathlib.Path().absolute() / 'GreynirCorpus' / 'devset' / 'psd'
 TESTGOLD = pathlib.Path().absolute() / 'GreynirCorpus' / 'testset' / 'psd'
@@ -70,36 +70,43 @@ parser.add_argument(
 )
 
 
-def collect(infolder):
+def collect(infolder, searchpart):
 	""" Collect trees and store for searching """
 	i = 0
 	for p in infolder.iterdir():
+		#print(p)
 		if i%10 == 0:
 			print(">>>>>>>>>>>>>>>>>>>>{} files finished!".format(i))
 		pin = infolder / p
 		#print(p.stem)
 		treetext = pin.read_text()
 		for each in treetext.split("\n\n"):
+			if not each:
+				# Empty line before EOF
+				continue
 			#print(each)
 			at = AnnoTree(each)
+			opening = each.count("(")
+			closing = each.count(")")
+			if opening != closing:
+				print("PASSAR EKKI: {}\t{}".format(at._id_local, opening-closing))
 			#print(at._id_local)
 			simple = at.as_simple_tree()
 			#print(simple.view)
 			if not simple:
 				# Couldn't read as a tree.
-				print("FEKK EKKI: {}".format(pin))
-				continue
-			ALLTREES.add((simple, at._id_local))
+				print("FEKK EKKI: {}".format(at._id_local))
+			ALLTREES[searchpart].add((simple, at._id_local))
 		i+=1
 
-def search(patterns, resultpath, outputformat):
+def search(patterns, resultpath, outputformat, searchpart):
 	""" Retrieve search matches from tree collection """
 	i = 1
-	print(len(ALLTREES))
+	print(len(ALLTREES[searchpart]))
 	for patt in patterns:
 		textblob = []
 		textblob.append(patt+"\n")
-		for tree, treeid in ALLTREES:
+		for tree, treeid in ALLTREES[searchpart]:
 			ms = [x for x in tree.all_matches(patt)]
 			if not ms:
 				continue
@@ -112,60 +119,32 @@ def search(patterns, resultpath, outputformat):
 					textblob.append(m.view+"\n\n")
 			elif outputformat == 3:
 				textblob.append(tree+"\n\n")
-		filename = "pattern{}.out".format(i)
+		filename = "{}{}.out".format(searchpart, i)
 		filepath = resultpath / filename
 		filepath.write_text("".join(textblob))
 		i +=1
+
 def main() -> None:
 	""" Main program """
 	# Parse the command line arguments
-	global ALLTREES 
 	args = parser.parse_args() 
 	patts = args.patterns
 	outputformat = args.outputformat
+	resultpath = pathlib.Path().absolute() / 'searchresults'
 
-	"""
-	# Gold version of development set
-	psdpath = DEVGOLD
-	resultpath = pathlib.Path().absolute() / 'searchresults' / 'devgold'
-	print("Commencing tree collection")
-	collect(psdpath)
-	print("Tree collection complete!")
-	print("Commencing tree search by patterns")
-	search(patts, resultpath, outputformat)
+	searchparts = [
+		(DEVGOLD, "devgold"),
+		(TESTGOLD, "testgold"),
+		(DEVAUTO, "devauto"),
+		(TESTAUTO, "testauto")
+	]
 
-	# Gold version of test set
-	ALLTREES = set()
-	psdpath = TESTGOLD
-	resultpath = pathlib.Path().absolute() / 'searchresults' / 'testgold'
-	print("Commencing tree collection")
-	collect(psdpath)
-	print("Tree collection complete!")
-	print("Commencing tree search by patterns")
-	search(patts, resultpath, outputformat)
-	"""
-
-	# Automatically parsed version of development set
-	ALLTREES = set()
-	psdpath = DEVAUTO
-	resultpath = pathlib.Path().absolute() / 'searchresults' / 'devauto'
-	print("Commencing tree collection")
-	collect(psdpath)
-	print("Tree collection complete!")
-	print("Commencing tree search by patterns")
-	search(patts, resultpath, outputformat)
-
-	# Automatically parsed version of test set
-	ALLTREES = set()
-	psdpath = TESTAUTO
-	resultpath = pathlib.Path().absolute() / 'searchresults' / 'testauto'
-	print("Commencing tree collection")
-	collect(psdpath)
-	print("Tree collection complete!")
-	print("Commencing tree search by patterns")
-	search(patts, resultpath, outputformat)
-
-
+	for psdpath, searchpart in searchparts:
+		print("Commencing tree collection - {}".format(searchpart))
+		collect(psdpath, searchpart)
+		print("Tree collection complete!")
+		print("Commencing tree search by patterns - {}".format(searchpart))
+		search(patts, resultpath, outputformat, searchpart)
 
 if __name__ == "__main__":
 	main()
