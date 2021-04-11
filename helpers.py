@@ -3,6 +3,9 @@
 import os
 import pathlib
 import subprocess
+from collections import defaultdict
+import itertools
+
 from reynir.simpletree import SimpleTree
 import annotald.util as util
 
@@ -190,6 +193,10 @@ GENERALIZE = {
 
 	"IP" : "IP",
 	"IP-INF" : "IP",
+	"IP-INF-SUBJ" : "IP",
+	"IP-INF-OBJ" : "IP",
+	"IP-INF-IOBJ" : "IP",
+	"IP-INF-PRD" : "IP",
 	"CP-ADV" : "CP-ADV",
 	"CP-ADV-ACK" : "CP-ADV",
 	"CP-ADV-CAUSE" : "CP-ADV",
@@ -201,8 +208,16 @@ GENERALIZE = {
 	"CP-QUOTE" : "CP",
 	"CP-SOURCE" : "CP",
 	"CP-QUE" : "CP-QUE",
+	"CP-QUE-SUBJ" : "CP-QUE",
+	"CP-QUE-OBJ" : "CP-QUE",
+	"CP-QUE-IOBJ" : "CP-QUE",
+	"CP-QUE-PRD" : "CP-QUE",
 	"CP-REL" : "CP-REL",
 	"CP-THT" : "CP-THT",
+	"CP-THT-SUBJ" : "CP-THT",
+	"CP-THT-OBJ" : "CP-THT",
+	"CP-THT-IOBJ" : "CP-THT",
+	"CP-THT-PRD" : "CP-THT",
 	"CP-EXPLAIN" : "CP",
 	"S0" : "S0",
 	"S0-X" : "S0",
@@ -519,61 +534,246 @@ def combine_reports(reportfolder, suffixes, genres, nocat):
 	filenames = []
 	filepath = pathlib.Path().absolute() / reportfolder / 'allresults.out'
 	singleblob = []
-
-
+	CM = defaultdict(int)
+	CMsingle = defaultdict(int)
+	onlygold = list()
+	onlyauto = list()
 	singleblob.append("Results for each sentence\n")
 	# Sækja nauðsynlegar grunnupplýsingar
 	for preport in reportfolder.iterdir():
 		with preport.open(mode='r') as pin:
+			#print(preport)
 			filenames.append(preport)
 			single = False
 			sentid = ""
 			singleblob.append("{}\n".format(preport))
-			singleblob.append("\tid\tF1\t\tRecall\tPrec.\tTag Acc.  Length\n")
-			for line in pin.readlines():
-				if single:
-					if "===" in line: # Reached start of summary
-						single = False
-						continue  
-					sults = line.split()
-					sentid = sults[0]
-					sentlength = float(sults[1])
-					sentrecall = float(sults[3])
-					sentprec = float(sults[4])
-					senttags = float(sults[10])
-					warning = ""
-					f1 = 0.0
-					if sentprec + sentrecall > 0.0:
-						f1 = 2 * sentprec * sentrecall / (sentprec + sentrecall)
-					if f1 < 20.0:
-						warning = "WARNING"
-					singleblob.append(f"\t{sentid}\t{f1:1.2f}\t{sentrecall:1.2f}\t{sentprec:1.2f}\t{senttags:1.2f}\t  {sentlength:.2f}\t{warning}\n")
-					single = False
-				if "====" in line:
-					single = True
+			singleblob.append("\tid\tRecall\tPrec.\tTag Acc.  Length\tF1\n")
 
-				# Summary
-				if line.startswith("Number of sentence "):
-					numsents.append(float(line.split(" ")[-1]))
-				if line.startswith("Number of Error sentence "):
-					numerrorsents.append(float(line.split(" ")[-1]))
-				if line.startswith("Bracketing Recall "):
-					br.append(float(line.split(" ")[-1]))
-				if line.startswith("Bracketing Precision "):
-					bp.append(float(line.split(" ")[-1]))
-				if line.startswith("Bracketing FMeasure "):
-					if "nan" in line.split(" ")[-1]:
-						bf.append(0.0)
-					else:	
-						bf.append(float(line.split(" ")[-1]))
-				if line.startswith("Complete match "):
-					cm.append(float(line.split(" ")[-1]))
-				if line.startswith("Average crossing "):
-					ac.append(float(line.split(" ")[-1]))
-				if line.startswith("Tagging accuracy "):
-					ta.append(float(line.split(" ")[-1]))
-					break # No information needed after this
-	
+			while True:
+				line = pin.readline()
+				#print("A: {}".format(line))
+				if line.startswith("  Sent."):
+					#print("B: {}".format(line))
+					x = pin.readline()
+					single = True
+					continue
+				elif line.startswith("-<1>---"):
+					# Starting confusion matrix results
+					#print("C: {}".format(line))
+					while True:
+						terminalline = pin.readline()
+						#print("D: {}".format(terminalline))
+						if not " " in terminalline:
+							# Getting to phrases
+							#print("D1: {}".format(terminalline))
+							break
+
+						parts = terminalline.split()
+						pos1 = parts[4]
+						if len(parts) > 6:
+							pos2 = parts[10]
+						if terminalline.count(" : ") == 2:
+							# only one entry, must find out which
+							if line.startswith("       "):
+								poscm = "_\t{}".format(pos1)
+								CM[poscm]+=1
+								CMsingle[poscm]+=1
+							else:
+								poscm = "{}\t_".format(pos1)
+								CM[poscm]+=1
+								CMsingle[poscm]+=1
+						else:
+							poscm = "{}\t{}".format(pos1, pos2)
+							CM[poscm]+=1
+							CMsingle[poscm]+=1
+						continue
+					goldphrases = []
+					autophrases = []
+					while True:
+						phraseline = pin.readline()
+						#print("E: {}".format(phraseline))
+						if not " " in phraseline:	
+							#diffs = set(goldphrases) ^ set(autophrases)
+							onlygold = list([g for g in goldphrases+autophrases if g not in autophrases])
+							onlyauto = list([a for a in goldphrases+autophrases if a not in goldphrases])
+
+							"""
+							# Comparing gold and auto phrases before the next sentence
+							#print("E1: {}".format(terminalline))
+							# evalb only details right and wrong phrases
+							# We are interested in a more fine-grained analysis
+							# Case 1: Both phrases have the same label and same span
+							# Case 2: Phrases have same label, wrong but overlapping spans
+							# Case 3: Gold has extra phrases
+							# Case 4: Auto has extra phrases
+							# Case 5: Phrases have the wrong label and the wrong span
+							#         but the spans overlap.
+							g = iter(goldphrases)
+							a = iter(autophrases)
+							gp, ap = None, None
+							try:
+								gp = next(g)
+								ap = next(a)
+								CM["phrases"] += (len(goldphrases) + len(autophrases))
+								while True:
+									gspan = set(range(int(gp[0]), int(gp[1]) + 1))
+									aspan = set(range(int(ap[0]), int(ap[1]) + 1))
+									print("Ber saman: {}\t{}".format(gp, ap))
+									glabel = gp[2]
+									alabel = ap[2]
+									if glabel == alabel:
+										if gspan == aspan:
+											# Case 1
+											phrasecm = "{}\t{}".format(gp[2], ap[2])
+											print("\t{}".format(phrasecm))
+											CM[phrasecm] += 1
+											CMsingle[phrasecm] += 1
+											gp, ap = None, None
+											gp = next(g)
+											ap = next(g)
+											continue
+										elif gspan & aspan:
+											# Case 2
+											phrasecm = "{}\t{}".format(gp[2], ap[2])
+											print("\t{}".format(phrasecm))
+											CM[phrasecm] += 1
+											CMsingle[phrasecm] += 1
+											gp, ap = None, None
+											gp = next(g)
+											ap = next(g)
+											continue
+										#	pass
+									if int(gp[1]) + 1 < int(ap[1]):
+										# Case 3
+										phrasecm = "{}\t_".format(gp[2])
+										print("\t{}".format(phrasecm))
+										CM[phrasecm] += 1
+										CMsingle[phrasecm] += 1
+										gp = None
+										gp = next(g)
+									elif int(ap[1]) + 1 < int(gp[1]):
+										# Case 4
+										phrasecm = "_\t{}".format(ap[2])
+										print("\t{}".format(phrasecm))
+										CM[phrasecm] += 1
+										CMsingle[phrasecm] += 1
+										ap = None
+										ap = next(a)
+									else:
+										# Case 5, mostly
+										phrasecm = "{}\t_".format(gp[2])
+										print("\t{}".format(phrasecm))
+										CM[phrasecm] += 1
+										CMsingle[phrasecm] += 1
+										phrasecm = "_\t{}".format(ap[2])
+										print("\t{}".format(phrasecm))
+										CM[phrasecm] += 1
+										CMsingle[phrasecm] += 1
+										gp = None
+										ap = None
+										gp = next(g)
+										ap = next(a)
+										continue
+							except StopIteration:
+								pass
+							#print("E2")
+							if gp:
+								# Process rest of g as Case 3
+								while gp is not None:
+									phrasecm = "{}\t_".format(gp[2])
+									print("\t{}".format(phrasecm))
+									CM[phrasecm] += 1
+									CMsingle[phrasecm] += 1
+									gp = next(g, None)
+							if ap:
+								# Process rest of a as Case 4
+								while ap is not None:
+									phrasecm = "_\t{}".format(ap[2])
+									print("\t{}".format(phrasecm))
+									CM[phrasecm] += 1
+									CMsingle[phrasecm] += 1
+									ap = next(a, None)
+							"""
+							break
+						parts = phraseline.split()
+						phrase1 = parts[6]+"\t"+parts[4]+"-"+parts[5]
+						#parts[4:7]
+						if len(parts) > 9:
+							phrase2 = parts[13]+"\t"+parts[11]+"-"+parts[12]
+						if phraseline.count(" : ") == 2:
+							# Only one entry, must find out which
+							if line.startswith("       "):
+								autophrases.append(phrase1)
+							else:
+								goldphrases.append(phrase1)
+						else:
+							goldphrases.append(phrase1)
+							autophrases.append(phrase2)
+						continue
+				if line.count("=") == 8 or single:
+					# Results for next sentence coming
+					#print("F: {}".format(line))
+					sentsultsline = pin.readline()
+					#print("F1: {}".format(sentsultsline))
+					single = False
+					if  "========" in sentsultsline:
+						# Starting summary
+						while True:
+							summline = pin.readline()
+							#print("G: {}".format(summline))
+							#print(summline)
+							if summline.startswith("Number of sentence "):
+								numsents.append(float(summline.split(" ")[-1]))
+							elif summline.startswith("Number of Error sentence "):
+								numerrorsents.append(float(summline.split(" ")[-1]))
+							elif summline.startswith("Bracketing Recall "):
+								br.append(float(summline.split(" ")[-1]))
+							elif summline.startswith("Bracketing Precision "):
+								bp.append(float(summline.split(" ")[-1]))
+							elif summline.startswith("Bracketing FMeasure "):
+								if "nan" in summline.split(" ")[-1]:
+									bf.append(0.0)
+								else:	
+									bf.append(float(summline.split(" ")[-1]))
+							elif summline.startswith("Complete match "):
+								cm.append(float(summline.split(" ")[-1]))
+							elif summline.startswith("Average crossing "):
+								ac.append(float(summline.split(" ")[-1]))
+							elif summline.startswith("Tagging accuracy "):
+								ta.append(float(summline.split(" ")[-1]))
+								break # No information needed after this
+							continue
+					else:
+						#print("H: {}".format(sentsultsline))
+
+						sults = sentsultsline.split()
+						sentid = sults[0]
+						sentlength = float(sults[1])
+						sentrecall = float(sults[3])
+						sentprec = float(sults[4])
+						senttags = float(sults[10])
+						warning = ""
+						f1 = 0.0
+						if sentprec + sentrecall > 0.0:
+							f1 = 2 * sentprec * sentrecall / (sentprec + sentrecall)
+						if f1 < 20.0:
+							warning = "WARNING"
+
+						singleblob.append(f"\t{sentid}\t{sentrecall:1.2f}\t{sentprec:1.2f}\t{senttags:1.2f}\t  {sentlength:.2f}\t\t{f1:1.2f}\t{warning}\n")
+						for og, oa in list(itertools.zip_longest(onlygold, onlyauto, fillvalue="    ")):
+							singleblob.append(f"\t\t{og:15}{oa:15}\n")
+						onlygold, onlyauto = list(), list()
+						#cmblob = list( ["\t\t{}\t{}\n".format(key, CMsingle[key]) for key in CMsingle ] )
+						#CMsingle = defaultdict(int)
+						#singleblob = singleblob + cmblob
+						#for key in CMsingle:
+						#	singleblob.append("{}\t{}\n".format(key, CMsingle[key]))
+						#break
+				elif line == "":
+					# end of file
+					break
+				continue
+
 	# Birta réttar upplýsingar
 	# Geri ráð fyrir að það séu 10 setningar í hverju skjali
 	# til að forðast of lágar tölur sem hverfa
@@ -666,8 +866,11 @@ def combine_reports(reportfolder, suffixes, genres, nocat):
 			textblob.append("Tag accuracy: {:.2f}\n".format(taoverall/numfilesoverall))
 
 
+
 	print("Writing overall report")
 	textblob = textblob + ["\n\n"] + singleblob
+	for key in CM:
+		textblob.append("{}\t{}\n".format(key, CM[key]))
 	filepath.write_text("".join(textblob))
 
 
