@@ -21,7 +21,13 @@
 	$ git clone https://github.com/mideind/GreynirCorpus
 	$ cd ParsingTestPipe
 	$ ln -s ../GreynirCorpus/ .
-	$ python eval.py
+	
+	The same can be done for the icenlp repository (https://github.com/hrafnl/icenlp).
+
+	$ cd github
+	$ git clone https://github.com/hrafnl/icenlp
+	$ cd ParsingTestPipe
+	$ ln -s ../icenlp .
 
 	To measure the parsers' performance on the test set:
 	$ python eval.py -m
@@ -69,7 +75,7 @@ parser.add_argument(
     "-m",
     "--measure",
     action="store_true",
-    help="run measurements on test corpus and output results only",
+    help="run measurements on and output only results for test corpus in GreynirCorpus",
 )
 parser.add_argument(
     "-x",
@@ -92,54 +98,88 @@ parser.add_argument(
 	help="Overwrite existing files",
 )
 
-def process():
+parser.add_argument(
+    "-p",
+    "--parser",
+    type=int,
+    default=0,
+    help=(
+        "Parser chosen for evaluation.\n"
+        "\t0: GreynirPackage.\n"
+        "\t1: IceParser.\n"
+        "\t2: IcePaHC."
+    ),
+)
 
+parser.add_argument(
+	"-r",
+	"--roles",
+	default=False,
+	action="store_true",
+	help="Run measurements for roles in IceParser instead of phrase structure"
+)
+
+def icepahcprocess():
 	print("Retrieving automatic parse trees")
-	helpers.get_annoparse(TEXTS, GENPSD, ".txt", ".psd", OVERWRITE)
-	# helpers.get_icenlpparse(TEXTS, GENPSD, '.txt', '.inpsd', OVERWRITE)
-	# helpers.get_ipparse(TEXTS, GENPSD, '.txt', '.ippsd', OVERWRITE)
+	# helpers.get_ipparse(TEXTS, DEEPGEN, '.txt', '.ippsd', OVERWRITE)
 
 	print("Transforming automatic parse trees to general bracketed form")
-	helpers.annotald_to_general(GENPSD, TESTFILES, '.psd', '.grdbr', True, OVERWRITE, EXCLUDE)
-	# helpers.icenlp_to_general(GENPSD, TESTFILES, ".inpsd", ".inpbr", OVERWRITE, EXCLUDE)
-	# helpers.annotald_to_general(GENPSD, TESTFILES, ".ippsd", ".ipdbr", True, OVERWRITE, EXCLUDE) # FOR ICEPAHC, should work
+	# helpers.annotald_to_general(DEEPGEN, DEEPGENBRACKETS, ".ippsd", ".ipdbr", True, OVERWRITE, EXCLUDE) # FOR ICEPAHC, should work
 
 	print("Transforming handannotated parse trees to general bracketed form")
-	helpers.annotald_to_general(GOLDPSD, BRACKETS, '.gld', '.dbr', True, OVERWRITE, EXCLUDE)
-	#helpers.annotald_to_general(GOLDPSD, BRACKETS, '.pgld', '.inpbr', OVERWRITE, True)
-	#helpers.annotald_to_general(GOLDPSD, BRACKETS, '.gld', '.ipdbr', OVERWRITE, True)
+	#helpers.annotald_to_general(DEEPGOLD, DEEPBRACKETS, '.gld', '.ipdbr', OVERWRITE, True)
 
 	print("Retrieving results from evalb")
 	# (testfile suffix, goldfile suffix, output file suffix)
 	tests = [
-		#(".inpbr", ".inpbr", ".inpout"), 
+		#(".inpbr", ".inpbr", ".inpout"), # TODO this should be uncommented
 		#(".ipdbr", ".ipdbr", ".ipdout"), 
 		(".grdbr", ".dbr", ".grdout")
 	]
-	helpers.get_results(BRACKETS, TESTFILES, REPORTS, tests, EXCLUDE)
+	helpers.get_results(DEEPBRACKETS, DEEPGENBRACKETS, DEEPREPORTS, tests, EXCLUDE)
 
 
 	print("Combining reports by genre")
-	suffixes = [".grdout",]  # ".grpout", ".inpout", "ipdout"
+	suffixes = [".grdout",]  # ".grpout", ".inpout", ".ipdout"  # TODO this should be ".ipdout"
 	genres = ["greynir_corpus" ] #  TODO taka þetta út?
 
-	helpers.combine_reports(REPORTS, suffixes, genres, NOCAT)
+	helpers.combine_reports(DEEPREPORTS, suffixes, genres, NOCAT)
+
+def shallowprocess():
+	
+	print("Transforming automatic parse trees to general bracketed form")
+	helpers.icenlp_to_general(SHALLOWGEN, SHALLOWGENBRACKETS, ".psd", ".br", OVERWRITE, EXCLUDE, ROLES)
+
+	print("Transforming handannotated parse trees to general bracketed form")
+	helpers.icenlp_to_general(SHALLOWGOLD, SHALLOWGOLDBRACKETS, '.gld', '.br', OVERWRITE, EXCLUDE, ROLES)
+
+	print("Retrieving results from evalb")
+	# (testfile suffix, goldfile suffix, output file suffix)
+	tests = [(".br", ".br", ".out")]
+	helpers.get_results(SHALLOWGOLDBRACKETS, SHALLOWGENBRACKETS, SHALLOWREPORTS, tests, EXCLUDE)
+
+def deepprocess():
+
+	print("Retrieving automatic parse trees")
+	helpers.get_annoparse(TEXTS, DEEPGEN, ".txt", ".psd", OVERWRITE)	# TODO this should be commented
+
+	print("Transforming automatic parse trees to general bracketed form")
+	helpers.annotald_to_general(DEEPGEN, DEEPGENBRACKETS, '.psd', '.br',OVERWRITE, EXCLUDE)
+
+	print("Transforming handannotated parse trees to general bracketed form")
+	helpers.annotald_to_general(DEEPGOLD, DEEPGOLDBRACKETS, '.gld', '.br', OVERWRITE, EXCLUDE)
+
+	print("Retrieving results from evalb")
+	# (testfile suffix, goldfile suffix, output file suffix)
+	tests = [(".br", ".br", ".out")]
+	helpers.get_results(DEEPGOLDBRACKETS, DEEPGENBRACKETS, DEEPREPORTS, tests, EXCLUDE)
+
+	print("Combining reports")
+
+	helpers.combine_reports(DEEPREPORTS)
 
 def main() -> None:
 	args = parser.parse_args() 
-	global DATA
-	if args.measure:
-		DATA = 'testset'
-	else:
-		DATA = 'devset'
-	global TEXTS, GOLDPSD, HANDPSD, GENPSD, BRACKETS, TESTFILES, REPORTS
-
-	TEXTS = pathlib.Path().absolute() / 'GreynirCorpus' / DATA / 'txt'
-	GOLDPSD = pathlib.Path().absolute() / 'GreynirCorpus' / DATA / 'psd'
-	GENPSD = pathlib.Path().absolute() / 'data' / DATA / 'genpsd'
-	BRACKETS = pathlib.Path().absolute() / 'data' / DATA / 'brackets'
-	TESTFILES = pathlib.Path().absolute() / 'data' / DATA / 'testfiles'
-	REPORTS = pathlib.Path().absolute() / 'data' / DATA / 'reports'
 
 	global EXCLUDE, NOCAT, OVERWRITE
 
@@ -147,10 +187,43 @@ def main() -> None:
 	NOCAT = args.nocat
 	OVERWRITE = args.overwrite
 
-
 	start = timer()
 
-	process()
+	if args.parser == 0:
+		# GreynirPackage, GreynirCorpus
+		global DATA
+		if args.measure:
+			DATA = 'testset'
+		else:
+			DATA = 'devset'
+		global TEXTS, DEEPGOLD, DEEPGEN, DEEPGOLDBRACKETS, DEEPGENBRACKETS, DEEPREPORTS
+
+		TEXTS = pathlib.Path().absolute() / 'GreynirCorpus' / DATA / 'txt'
+		DEEPGOLD = pathlib.Path().absolute() / 'GreynirCorpus' / DATA / 'psd'
+		DEEPGEN = pathlib.Path().absolute() / 'data' / DATA / 'genpsd'
+		DEEPGOLDBRACKETS = pathlib.Path().absolute() / 'data' / DATA / 'goldbrackets'
+		DEEPGENBRACKETS = pathlib.Path().absolute() / 'data' / DATA / 'genbrackets'
+		DEEPREPORTS = pathlib.Path().absolute() / 'data' / DATA / 'reports'
+		deepprocess()
+
+	elif args.parser == 1:
+		# IceParser, icenlp
+		global SHALLOWGOLD, SHALLOWGEN, SHALLOWGOLDBRACKETS, SHALLOWGENBRACKETS, SHALLOWREPORTS
+		SHALLOWGOLD = pathlib.Path().absolute() / 'icenlp' / 'core' / 'bat' / 'iceparser' / 'testData' / 'test.gold.sent.gold'
+		SHALLOWGEN = pathlib.Path().absolute() / 'icenlp' / 'core' / 'bat' / 'iceparser' / 'testData' / 'test.gold.sent.parsed'
+		SHALLOWGOLDBRACKETS = pathlib.Path().absolute() / 'data' / 'shallow' / 'goldbrackets'
+		SHALLOWGENBRACKETS = pathlib.Path().absolute() / 'data' / 'shallow' / 'genbrackets'
+		SHALLOWREPORTS = pathlib.Path().absolute() / 'data' / 'shallow' / 'reports'
+
+		global ROLES
+		ROLES = args.roles
+		shallowprocess()
+
+	elif args.parser == 2:
+		# Berkeley parser, IcePaHC
+		icepahcprocess()
+	else:
+		pass
 
 	end = timer()
 	duration = end - start

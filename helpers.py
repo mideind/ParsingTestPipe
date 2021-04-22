@@ -251,7 +251,7 @@ def get_annoparse(infolder, outfolder, insuffix=".txt", outsuffix=".psd", overwr
 		skil = subprocess.Popen([command], shell=True, stdout=subprocess.PIPE).communicate()[0]
 		print(skil)
 
-def get_icenlpparse(infolder, outfolder, insuffix=".txt", outsuffix=".inpsd", overwrite=False):
+def get_icenlpparse(infolder, outfolder, insuffix=".txt", outsuffix=".psd", overwrite=False):
 	""" Takes text files in a specified folder as input and returns files in another specified folder
 		containing parse trees following the IceParser schema """
 	
@@ -295,12 +295,12 @@ def get_icenlpparse(infolder, outfolder, insuffix=".txt", outsuffix=".inpsd", ov
 	# Back to original
 	os.chdir(origpath)
 
-def get_ipparse(infolder, outfolder, insuffix=".txt", outsuffix=".ippsd", overwrite=False):
+def get_ipparse(infolder, outfolder, insuffix=".txt", outsuffix=".psd", overwrite=False):
 	""" Fill this out """
 	pass
 
 # Get general parse trees for each parsing schema
-def annotald_to_general(infolder, outfolder, insuffix, outsuffix, deep=True, overwrite=False, exclude=False):
+def annotald_to_general(infolder, outfolder, insuffix, outsuffix, overwrite=False, exclude=False):
 	
 	for p in infolder.iterdir():
 		if p.suffix != insuffix:
@@ -323,31 +323,25 @@ def annotald_to_general(infolder, outfolder, insuffix, outsuffix, deep=True, ove
 		treetext = util.scrubText(treetext)
 		trees = treetext.strip().split("\n\n")
 
-		outtrees = general_clean(trees, deep, exclude)
+		outtrees = general_clean(trees, exclude)
 		pout.write_text(outtrees)
 
-def icenlp_to_general(infolder, outfolder, insuffix=".inpsd", outsuffix=".inpbr", overwrite=False):
-	for p in infolder.iterdir():
-		if p.suffix != insuffix:
-			# File has other suffix
-			continue
+def icenlp_to_general(pin, outfolder, insuffix=".psd", outsuffix=".br", overwrite=False, exclude=False, roles=False):
 
-		pin = p.stem + insuffix
-		pin = infolder / pin
-		pout = p.stem + outsuffix
-		pout = outfolder / pout
+	pout = pin.stem + outsuffix
+	pout = outfolder / pout
 
-		if pout.exists() and not overwrite:
-			continue
-
-		print("Transforming IceParser: {}".format(p.stem))
-		treetext = pin.read_text()
-		treetext = treetext.replace("\n \n", "\n") # Remove (almost) empty lines
-		trees = treetext.strip().split("\n") # One tree per line
+	print("Transforming IceParser: {}".format(pin.stem))
+	treetext = pin.read_text()
+	treetext = treetext.replace("\n \n", "\n") # Remove (almost) empty lines
+	trees = treetext.strip().split("\n") # One tree per line
+	if roles:
+		outtrees = general_ipcleanroles(trees)
+	else:
 		outtrees = general_ipclean(trees)
-		pout.write_text(outtrees)
+	pout.write_text(outtrees)
 
-def general_clean(trees, deep=True, exclude=False):
+def general_clean(trees, exclude=False):
 	# Forvinnsla 
 	outtrees = "" # All partial trees for file
 	text = []
@@ -406,10 +400,10 @@ def general_clean(trees, deep=True, exclude=False):
 						skips +=1
 						phrases.push(phrase)
 						continue
-					if not deep and phrase in NOT_PARTIAL:
-						skips +=1
-						phrases.push(phrase)
-						continue
+					#if not deep and phrase in NOT_PARTIAL:
+					#	skips +=1
+					#	phrases.push(phrase)
+					#	continue
 					phrases.push(phrase)
 					cleantree = cleantree + "(" + phrase + " "
 				elif ")" in item:
@@ -426,8 +420,8 @@ def general_clean(trees, deep=True, exclude=False):
 						if not phrase or phrase in NOT_INCLUDED or phrase in SKIP_SEGS: 
 							# Skip corresponding )
 							skips -=1
-						elif not deep and phrase in NOT_PARTIAL:
-							skips -=1
+						#elif not deep and phrase in NOT_PARTIAL:
+						#	skips -=1
 						else:
 							bwrite = bwrite + ")"
 					cleantree = cleantree + "_".join(text) + bwrite + " "
@@ -443,7 +437,8 @@ def general_clean(trees, deep=True, exclude=False):
 	return outtrees
 
 def general_ipclean(trees):
-	# Forvinnsla 
+	# IceNLP bracketing mapped to general schema bracketing 
+
 	outtrees = "" # All partial trees for file
 	text = []
 	phrases = Stack()
@@ -455,6 +450,9 @@ def general_ipclean(trees):
 		next_is_tag = False
 		for item in tree.lstrip().split():
 			if not item:
+				continue
+			if item.startswith("{") or item.endswith("}"):
+				# Skip role structure here
 				continue
 			if item.startswith("\)"):
 				item = item.replace("\)", "&#41;")
@@ -497,6 +495,9 @@ def general_ipclean(trees):
 		outtrees = outtrees + cleantree + "\n" 
 	return outtrees
 
+def general_ipcleanroles(trees):
+	return ""
+
 def get_results(goldfolder, testfolder, reportfolder, tests, exclude=False):
 	evalbpath = pathlib.Path().absolute() / 'EVALB' / 'evalb'
 	if not evalbpath.exists:
@@ -521,7 +522,7 @@ def get_results(goldfolder, testfolder, reportfolder, tests, exclude=False):
 				skil = subprocess.Popen([evalbcmd], shell=True, stdout=subprocess.PIPE).communicate()[0]
 				print(skil)
 
-def combine_reports(reportfolder, suffixes, genres, nocat):
+def combine_reports(reportfolder):
 	# Bæta við skoðun á setningarhlutverki -- NP-OBJ, ... En þarf sérniðurstöður fyrir það, sérútgáfu af to_brackets...
 	numsents = []
 	numerrorsents = []
@@ -541,6 +542,8 @@ def combine_reports(reportfolder, suffixes, genres, nocat):
 	singleblob.append("Results for each sentence\n")
 	# Sækja nauðsynlegar grunnupplýsingar
 	for preport in reportfolder.iterdir():
+		if preport.stem.startswith("allresults"):
+			continue
 		with preport.open(mode='r') as pin:
 			#print(preport)
 			filenames.append(preport)
@@ -596,104 +599,6 @@ def combine_reports(reportfolder, suffixes, genres, nocat):
 							#diffs = set(goldphrases) ^ set(autophrases)
 							onlygold = list([g for g in goldphrases+autophrases if g not in autophrases])
 							onlyauto = list([a for a in goldphrases+autophrases if a not in goldphrases])
-
-							"""
-							# Comparing gold and auto phrases before the next sentence
-							#print("E1: {}".format(terminalline))
-							# evalb only details right and wrong phrases
-							# We are interested in a more fine-grained analysis
-							# Case 1: Both phrases have the same label and same span
-							# Case 2: Phrases have same label, wrong but overlapping spans
-							# Case 3: Gold has extra phrases
-							# Case 4: Auto has extra phrases
-							# Case 5: Phrases have the wrong label and the wrong span
-							#         but the spans overlap.
-							g = iter(goldphrases)
-							a = iter(autophrases)
-							gp, ap = None, None
-							try:
-								gp = next(g)
-								ap = next(a)
-								CM["phrases"] += (len(goldphrases) + len(autophrases))
-								while True:
-									gspan = set(range(int(gp[0]), int(gp[1]) + 1))
-									aspan = set(range(int(ap[0]), int(ap[1]) + 1))
-									print("Ber saman: {}\t{}".format(gp, ap))
-									glabel = gp[2]
-									alabel = ap[2]
-									if glabel == alabel:
-										if gspan == aspan:
-											# Case 1
-											phrasecm = "{}\t{}".format(gp[2], ap[2])
-											print("\t{}".format(phrasecm))
-											CM[phrasecm] += 1
-											CMsingle[phrasecm] += 1
-											gp, ap = None, None
-											gp = next(g)
-											ap = next(g)
-											continue
-										elif gspan & aspan:
-											# Case 2
-											phrasecm = "{}\t{}".format(gp[2], ap[2])
-											print("\t{}".format(phrasecm))
-											CM[phrasecm] += 1
-											CMsingle[phrasecm] += 1
-											gp, ap = None, None
-											gp = next(g)
-											ap = next(g)
-											continue
-										#	pass
-									if int(gp[1]) + 1 < int(ap[1]):
-										# Case 3
-										phrasecm = "{}\t_".format(gp[2])
-										print("\t{}".format(phrasecm))
-										CM[phrasecm] += 1
-										CMsingle[phrasecm] += 1
-										gp = None
-										gp = next(g)
-									elif int(ap[1]) + 1 < int(gp[1]):
-										# Case 4
-										phrasecm = "_\t{}".format(ap[2])
-										print("\t{}".format(phrasecm))
-										CM[phrasecm] += 1
-										CMsingle[phrasecm] += 1
-										ap = None
-										ap = next(a)
-									else:
-										# Case 5, mostly
-										phrasecm = "{}\t_".format(gp[2])
-										print("\t{}".format(phrasecm))
-										CM[phrasecm] += 1
-										CMsingle[phrasecm] += 1
-										phrasecm = "_\t{}".format(ap[2])
-										print("\t{}".format(phrasecm))
-										CM[phrasecm] += 1
-										CMsingle[phrasecm] += 1
-										gp = None
-										ap = None
-										gp = next(g)
-										ap = next(a)
-										continue
-							except StopIteration:
-								pass
-							#print("E2")
-							if gp:
-								# Process rest of g as Case 3
-								while gp is not None:
-									phrasecm = "{}\t_".format(gp[2])
-									print("\t{}".format(phrasecm))
-									CM[phrasecm] += 1
-									CMsingle[phrasecm] += 1
-									gp = next(g, None)
-							if ap:
-								# Process rest of a as Case 4
-								while ap is not None:
-									phrasecm = "_\t{}".format(ap[2])
-									print("\t{}".format(phrasecm))
-									CM[phrasecm] += 1
-									CMsingle[phrasecm] += 1
-									ap = next(a, None)
-							"""
 							break
 						parts = phraseline.split()
 						phrase1 = parts[6]+"\t"+parts[4]+"-"+parts[5]
@@ -778,99 +683,38 @@ def combine_reports(reportfolder, suffixes, genres, nocat):
 	# Geri ráð fyrir að það séu 10 setningar í hverju skjali
 	# til að forðast of lágar tölur sem hverfa
 	textblob = []
-	for suff in suffixes:
-		numfilesoverall, numsentsoverall, numerrorsentsoverall = 0, 0.0, 0.0
-		broverall, bpoverall, bfoverall, cmoverall, acoverall, taoverall = 0.0, 0.0, 0.0, 0.0, 0.0, 0.0
-		textblob.append("\n\n")
-		for genre in genres:
-			fileid = genre+suff
-			filestrings = []
-			numfiles = 0
-			numsentsall, numerrorsentsall = 0.0, 0.0
-			brall, bpall, bfall, cmall, acall, taall = 0.0, 0.0, 0.0, 0.0, 0.0, 0.0
-			allnums = zip(filenames, numsents, numerrorsents, br, bp, bf, cm, ac, ta)
-			for filenow, numsentsnow, numerrorsentsnow, brnow, bpnow, bfnow, cmnow, acnow, tanow in allnums:
-				if filenow.suffix != suff:
-					continue
-				if not filenow.stem.startswith(genre):
-					continue
-				filestrings.append(str(filenow))
-				numfiles+=1
-				numsentsall+=numsentsnow
-				numerrorsentsall+=numerrorsentsnow
-				brall+=brnow
-				bpall+=bpnow
-				bfall+=bfnow
-				cmall+=cmnow
-				acall+=acnow
-				taall+=tanow
+	numfiles = 0
+	numsentsall, numerrorsentsall = 0.0, 0.0
+	brall, bpall, bfall, cmall, acall, taall = 0.0, 0.0, 0.0, 0.0, 0.0, 0.0
+	allnums = zip(filenames, numsents, numerrorsents, br, bp, bf, cm, ac, ta)
+	for filenow, numsentsnow, numerrorsentsnow, brnow, bpnow, bfnow, cmnow, acnow, tanow in allnums:
+		numfiles+=1
+		numsentsall+=numsentsnow
+		numerrorsentsall+=numerrorsentsnow
+		brall+=brnow
+		bpall+=bpnow
+		bfall+=bfnow
+		cmall+=cmnow
+		acall+=acnow
+		taall+=tanow
 
-			#filepath = pathlib.Path().absolute() / reportfolder / fileid
-			numfilesoverall+=numfiles
-			numsentsoverall+=numsentsall
-			numerrorsentsoverall+=numerrorsentsall
-			broverall+=brall
-			bpoverall+=bpall
-			bfoverall+=bfall
-			cmoverall+=cmall
-			acoverall+=acall
-			taoverall+=taall
-			if not nocat: # Skip results by category
-				textblob.append("=== {} ===\n".format(fileid))
-				if numfiles == 0:
-					textblob.append("Engin skjöl í flokki\n")
-					continue
-
-				textblob.append("Fjöldi setninga:{}\n".format(numsentsall))
-				textblob.append("Fjöldi villusetninga:{}\n".format(numerrorsentsall))
-				textblob.append("Recall:{:.2f}\n".format(brall/numfiles))
-				textblob.append("Precision:{:.2f}\n".format(bpall/numfiles))
-				textblob.append("Fskor:{:.2f}\n".format(bfall/numfiles))
-				textblob.append("Alveg eins:{:.2f}\n".format(cmall/numfiles))
-				textblob.append("Average crossing: {:.2f}\n".format(acall/numfiles))
-				textblob.append("Tagging accuracy:{:.2f}\n\n\t".format(taall/numfiles))
-				#textblob.append("\n\t".join(filestrings))
-				textblob.append("\n\n")
-
-		textblob.append("=== Heildin{} ===\n".format(suff))
-
-		if numfilesoverall == 0:
-			textblob.append("Engin skjöl\n")
-			
-
-		textblob.append("Fjöldi setninga:{}\n".format(numsentsoverall))
-		textblob.append("Fjöldi villusetninga:{}\n".format(numerrorsentsoverall))
-		if broverall == 0.0:
-			textblob.append("Recall: N/A\n")
-		else:
-			textblob.append("Recall: {:.2f}\n".format(broverall/numfilesoverall))
-		if bpoverall == 0.0:
-			textblob.append("Precision: N/A\n")
-		else:
-			textblob.append("Precision: {:.2f}\n".format(bpoverall/numfilesoverall))
-		if bfoverall == 0.0:
-			textblob.append("Fskor: N/A\n")
-		else:
-			textblob.append("Fskor: {:.2f}\n".format(bfoverall/numfilesoverall))
-		if cmoverall == 0.0:
-			textblob.append("Alveg eins: N/A\n")
-		else:
-			textblob.append("Alveg eins: {:.2f}\n".format(cmoverall/numfilesoverall))
-		if acoverall == 0.0:
-			textblob.append("Avg crossing: N/A\n")
-		else:
-			textblob.append("Avg crossing: {:.2f}\n".format(acoverall/numfilesoverall))
-		if taoverall == 0.0:
-			textblob.append("Tag accuracy: N/A\n")
-		else:
-			textblob.append("Tag accuracy: {:.2f}\n".format(taoverall/numfilesoverall))
+	textblob.append("Fjöldi setninga:{}\n".format(numsentsall))
+	textblob.append("Fjöldi villusetninga:{}\n".format(numerrorsentsall))
+	textblob.append("Recall:{:.2f}\n".format(brall/numfiles))
+	textblob.append("Precision:{:.2f}\n".format(bpall/numfiles))
+	textblob.append("Fskor:{:.2f}\n".format(bfall/numfiles))
+	textblob.append("Alveg eins:{:.2f}\n".format(cmall/numfiles))
+	textblob.append("Average crossing: {:.2f}\n".format(acall/numfiles))
+	textblob.append("Tagging accuracy:{:.2f}\n\n\t".format(taall/numfiles))
+	textblob.append("\n\n")
 
 
 
 	print("Writing overall report")
 	textblob = textblob + ["\n\n"] + singleblob
+	textblob.append("\nTagging confusion set\n")
 	for key in CM:
-		textblob.append("{}\t{}\n".format(key, CM[key]))
+		textblob.append("\t{}\t{}\n".format(key, CM[key]))
 	filepath.write_text("".join(textblob))
 
 
