@@ -29,6 +29,9 @@
 	$ cd ParsingTestPipe
 	$ ln -s ../icenlp .
 
+	To measure the IceNLP parser it needs to be chosen with the -p flag:
+	$ python eval.py -p 1 -x -ow
+
 	To measure the parsers' performance on the test set:
 	$ python eval.py -m
 
