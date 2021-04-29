@@ -1,9 +1,15 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
+.cache/
 .pytest_cache/
 .mypy_cache/
+.idea/
+.vscode/
 *.py[cod]
 *.o
+*.obj
+*.exp
+*.lib
 *.so
 *.exe
 
@@ -13,17 +19,25 @@ mypy.ini
 # Folders needed for testing
 # but shouldn't be distributed here
 EVALB/
-icenlp/
-GreynirCorpus/
+searchresults/
+icenlp
 GreynirCorpus
 
 # Folders created at runtime
-genpsd/
-gentag/
-original/
-testfiles/
-reports/
+data/devset/genbrackets/
+data/devset/genpsd/
+data/devset/reports/
 
+data/testset/genbrackets/
+data/testset/genpsd/
+data/testset/reports/
+
+data/shallow/genbrackets/
+data/shallow/genpsd/
+data/shallow/reports/
+
+# Other files
+greining.txt
 
 # Distribution / packaging
 .Python

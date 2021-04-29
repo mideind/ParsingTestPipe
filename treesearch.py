@@ -118,7 +118,7 @@ def search(patterns, resultpath, outputformat, searchpart):
 				for m in ms:
 					textblob.append(m.view+"\n\n")
 			elif outputformat == 3:
-				textblob.append(tree+"\n\n")
+				textblob.append(tree.view+"\n\n")
 		filename = "{}{}.out".format(searchpart, i)
 		filepath = resultpath / filename
 		filepath.write_text("".join(textblob))
@@ -135,8 +135,8 @@ def main() -> None:
 	searchparts = [
 		(DEVGOLD, "devgold"),
 		(TESTGOLD, "testgold"),
-		(DEVAUTO, "devauto"),
-		(TESTAUTO, "testauto")
+		(DEVAUTO, "devgen"),
+		(TESTAUTO, "testgen")
 	]
 
 	for psdpath, searchpart in searchparts:

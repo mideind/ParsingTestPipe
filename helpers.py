@@ -239,6 +239,7 @@ PUNCT = "?!:.,;/+*-\"\'$%&()"
 def get_annoparse(infolder, outfolder, insuffix=".txt", outsuffix=".psd", overwrite=False):
 	""" Takes text files in a specified folder as input and returns files in another specified folder
 		containing parse trees following the Greynir schema """
+	i = 0
 	for p in infolder.iterdir():
 		ptext = p.stem + insuffix
 		ptext = infolder / ptext	# Input file
@@ -250,6 +251,9 @@ def get_annoparse(infolder, outfolder, insuffix=".txt", outsuffix=".psd", overwr
 		command = "annoparse -i {} -o {} -s".format(ptext, pout)
 		skil = subprocess.Popen([command], shell=True, stdout=subprocess.PIPE).communicate()[0]
 		print(skil)
+		if i % 10 == 0:
+			print("\t{} files done!".format(i))
+		i += 1
 
 def get_icenlpparse(infolder, outfolder, insuffix=".txt", outsuffix=".psd", overwrite=False):
 	""" Takes text files in a specified folder as input and returns files in another specified folder
@@ -661,7 +665,7 @@ def combine_reports(reportfolder):
 						f1 = 0.0
 						if sentprec + sentrecall > 0.0:
 							f1 = 2 * sentprec * sentrecall / (sentprec + sentrecall)
-						if f1 < 20.0:
+						if f1 < 80.0:
 							warning = "WARNING"
 
 						singleblob.append(f"\t{sentid}\t{sentrecall:1.2f}\t{sentprec:1.2f}\t{senttags:1.2f}\t  {sentlength:.2f}\t\t{f1:1.2f}\t{warning}\n")

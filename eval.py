@@ -161,7 +161,7 @@ def shallowprocess():
 def deepprocess():
 
 	print("Retrieving automatic parse trees")
-	helpers.get_annoparse(TEXTS, DEEPGEN, ".txt", ".psd", OVERWRITE)	# TODO this should be commented
+	helpers.get_annoparse(TEXTS, DEEPGEN, ".txt", ".psd", OVERWRITE)
 
 	print("Transforming automatic parse trees to general bracketed form")
 	helpers.annotald_to_general(DEEPGEN, DEEPGENBRACKETS, '.psd', '.br',OVERWRITE, EXCLUDE)
