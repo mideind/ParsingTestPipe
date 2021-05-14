@@ -5,6 +5,6 @@
 (S0 (S (IP (ADVP (a Hér)) (VP (VP (s sést)) (CP-QUE (ADVP (a hvernig)) (IP (NP-SUBJ (n viðaráferðin)) (VP-AUX (VP (s er)) (PP (a á) (NP (n filmunum))))))))) (p .))
 (S0 (S (IP (NP-SUBJ (n Markverðirnir)) (VP (VP (s eru)) (ADVP (a hins_vegar)) (PP (a í) (NP (l góðum) (n gír)))))) (p .))
 (S0 (S (IP (VP (VP (s Sjá)) (NP-OBJ (n símanúmer) (C (c og)) (n kort) (PP (a með) (NP (n staðsetningu) (NP-POSS (f allra) (n ráðuneyta)))))))))
-(S0 (S (IP (NP-SUBJ (n Mannúðarsamtök)) (VP (VP (s óttast)) (CP-QUE (C (c að)) (IP (NP-SUBJ (n mannfallið)) (VP (VP (s sé)) (NP-PRD (NP (n mun)) (l meira)))))))) (p .))
+(S0 (S (IP (NP-SUBJ (n Mannúðarsamtök)) (VP (VP (s óttast)) (CP-QUE (C (c að)) (IP (NP-SUBJ (n mannfallið)) (VP (VP (s sé)) (NP-PRD (n mun) (l meira)))))))) (p .))
 (S0 (S (IP (NP-SUBJ (f Það)) (VP (VP (s þarf)) (NP-OBJ (n mark)) (PP (a til) (IP (c að) (VP (VP (s opna)) (NP-OBJ (f þetta)))))))) (p .))
 (S0 (S (IP (PP (a Fyrir) (NP (n Katrínu_Steinu))) (p ,) (VP (VP (s finndu)) (NP-OBJ (n leið))))) (p .))

@@ -558,21 +558,16 @@ def combine_reports(reportfolder):
 
 			while True:
 				line = pin.readline()
-				#print("A: {}".format(line))
 				if line.startswith("  Sent."):
-					#print("B: {}".format(line))
 					x = pin.readline()
 					single = True
 					continue
 				elif line.startswith("-<1>---"):
 					# Starting confusion matrix results
-					#print("C: {}".format(line))
 					while True:
 						terminalline = pin.readline()
-						#print("D: {}".format(terminalline))
 						if not " " in terminalline:
 							# Getting to phrases
-							#print("D1: {}".format(terminalline))
 							break
 
 						parts = terminalline.split()
@@ -598,7 +593,6 @@ def combine_reports(reportfolder):
 					autophrases = []
 					while True:
 						phraseline = pin.readline()
-						#print("E: {}".format(phraseline))
 						if not " " in phraseline:	
 							#diffs = set(goldphrases) ^ set(autophrases)
 							onlygold = list([g for g in goldphrases+autophrases if g not in autophrases])
@@ -621,16 +615,12 @@ def combine_reports(reportfolder):
 						continue
 				if line.count("=") == 8 or single:
 					# Results for next sentence coming
-					#print("F: {}".format(line))
 					sentsultsline = pin.readline()
-					#print("F1: {}".format(sentsultsline))
 					single = False
 					if  "========" in sentsultsline:
 						# Starting summary
 						while True:
 							summline = pin.readline()
-							#print("G: {}".format(summline))
-							#print(summline)
 							if summline.startswith("Number of sentence "):
 								numsents.append(float(summline.split(" ")[-1]))
 							elif summline.startswith("Number of Error sentence "):
@@ -653,8 +643,6 @@ def combine_reports(reportfolder):
 								break # No information needed after this
 							continue
 					else:
-						#print("H: {}".format(sentsultsline))
-
 						sults = sentsultsline.split()
 						sentid = sults[0]
 						sentlength = float(sults[1])
@@ -702,14 +690,14 @@ def combine_reports(reportfolder):
 		acall+=acnow
 		taall+=tanow
 
-	textblob.append("Fjöldi setninga:{}\n".format(numsentsall))
-	textblob.append("Fjöldi villusetninga:{}\n".format(numerrorsentsall))
-	textblob.append("Recall:{:.2f}\n".format(brall/numfiles))
-	textblob.append("Precision:{:.2f}\n".format(bpall/numfiles))
-	textblob.append("Fskor:{:.2f}\n".format(bfall/numfiles))
-	textblob.append("Alveg eins:{:.2f}\n".format(cmall/numfiles))
+	textblob.append("Fjöldi setninga: {}\n".format(numsentsall))
+	textblob.append("Fjöldi villusetninga: {}\n".format(numerrorsentsall))
+	textblob.append("Recall: {:.2f}\n".format(brall/numfiles))
+	textblob.append("Precision: {:.2f}\n".format(bpall/numfiles))
+	textblob.append("Fskor: {:.2f}\n".format(bfall/numfiles))
+	textblob.append("Alveg eins: {:.2f}\n".format(cmall/numfiles))
 	textblob.append("Average crossing: {:.2f}\n".format(acall/numfiles))
-	textblob.append("Tagging accuracy:{:.2f}\n\n\t".format(taall/numfiles))
+	textblob.append("Tagging accuracy: {:.2f}\n\n\t".format(taall/numfiles))
 	textblob.append("\n\n")
 
 
