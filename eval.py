@@ -13,6 +13,9 @@
 	The program compares a test set of hand-parsed texts in Penn Treebank format to an automatically
 	parsed output for the same texts. Evalb is used to evaluate the performance.
 
+	The program assumes the Evalb folder is in the same folder as eval.py.
+	Evalb can be downloaded from https://nlp.cs.nyu.edu/evalb/ 
+
 	A normal way to configure this program is to clone the GreynirCorpus repository (from the
 	above path) into a separate directory, and then place a symlink to it in the main directory.
 	For example:
@@ -164,22 +167,29 @@ def shallowprocess():
 def deepprocess():
 
 	print("Retrieving automatic parse trees")
-	helpers.get_annoparse(TEXTS, DEEPGEN, ".txt", ".psd", OVERWRITE)
+	#helpers.get_annoparse(TEXTS, DEEPGEN, ".txt", ".psd", OVERWRITE)
 
 	print("Transforming automatic parse trees to general bracketed form")
-	helpers.annotald_to_general(DEEPGEN, DEEPGENBRACKETS, '.psd', '.br',OVERWRITE, EXCLUDE)
+	#helpers.annotald_to_general(DEEPGEN, DEEPGENBRACKETS, '.psd', '.br',OVERWRITE, EXCLUDE)
+	#helpers.annotald_to_general_split(DEEPGEN, DEEPGENBRACKETS, '.psd', '.br',OVERWRITE, EXCLUDE)
+	#helpers.annotald_to_general_func(DEEPGEN, DEEPGENBRACKETS, '.psd', '.fbr',OVERWRITE, EXCLUDE)
 
 	print("Transforming handannotated parse trees to general bracketed form")
-	helpers.annotald_to_general(DEEPGOLD, DEEPGOLDBRACKETS, '.gld', '.br', OVERWRITE, EXCLUDE)
+	#helpers.annotald_to_general(DEEPGOLD, DEEPGOLDBRACKETS, '.gld', '.br', OVERWRITE, EXCLUDE)
+	helpers.annotald_to_general_split(DEEPGOLD, SPLIT, '.gld', '.br', OVERWRITE, EXCLUDE)
+	#helpers.annotald_to_general_func(DEEPGOLD, FUNC, '.gld', '.fbr', OVERWRITE, EXCLUDE)
 
 	print("Retrieving results from evalb")
 	# (testfile suffix, goldfile suffix, output file suffix)
 	tests = [(".br", ".br", ".out")]
-	helpers.get_results(DEEPGOLDBRACKETS, DEEPGENBRACKETS, DEEPREPORTS, tests, EXCLUDE)
+	#tests = [(".fbr", ".fbr", ".out")]
+	#helpers.get_results(DEEPGOLDBRACKETS, DEEPGENBRACKETS, DEEPREPORTS, tests, EXCLUDE)
+	#helpers.get_results(SPLIT, DEEPGENBRACKETS, DEEPREPORTS, tests, EXCLUDE)
+	#helpers.get_results(FUNC, DEEPGENBRACKETS, DEEPREPORTS, tests, EXCLUDE)
 
 	print("Combining reports")
 
-	helpers.combine_reports(DEEPREPORTS)
+	#helpers.combine_reports(DEEPREPORTS)
 
 def main() -> None:
 	args = parser.parse_args() 
@@ -199,7 +209,7 @@ def main() -> None:
 			DATA = 'testset'
 		else:
 			DATA = 'devset'
-		global TEXTS, DEEPGOLD, DEEPGEN, DEEPGOLDBRACKETS, DEEPGENBRACKETS, DEEPREPORTS
+		global TEXTS, DEEPGOLD, DEEPGEN, DEEPGOLDBRACKETS, DEEPGENBRACKETS, DEEPREPORTS, SPLIT, FUNC
 
 		TEXTS = pathlib.Path().absolute() / 'GreynirCorpus' / DATA / 'txt'
 		DEEPGOLD = pathlib.Path().absolute() / 'GreynirCorpus' / DATA / 'psd'
@@ -207,6 +217,8 @@ def main() -> None:
 		DEEPGOLDBRACKETS = pathlib.Path().absolute() / 'data' / DATA / 'goldbrackets'
 		DEEPGENBRACKETS = pathlib.Path().absolute() / 'data' / DATA / 'genbrackets'
 		DEEPREPORTS = pathlib.Path().absolute() / 'data' / DATA / 'reports'
+		SPLIT = pathlib.Path().absolute() / 'data' /DATA / 'splitgoldbrackets'
+		FUNC = pathlib.Path().absolute() / 'data' /DATA / 'funcgoldbrackets'
 		deepprocess()
 
 	elif args.parser == 1:

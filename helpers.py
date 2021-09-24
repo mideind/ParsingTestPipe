@@ -330,6 +330,58 @@ def annotald_to_general(infolder, outfolder, insuffix, outsuffix, overwrite=Fals
 		outtrees = general_clean(trees, exclude)
 		pout.write_text(outtrees)
 
+def annotald_to_general_split(infolder, outfolder, insuffix, outsuffix, overwrite=False, exclude=False):
+	
+	for p in infolder.iterdir():
+		if p.suffix != insuffix:
+			# File has other suffix
+			continue
+
+		pin = p.stem + insuffix
+		pin = infolder / pin
+		pout = p.stem + outsuffix
+		pout = outfolder / pout
+		
+
+		if pout.exists() and not overwrite:
+			continue
+
+		print("Transforming file: {}".format(p.stem+p.suffix))
+
+		# Að mestu eins og readTrees() í annotald.treedrawing
+		treetext = pin.read_text()
+		treetext = util.scrubText(treetext)
+		trees = treetext.strip().split("\n\n")
+
+		outtrees = general_clean_split(trees, exclude)
+		pout.write_text(outtrees)
+
+def annotald_to_general_func(infolder, outfolder, insuffix, outsuffix, overwrite=False, exclude=False):
+	
+	for p in infolder.iterdir():
+		if p.suffix != insuffix:
+			# File has other suffix
+			continue
+
+		pin = p.stem + insuffix
+		pin = infolder / pin
+		pout = p.stem + outsuffix
+		pout = outfolder / pout
+		
+
+		if pout.exists() and not overwrite:
+			continue
+
+		print("Transforming file: {}".format(p.stem+p.suffix))
+
+		# Að mestu eins og readTrees() í annotald.treedrawing
+		treetext = pin.read_text()
+		treetext = util.scrubText(treetext)
+		trees = treetext.strip().split("\n\n")
+
+		outtrees = general_clean_func(trees, exclude)
+		pout.write_text(outtrees)
+
 def icenlp_to_general(pin, outfolder, insuffix=".psd", outsuffix=".br", overwrite=False, exclude=False, roles=False):
 
 	pout = pin.stem + outsuffix
@@ -400,6 +452,206 @@ def general_clean(trees, exclude=False):
 						pass
 					else:
 						phrase = GENERALIZE[phrase]
+					if not phrase or phrase in NOT_INCLUDED:
+						skips +=1
+						phrases.push(phrase)
+						continue
+					#if not deep and phrase in NOT_PARTIAL:
+					#	skips +=1
+					#	phrases.push(phrase)
+					#	continue
+					phrases.push(phrase)
+					cleantree = cleantree + "(" + phrase + " "
+				elif ")" in item:
+					if segs:
+						segs = False
+						text = []
+					else:
+						wordinleaf = item.replace(")", "")
+						text.append(wordinleaf)
+					brackets = item.count(")")
+					bwrite = ""
+					for x in range(brackets):
+						phrase = phrases.pop()
+						if not phrase or phrase in NOT_INCLUDED or phrase in SKIP_SEGS: 
+							# Skip corresponding )
+							skips -=1
+						#elif not deep and phrase in NOT_PARTIAL:
+						#	skips -=1
+						else:
+							bwrite = bwrite + ")"
+					cleantree = cleantree + "_".join(text) + bwrite + " "
+					text = []
+				else:
+					text.append(item)
+
+		cleantree = cleantree.rstrip().replace(" )", ")")
+
+		if cleantree.count("(")  != cleantree.count(")"):
+			numwrongs +=1
+		outtrees = outtrees + cleantree + "\n" 
+	return outtrees
+
+def general_clean_split(trees, exclude=False):
+	# Forvinnsla 
+	outtrees = "" # All partial trees for file
+	text = []
+	phrases = Stack()
+	numwrongs = 0
+	for tree in trees:
+		skips = 0
+		cleantree = ""
+		text = []
+		for line in tree.split("\n"):
+			if not line:
+				continue
+			segs = False # Segs found, should skip content of brackets
+			# 1. (META, (COMMENT, ... in SKIP_LINES -- skip line altogether
+			# 2. Single ( -- extra bracket around tree, won't collect
+			# 3. (PP -- collect "(PP" and push one; except if not included
+			# 4. (no_kvk_nf_et -- collect "(no_kvk_nf_et" and push one
+			# 5. (lemma, (exp_seg, (exp_abbrev -- in SKIP_SEGS, increase numofskipsegs by one. 
+			#    Ignore rest of sentence except for )) or more.
+			# 6. ) or )))))) -- look at numofskipsegs, otherwise just add
+			# 7. word -- single word. Collect in text, until find (lemma
+			# 7B. word))) --- If numofskipphrases, check that.
+			# 8. (grm -- no lemma here, can mess things up.
+			# 9. \) -- escaped parentheses. Opening parentheses, \(, are not a problem. Is the word.
+			phrase = ""
+			for item in line.lstrip().split():
+				if item.startswith("\\)"):
+					item = item.replace("\\)", "&#41;")
+				elif item.startswith("\\()") or item.startswith("\\("): 
+					# Latter case for unknown tokens
+					item = item.replace("\\(", "&#40;")
+				if not item:
+					continue
+				elif item in SKIP_LINES: # Case 1
+					break	# Don't collect anything in line
+				elif item.startswith("http"): # Case 1
+					break # Don't collect anything in line
+				elif "(" in item:  # Start new phrase
+					if text: # Write before do anything else
+						# (a hér_að_neðan) → (a hér) (a að) (a neðan)
+						                    #xxx                    x
+						if len(text) > 1:
+							sum = ""
+							last = text[-1]
+							nextall = text[:-1]
+							for stuff in nextall:
+								sum = sum + stuff + ") (" + phrase + " "
+							sum = sum + last
+							cleantree = cleantree + sum
+						else:
+							cleantree = cleantree + " ".join(text)
+						text = []
+					phrase = item.replace("(", "").split("_")[0]  
+					if not phrase: # Single (, don't want in cleantree
+						skips +=1
+						phrases.push("")
+						continue					
+					if phrase in SKIP_SEGS:
+						skips +=1
+						segs = True
+						phrases.push(phrase)
+						continue
+					if exclude and phrase == "S0-X":
+						pass
+					else:
+						phrase = GENERALIZE[phrase]
+					if not phrase or phrase in NOT_INCLUDED:
+						skips +=1
+						phrases.push(phrase)
+						continue
+					#if not deep and phrase in NOT_PARTIAL:
+					#	skips +=1
+					#	phrases.push(phrase)
+					#	continue
+					phrases.push(phrase)
+					cleantree = cleantree + "(" + phrase + " "
+				elif ")" in item:
+					if segs:
+						segs = False
+						text = []
+					else:
+						wordinleaf = item.replace(")", "")
+						text.append(wordinleaf)
+					brackets = item.count(")")
+					bwrite = ""
+					for x in range(brackets):
+						phrase = phrases.pop()
+						if not phrase or phrase in NOT_INCLUDED or phrase in SKIP_SEGS: 
+							# Skip corresponding )
+							skips -=1
+						#elif not deep and phrase in NOT_PARTIAL:
+						#	skips -=1
+						else:
+							bwrite = bwrite + ")"
+					cleantree = cleantree + "_".join(text) + bwrite + " "
+					text = []
+				else:
+					text.append(item)
+
+		cleantree = cleantree.rstrip().replace(" )", ")")
+
+		if cleantree.count("(")  != cleantree.count(")"):
+			numwrongs +=1
+		outtrees = outtrees + cleantree + "\n" 
+	return outtrees
+
+def general_clean_func(trees, exclude=False):
+	# Forvinnsla 
+	outtrees = "" # All partial trees for file
+	text = []
+	phrases = Stack()
+	numwrongs = 0
+	for tree in trees:
+		skips = 0
+		cleantree = ""
+		text = []
+		for line in tree.split("\n"):
+			if not line:
+				continue
+			segs = False # Segs found, should skip content of brackets
+			# 1. (META, (COMMENT, ... in SKIP_LINES -- skip line altogether
+			# 2. Single ( -- extra bracket around tree, won't collect
+			# 3. (PP -- collect "(PP" and push one; except if not included
+			# 4. (no_kvk_nf_et -- collect "(no_kvk_nf_et" and push one
+			# 5. (lemma, (exp_seg, (exp_abbrev -- in SKIP_SEGS, increase numofskipsegs by one. 
+			#    Ignore rest of sentence except for )) or more.
+			# 6. ) or )))))) -- look at numofskipsegs, otherwise just add
+			# 7. word -- single word. Collect in text, until find (lemma
+			# 7B. word))) --- If numofskipphrases, check that.
+			# 8. (grm -- no lemma here, can mess things up.
+			# 9. \) -- escaped parentheses. Opening parentheses, \(, are not a problem. Is the word.
+			for item in line.lstrip().split():
+				if item.startswith("\\)"):
+					item = item.replace("\\)", "&#41;")
+				elif item.startswith("\\()") or item.startswith("\\("): 
+					# Latter case for unknown tokens
+					item = item.replace("\\(", "&#40;")
+				if not item:
+					continue
+				elif item in SKIP_LINES: # Case 1
+					break	# Don't collect anything in line
+				elif item.startswith("http"): # Case 1
+					break # Don't collect anything in line
+				elif "(" in item:  # Start new phrase
+					if text: # Write before do anything else
+						cleantree = cleantree + "_".join(text)
+						text = []
+					phrase = item.replace("(", "").split("_")[0].split("-")[-1]  
+					if not phrase: # Single (, don't want in cleantree
+						skips +=1
+						phrases.push("")
+						continue					
+					if phrase in SKIP_SEGS:
+						skips +=1
+						segs = True
+						phrases.push(phrase)
+						continue
+					if exclude and "S0-X" in item:
+						pass
 					if not phrase or phrase in NOT_INCLUDED:
 						skips +=1
 						phrases.push(phrase)
