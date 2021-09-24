@@ -2,6 +2,7 @@
 (S0 (S (IP (NP-SUBJ (n Bjarni)) (VP (VP (s var)) (PP (a í) (NP (n haldi) (NP-POSS (n lögreglunnar)))) (PP (a í) (NP (l tæpan) (n sólarhring)))))) (p .))
 (S0 (S (IP (NP-SUBJ (f Þetta)) (VP (VP-AUX (VP (s hefur)) (VP (s verið))) (VP (s haft)) (PP (a að) (NP (n leiðarljósi))) (ADVP (a síðan))))) (p .))
 (S0 (S (IP (NP-SUBJ (l Umræddur) (n dýralæknir) (NP-POSS (n fiskisjúkdóma)) (PP (a hjá) (NP (n Matvælastofnun)))) (VP (VP (s er)) (NP-PRD (n Gísli_Jónsson))))) (p .))
+(S0 (S (IP (NP-SUBJ (a Aðeins) (l ríkasta) (n 20%)) (VP (VP-AUX (s hefur)) (VP (s notið)) (NP-OBJ (n ávinning) (NP-POSS (n skattabreytinga) (NP-POSS (n ríkisstjórnarinnar))))))) (p .))
 (S0 (S (IP (NP-SUBJ (f Hann)) (VP (VP-AUX (s hefur)) (VP (s setið)) (PP (a á) (NP (n þingi))) (ADVP (a frá) (t árinu_1994))))) (p .))
 (S0 (S (IP (NP-SUBJ (l Áætlaður) (n heildarávinningur) (NP-POSS (n ríkisins))) (VP (VP (s metinn)) (PP (a á) (NP (l ríflega) (n 150_milljarða_króna)))))))
 (S0 (S (IP (NP-SUBJ (n Jamie_Vardy)) (VP (VP (s skorar)) (PP (a af) (NP (l miklu) (n öryggi))) (PP (a úr) (NP (n vítaspyrnunni)))))) (p .))

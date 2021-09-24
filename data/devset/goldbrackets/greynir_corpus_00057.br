@@ -3,6 +3,7 @@
 (S0 (S (IP (NP-SUBJ (n Alves)) (VP (VP (s átti)) (ADVP (a þá)) (NP-OBJ (n hælsendingu) (PP (a á) (NP (n Higuaín) (CP-REL (C (c sem)) (IP (VP (VP (s skoraði)) (PP (a með) (NP (l góðu) (n skoti)))))))))))) (p .))
 (S0 (S (IP (NP-SUBJ (f Hann)) (VP (VP (s fékk)) (NP-OBJ (n olnbogaskot) (PP (a í) (NP (n bringuna)))) (PP (a í) (NP (n leiknum) (PP (a á) (NP (n Sauðárkróki) (ADVP (a um) (NP (n daginn)))))))))) (p .))
 (S0 (S (IP (NP-SUBJ (f Öll) (t þrjú) (n málin)) (VP (VP-AUX (s hafa)) (VP (s verið)) (PP (a til) (NP (n umfjöllunar) (PP (a í) (NP (n fjölmiðlum))) (ADVP (l undanfarnar) (n vikur))))))) (p .))
+(S0 (S (IP (VP (VP (s SLÓ)) (ADVP (a Í_GEGN)) (PP (a Á) (NP (e RED) (e BULL) (e ACADEMY)))) (C (c OG)) (VP (VP (s HELDUR)) (NP-OBJ (n PARTÝ)) (ADVP (a Í_KVÖLD))))))
 (S0 (S (IP (NP-SUBJ (f Mér)) (VP (VP (s finnst)) (NP-PRD (a virkilega) (l erfitt)) (IP (c að) (VP (s fylgjast) (PP (a með) (NP (n þróun) (NP-POSS (n mála)) (PP (a í) (NP (n Helguvík)))))))))) (p .))
 (S0 (S (IP (NP-SUBJ (l Flest) (NP-POSS (n fórnarlambanna))) (VP (VP (s eru)) (PP (a í) (NP (n héruðunum) (n Padenglang) (p ,) (n Suður-Lampung) (C (c og)) (n Serang)))))) (p .))
 (S0 (S (IP (CP (IP (ADVP (a Svo)) (NP-SUBJ (n kerfið)) (VP (VP (s virkaði)) (CP-ADV (C (c þegar)) (IP (NP-SUBJ (f það)) (VP (VP (s þurfti)) (IP (c að) (VP (s virka))))))))) (p ,) (VP (VP (s segir)) (NP (n Þorsteinn))))) (p .))

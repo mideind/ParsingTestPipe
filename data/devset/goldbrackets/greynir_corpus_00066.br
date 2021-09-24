@@ -3,6 +3,7 @@
 (S0 (S (IP (PP (a Í) (NP (f hinum) (n undanúrslitaleiknum))) (VP (VP (s vann)) (NP-SUBJ (n Valur)) (NP-OBJ (NP (t 2) (p —) (t 1)) (n sigur) (PP (a á) (NP (n Þór/KA))))))) (p .))
 (S0 (S (IP (NP-SUBJ (n Trump)) (VP (VP (s er)) (ADVP (a þó)) (PP (a í) (NP (a allt) (f annarri) (n stöðu) (CP-ADV (C (c en)) (NP (l aðrir) (n forsetar) (NP-POSS (l síðustu) (t 40) (n ára))))))))) (p .))
 (S0 (S (IP (PP (a Í) (NP (n neyð) (f sinni))) (VP (VP (s reika)) (NP-SUBJ (f þessar) (l ógnvænlegu) (n skepnur)) (ADVP (a því)) (PP (a um) (NP (n stræti) (NP-POSS (NP (n smábæjarins)) (n Belúsja_Gúba))))))) (p .))
+(S0 (S (IP (NP (f Það)) (VP (VP (s eru)) (NP-SUBJ (l fjölmörg) (n atriði) (CP-REL (C (c sem)) (IP (NP-SUBJ (f við) (PP (a sem) (NP (n samfélag)))) (VP (VP-AUX (s getum)) (VP (s gert)) (PP (a til) (IP (VP (VP (s breyta)) (NP-OBJ (n hlutunum)))))))))))) (p .))
 (S0 (S (IP (NP (f Það)) (VP (VP (s eru)) (ADVP (a til) (a að) (a mynda)) (NP-SUBJ (n gæði)) (IP (c að) (VP (VP-AUX (s geta)) (VP (s fylgt)) (NP-OBJ (n skipulagi)) (PP (ADVP (a út)) (a í) (NP (n þaula)))))))) (p .))
 (S0 (S (IP (ADVP (a Þá)) (VP (VP (s mæta)) (NP-SUBJ (n Oddný_Harðardóttir) (C (c og)) (n Óli_Björn_Kárason) (p ,) (n þingmenn) (NP-POSS (n Samfylkingarinar) (C (c og)) (n Sjálfstæðisflokksins)))))) (p .))
 (S0 (S (IP (NP-SUBJ (n Starfsfólki)) (VP (VP-AUX (s var)) (VP (s tilkynnt)) (PP (a um) (NP (n hópuppsögnina))) (PP (a á) (NP (n starfsmannafundi) (PP (a í) (NP (n höfuðstöðvum) (NP-POSS (n Airport_Associates)))))) (ADVP (a nú_síðdegis))))) (p .))

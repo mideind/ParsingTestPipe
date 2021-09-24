@@ -3,6 +3,7 @@
 (S0 (S (IP (NP-SUBJ (n Leit) (NP-POSS (e Ocean_Infinity))) (VP (VP (VP (s hefst)) (ADVP (a um) (NP (l miðjan) (n mánuðinn)))) (C (c og)) (VP (VP-AUX (s mun)) (VP (VP (s standa)) (ADVP (a í) (NP (t níutíu) (n daga)))))))) (p .))
 (S0 (S (IP (NP-SUBJ (l Sænsk) (n stjórnvöld)) (VP (VP (s lækkuðu)) (NP-OBJ (n virðisaukaskatt) (PP (a á) (NP (n bókum)))) (ADVP (t árið_2002)) (PP (a úr) (NP (t 25%))) (PP (ADVP (a niður)) (a í) (NP (t 6%)))))) (p .))
 (S0 (S (IP (PP (a Á) (NP (n staðnum))) (VP (VP (s er)) (NP-PRD (l hægt) (IP (c að) (VP (VP (s fá)) (NP-OBJ (f ýmsar) (l nýstárlegar) (n útgáfur) (PP (a af) (NP (l klassíska) (n morgunkorninu)))))))))) (p .))
+(S0 (S (IP (NP-SUBJ (n Elvar)) (VP (VP (s endaði)) (ADVP (a síðan)) (NP-OBJ (n leikinn)) (NP (l markahæstur) (PP (a í) (NP (n liði) (NP-POSS (n Selfoss))))) (x með) (PP (a með) (NP (t 7) (n mörk)))))) (p .))
 (S0 (S (IP (NP-SUBJ (l Hreinar) (n vaxtatekjur)) (VP (VP (VP (s jukust)) (PP (a um) (NP (l rúma) (n 1,6_milljarða_króna))) (PP (a milli) (NP (n ára)))) (C (c og)) (VP (VP (s námu)) (NP-OBJ (n 36,3_milljörðum_króna)) (ADVP (t árið_2017)))))) (p .))
 (S0 (S (IP (NP-SUBJ (e The_Gate)) (VP (VP (s er)) (NP-PRD (l fyrsta) (n lagið) (PP (a af) (NP (l næstu) (n plötu) (NP-POSS (n Bjarkar)) (CP-REL (C (c sem)) (IP (NP-PRD (l væntanleg)) (VP (VP (s er)) (ADVP (a á_næstunni))))))))))) (p .))
 (S0 (S (IP (NP-SUBJ (n Sigurlás)) (VP (VP (s lætur)) (PP (a eftir) (NP (f sig))) (NP-OBJ (n eiginkonu) (p ,) (t fimm) (l uppkomin) (n börn) (C (c og)) (t fjögur) (n barnabörn))))) (p .))

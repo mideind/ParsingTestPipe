@@ -3,6 +3,7 @@
 (S0 (S (IP (NP-SUBJ (f Ég)) (VP (VP (s er)) (NP-PRD (l heppinn)) (CP-ADV (C (c því)) (IP (NP-SUBJ (f ég)) (VP (VP (s get)) (NP-OBJ (f það)))))))) (p .))
 (S0 (S (IP (CP (IP (NP-SUBJ (f Ég)) (VP (VP (s berst)) (PP (a í) (NP (n bökkum)))))) (CP (IP (p ,) (VP (s sagði)) (NP (n Guðmundur)))))) (p .))
 (S0 (S (IP (NP-SUBJ (f Sá)) (VP (VP (s vann)) (CP-REL (C (c sem)) (IP (VP (VP (s kastaði)) (NP-OBJ (n manninum)) (NP (f flestar) (n ofnlengdir)))))))) (p .))
+(S0 (S (IP (PP (a Vegna) (NP (f þess) (CP-THT (C (c að)) (IP (NP-SUBJ (f það)) (VP (VP (s er)) (NP-PRD (NP-POSS (f allra)) (n hagur))))))))) (p .))
 (S0 (S (IP (ADVP (a Síðan)) (VP (VP (s breytist)) (NP-SUBJ (n aðstæður)) (CP-REL (C (c sem)) (IP (ADVP (a ekki)) (VP (VP (s var)) (NP-PRD (VP (s séð))) (ADVP (a fyrir)))))))) (p .))
 (S0 (S (IP (PP (a Í) (NP (n heildina))) (VP (VP (s voru)) (NP-SUBJ (t 184.000) (n töflur)) (PP (a í) (NP (n töskunum) (t fjórum)))))) (p .))
 (S0 (S (IP (NP-SUBJ (f Ég)) (VP (VP (VP (s væri)) (IP (c að) (VP (s ljúga)))) (CP-ADV (C (c ef)) (IP (NP-SUBJ (f ég)) (VP (VP (s neitaði)) (NP-OBJ (f því)))))))) (p .))

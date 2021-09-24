@@ -1,5 +1,6 @@
 (S0 (S (IP (NP-SUBJ (n Markús)) (VP (VP (s átti)) (NP-OBJ (n hlutabréf) (PP (a fyrir) (NP (n tugi) (NP-POSS (n milljóna)))) (PP (a í) (NP (n Glitni))))))) (p .))
 (S0 (S (IP (NP-SUBJ (f Hún)) (VP (VP (s segir)) (IP (NP (l gríðarlega) (n vinnu)) (VP (VP (s fylgja)) (NP-OBJ (n þátttöku) (PP (a í) (NP (n Söngvakeppninni))))))))) (p .))
+(S0 (S (IP (ADVP (a Meðal_annars)) (PP (a við) (NP (n Þórshöfn))) (C (c og)) (PP (a á) (NP (n Borgarfirði) (l eystra))))) (p .))
 (S0 (S (IP (NP-SUBJ (n Aðalpersóna) (NP-POSS (n Oscar_Wildes))) (VP (VP (s verður)) (NP-PRD (n kona)) (PP (a í) (NP (n meðförum) (NP-POSS (n St._Vincent))))))))
 (S0 (S (IP (NP-SUBJ (n Ólympíufarinn) (n Irina_Sazanova)) (VP (VP (s varði)) (NP-OBJ (n Íslandsmeistaratitil) (f sinn) (PP (a í) (NP (n fjölþraut))))))) (p .))
 (S0 (S (IP (NP-SUBJ (f Það)) (VP (VP (s þarf)) (IP (c að) (VP (VP (s finna)) (NP-OBJ (n lausn) (PP (a á) (NP (f þessu))))))))) (p .))

@@ -175,8 +175,8 @@ def deepprocess():
 	#helpers.annotald_to_general_func(DEEPGEN, DEEPGENBRACKETS, '.psd', '.fbr',OVERWRITE, EXCLUDE)
 
 	print("Transforming handannotated parse trees to general bracketed form")
-	#helpers.annotald_to_general(DEEPGOLD, DEEPGOLDBRACKETS, '.gld', '.br', OVERWRITE, EXCLUDE)
-	helpers.annotald_to_general_split(DEEPGOLD, SPLIT, '.gld', '.br', OVERWRITE, EXCLUDE)
+	helpers.annotald_to_general(DEEPGOLD, DEEPGOLDBRACKETS, '.gld', '.br', OVERWRITE, EXCLUDE)
+	#helpers.annotald_to_general_split(DEEPGOLD, SPLIT, '.gld', '.br', OVERWRITE, EXCLUDE)
 	#helpers.annotald_to_general_func(DEEPGOLD, FUNC, '.gld', '.fbr', OVERWRITE, EXCLUDE)
 
 	print("Retrieving results from evalb")

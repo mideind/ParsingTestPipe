@@ -1,4 +1,5 @@
 (S0 (S (IP (NP-SUBJ (f Þetta)) (VP (VP (s er)) (NP-PRD (l geggjuð) (n bók))))) (p .))
+(S0 (S (IP (NP-SUBJ (n Tungumálaörðugleikar)) (VP (VP (s hjálpi)) (ADVP (a ekki)) (ADVP (a fyrir))))) (p .))
 (S0 (S (IP (NP-SUBJ (f Þetta)) (VP (VP (s er)) (NP-PRD (l geðveikt))))) (p .))
 (S0 (S (IP (NP-SUBJ (n Kristín_Björgvins)) (VP (VP (s brosti)) (p ,) (NP (l grjóthörð))))) (p :))
 (S0 (S (IP (NP-SUBJ (a Yfir) (t 100) (n kílóum) (PP (a af) (NP (n farangri)))) (VP (s rænt)))))

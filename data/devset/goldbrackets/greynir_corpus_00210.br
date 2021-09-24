@@ -1,5 +1,6 @@
 (S0 (S (IP (NP-SUBJ (f Við)) (VP (VP (s viljum)) (ADVP (a ekki)) (VP (VP (s fá)) (NP-OBJ (n Dele_Alli))))) (p .)))
 (S0 (S (IP (VP (VP (VP (s Þarf)) (NP-SUBJ (n fjölskyldan))) (PP (a á) (NP (f þeim) (IP (c að) (VP (s halda))))))) (p ?)))
+(S0 (S (IP (NP-SUBJ (f Það)) (VP (VP (s er)) (NP-PRD (l yngri))) (C (c en)) (NP (t 13) (NP-POSS (n ára))))) (p .))
 (S0 (S (IP (NP-SUBJ (n Maður)) (VP (VP (s lærir)) (PP (a af) (NP (n mistökum)))) (NP (a ekki) (l satt)))) (p ?))
 (S0 (S (IP (NP-SUBJ (f Þeir)) (VP (VP (s eru)) (NP-PRD (l fullir) (PP (a af) (NP (n skít))))))) (p .))
 (S0 (S (IP (VP (NP-OBJ (n Viðlagið)) (NP-SUBJ (n maður)) (VP (VP (s fær)) (ADVP (a algjörlega)) (PP (a á) (NP (n heilann))))))) (p .))

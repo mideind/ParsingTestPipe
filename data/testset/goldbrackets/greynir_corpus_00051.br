@@ -1,5 +1,6 @@
 (S0 (S (IP (NP-SUBJ (f Ég)) (VP (VP (s fer)) (ADVP (a oft)) (PP (a að) (NP (n leiðinu)))))) (C (c og)) (S (IP (NP (f það)) (VP (VP-AUX (s hafa)) (VP (s verið)) (NP-SUBJ (n blóm)) (ADVP (a þar))))) (p .))
 (S0 (S (IP (NP-SUBJ (f Hann)) (VP (VP (s á)) (NP-OBJ (t 7) (n A-landsleiki)) (PP (a að) (NP (n baki))) (PP (a fyrir) (NP (n Íslands) (NP-POSS (n hönd)))))) (p .)))
+(S0 (S (IP (NP-SUBJ (f Hún)) (VP (VP (s staðfesta)) (NP-OBJ (a hins_vegar) (a ekki) (n fregnir) (PP (a um) (CP-THT (C (c að)) (IP (NP-SUBJ (n fólk)) (VP (VP-AUX (s hafi)) (VP (s farist)))))))))) (p .))
 (S0 (S (IP (NP-SUBJ (n Tölvupóstarnir)) (VP (VP (s voru)) (PP (a vegna) (NP (n dómsmáls) (CP-REL (C (c sem)) (IP (NP-SUBJ (n Jón_Steinar)) (VP (VP-AUX (s vildi)) (VP (s fá)) (NP-PRD (n flýtimeðferð)) (ADVP (a á)))))))))) (p .))
 (S0 (S (NP (n Ráðhúsið) (CP-REL (C (c sem)) (IP (VP (VP (s er)) (NP-PRD (t 150) (NP-POSS (n ára)) (p ,) (t 400) (NP-POSS (n ára)) (C (c og)) (t 650) (NP-POSS (n ára)) (l gamalt))))))) (p .))
 (S0 (S (IP (NP-SUBJ (n RÚV)) (VP (VP (s greinir)) (PP (a frá) (NP (f því) (CP-REL (C (c sem)) (IP (VP (VP (s kom)) (ADVP (a fram)) (PP (a fyrir) (NP-OBJ (n dómi))) (ADVP (a í_morgun)))))))))) (p .))

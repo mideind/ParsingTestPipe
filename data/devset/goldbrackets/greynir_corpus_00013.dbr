@@ -1,8 +1,0 @@
-(S0 (S (IP (ADVP (a Síðast)) (VP (VP (s dreymdi)) (NP-SUBJ (f mig)) (NP-OBJ (t þrjár) (n kindur)))) (p .)))
-(S0 (S (IP (VP (VP (s Var)) (ADVP (a þá)) (NP-SUBJ (n stjórnarandstöðuflokkurinn)) (PP (a í) (NP (n Panamaskjölunum)))))) (p ?))
-(S0 (S (IP (NP-SUBJ (a Um) (t 300) (n fulltrúar)) (VP (VP (s sátu)) (NP-OBJ (n þingið))))) (p .))
-(S0 (ADVP (C (c En))) (S (IP (NP-SUBJ (f það)) (VP (VP (s er)) (NP-PRD (f önnur) (n saga))))) (p .))
-(S0 (S (IP (ADVP (a Því_miður)) (VP (VP (s er)) (NP-SUBJ (n hættan)) (NP-PRD (l umtalsverð))))) (p .))
-(S0 (S (IP (NP-SUBJ (n Greinin)) (VP (VP (s birtist)) (ADVP (a fyrst)) (PP (a í) (NP (n Fréttablaðinu)))))) (p .))
-(S0 (S (IP (NP (n Marta_B._Mathews)) (PP (a í) (NP (l enskt) (n félag))))))
-(S0 (S (IP (NP-SUBJ (n Conor_McGregor)) (PP (a á) (NP-OBJ (n blaðamannafundi) (C (c og)) (n æfingu))))))

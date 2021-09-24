@@ -1,5 +1,6 @@
 (S0 (S (IP (NP-SUBJ (f Þessi) (n mál)) (VP (VP (s verða)) (NP-PRD (VP (s rædd))) (C (c og)) (NP (a hugsanlega) (l fleiri)) (PP (a í) (NP (NP-POSS (t sex) (n manna)) (n hópnum)))))) (p .))
 (S0 (S (IP (NP-SUBJ (f Ég)) (VP (VP (s held)) (CP-THT (C (c að)) (IP (NP-SUBJ (f þetta)) (VP (VP (s sé)) (NP-PRD (l ósanngjarnt)) (CP-ADV (C (c ef)) (IP (NP-SUBJ (f þeir)) (VP (VP (VP (s vita)) (NP-OBJ (f það))) (ADVP (a ekki))))))))))) (p .))
+(S0 (S (IP (ADVP (a Þar)) (VP (VP (s var) (ADVP (a meðal))) (NP-PRD (s rætt)) (PP (a um) (NP (n afstöðu) (NP-POSS (n Sigmundar_Davíðs) (C (c og)) (n ráðherra) (NP-POSS (n Sjálfstæðisflokksins)))))))) (p .))
 (S0 (S (IP (NP-SUBJ (f Hann)) (VP (VP (s telur)) (CP-THT (C (c að)) (IP (CP-ADV (C (c ef)) (IP (NP-SUBJ (f eitthvað)) (VP (VP-AUX (s hafi)) (VP (s aukist))))) (VP (VP (s sé)) (NP-SUBJ (f það)) (NP-PRD (n neysla) (NP-POSS (n fíkniefna))))))))) (p .))
 (S0 (S (IP (NP-SUBJ (f Það)) (VP (VP (s hefði)) (NP-OBJ (l gríðarleg) (n áhrif) (PP (a á) (NP (n vistkerfið) (C (c og)) (NP (f allt) (n dýralíf) (PP (a í) (NP (n heiminum)))))))))) (p .))
 (S0 (S (IP (NP-SUBJ (n MS)) (VP (VP (s greiddi)) (NP-OBJ (n bændum) (PP (ADVP (a hins_vegar)) (a um) (NP (n 193_milljónir_króna))) (PP (a fyrir) (NP (n mjólkina))))))) (p .))

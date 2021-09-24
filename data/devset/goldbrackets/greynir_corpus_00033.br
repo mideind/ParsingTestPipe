@@ -5,5 +5,6 @@
 (S0 (S (IP (NP-SUBJ (n Guðni)) (VP (VP (s tók)) (ADVP (a við)) (CP-ADV (C (c sem)) (NP (n formaður) (NP-POSS (e KSÍ)))) (ADVP (a í) (a febrúar_2017))))) (p .))
 (S0 (S (IP (NP-SUBJ (n Willkie)) (VP (VP (s var)) (PP (a að) (NP (l mörgu) (n leyti))) (NP-PRD (n Donald_Trump) (NP-POSS (f sinnar) (n kynslóðar)))))) (p .))
 (S0 (S (IP (PP (a Í) (NP (t fimm) (n klukkustundir))) (VP (VP (s var)) (NP-SUBJ (f hún)) (NP-PRD (l berfætt))) (C (c og)) (VP (VP (s kól)) (ADVP (a illa))))) (p .))
+(S0 (S (IP (VP (VP (s Taldi)) (NP-SUBJ (n ráðuneytið)) (NP-IOBJ (f sig)) (NP-OBJ (l skylt)) (IP (c að) (VP (VP (s verða)) (PP (a við) (NP (f þeirri) (n beiðni)))))))) (p .))
 (S0 (S (IP (NP-SUBJ (n Vandinn)) (VP (VP (s snertir)) (NP-OBJ (n jörðina) (C (c og)) (f allt) (CP-REL (C (c sem)) (IP (PP (a á) (NP (f henni))) (VP (s er)))))))) (p .))
 (S0 (S (IP (NP-SUBJ (n Grettir)) (VP (VP (s beinir)) (NP-OBJ (n ljósinu)) (PP (a að) (NP (n jaðri) (NP-POSS (n samfélagsins)))) (NP (f aðra) (f hverja) (n viku))))) (p .))
