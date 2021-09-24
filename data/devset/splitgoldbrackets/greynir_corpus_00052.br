@@ -6,5 +6,5 @@
 (S0 (S (IP (NP-SUBJ (f Ég)) (VP (VP (s komst)) (PP (ADVP (a inn)) (a í) (NP (a ótrúlega) (l spennandi) (e BA) (n nám) (PP (a í) (NP (n Barcelona)))))))) (p .))
 (S0 (S (IP (CP-ADV (C (c Þó) (c að)) (IP (NP-SUBJ (n hráefnin)) (VP (VP (s séu)) (NP-PRD (l fá))))) (p ,) (ADVP (a þá)) (VP (VP-AUX (s munu)) (NP-SUBJ (n bragðlaukarnir)) (ADVP (a ekki)) (VP (s kvarta))))) (p .))
 (S0 (S (IP (NP-SUBJ (f Ég)) (VP (VP (s tel)) (CP-THT (C (c að)) (IP (NP-SUBJ (f ein) (f slík) (n tengsl)) (VP (VP-AUX (s megi)) (VP (s finna)) (PP (a í) (a gegnum) (NP (n tónlist))))))))) (p .))
-(S0 (S (IP (ADVP (a Einnig)) (VP (VP (s er) (x er)) (NP-SUBJ (n vegurinn)) (NP-PRD (l lokaður)) (PP (a um) (NP (n Möðrudalsöræfi) (p ,) (n Vopnafjarðarheiði) (C (c og)) (n Mývatnsöræfi))))) (p .)))
+(S0-X (S (IP (ADVP (a Einnig)) (VP (VP (s er) (x er)) (NP-SUBJ (n vegurinn)) (NP-PRD (l lokaður)) (PP (a um) (NP (n Möðrudalsöræfi) (p ,) (n Vopnafjarðarheiði) (C (c og)) (n Mývatnsöræfi))))) (p .)))
 (S0 (S (IP (C (c Og)) (ADVP (a svo)) (CP-ADV (C (c þegar)) (IP (VP (VP (s leið)) (PP (a á) (NP (n myndina)))))) (ADVP (a þá)) (ADVP (a svona)) (ADVP (a smá)) (VP (VP (s lagaðist)) (NP-SUBJ (f það))))) (p .))

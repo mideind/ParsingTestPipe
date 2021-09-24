@@ -1,4 +1,4 @@
-(S0 (S (IP (NP-SUBJ (n Dómgæslan) (PP (f þessum) (n leik))) (VP (VP (s var)) (NP-PRD (a mjög) (l léleg)))) (p .)))
+(S0-X (S (IP (NP-SUBJ (n Dómgæslan) (PP (f þessum) (n leik))) (VP (VP (s var)) (NP-PRD (a mjög) (l léleg)))) (p .)))
 (S0 (S (IP (NP-SUBJ (n Allen)) (VP (VP (VP (s var)) (NP-PRD (l ógiftur))) (C (c og)) (VP (VP (s eignaðist)) (NP-OBJ (f engin) (n börn)))))) (p .))
 (S0 (S (IP (NP-SUBJ (f Við)) (VP (VP (s lítum)) (NP-IOBJ (l björtum) (n augum)) (PP (a til) (NP (n framtíðar)))))) (p .))
 (S0 (ADVP (C (c En))) (S (IP (VP (VP (s ert)) (NP-SUBJ (f þú)) (NP-PRD (ADVP (a ekki)) (l sterk) (C (c og)) (l öflug)))) (p ?)))

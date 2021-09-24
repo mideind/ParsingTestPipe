@@ -1,5 +1,5 @@
 (S0 (S (IP (NP-SUBJ (l Fyrsti) (n leikur) (NP-POSS (n Króata))) (VP (VP (s er)) (PP (a gegn) (NP (n Nígeríu))) (ADVP (l næsta) (n laugardag))))) (p .))
-(S0 (ADVP (IP (C (c Og)))) (S (IP (NP-SUBJ (e rolls) (C (c og)) (e cakes))) (p .)))
+(S0-X (ADVP (IP (C (c Og)))) (S (IP (NP-SUBJ (e rolls) (C (c og)) (e cakes))) (p .)))
 (S0 (S (IP (NP-SUBJ (n Almannavarnir)) (VP (VP (s lýsa)) (ADVP (a yfir)) (NP-OBJ (n óvissustigi)) (PP (a vegna) (NP (l aukinnar) (n virkni) (PP (a í) (NP (n Öræfajökli)))))))))
 (S0 (S (IP (CP (IP (NP-SUBJ (f Það)) (VP (VP (s eru)) (NP-PRD (f einhver) (n hundruð))))) (p ,) (VP (VP (s segir)) (NP-SUBJ (n Pétur))))) (p .))
 (S0 (S (IP (NP-SUBJ (n Kolbrún) ( Halldórsdóttir)) (VP (VP (s var)) (PP (a sem) (NP (n dæmi))) (NP-PRD (l fyrsti) (n framkvæmdastjórinn) (f minn))))) (p .))

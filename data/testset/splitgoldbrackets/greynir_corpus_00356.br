@@ -2,7 +2,7 @@
 (S0 (S (IP (CP-ADV (IP (VP (VP-AUX (s Verði)) (NP-SUBJ (f þeir)) (VP (s samþykktir))))) (VP (VP (s sé)) (NP-SUBJ (n gildistími) (f þeirra)) (ADVP (a 1.) (a september) (a 2017) (a til) (NP (a 31.) (a mars) (a 2019)))))) (p .))
 (S0 (S (IP (p „) (NP-SUBJ (f Þetta)) (VP (VP (s er)) (ADVP (NP (n vonum)) (a framar)) (IP (c að) (VP (VP (s vera)) (PP (a í) (NP (n toppbaráttunni))))))) (p .)))
 (S0 (S (IP (PP (a Varðandi) (NP (n ritstjórastöðuna))) (VP (VP (s sagði)) (NP-SUBJ (n Steingrímur)) (ADVP (a ekki)) (PP (a við) (NP (n Önnu) (n Kolbrúnu))) (IP (c að) (VP (s sakast)))))) (p .))
-(S0 (S (IP (ADVP (NP-ADP (f Því)) (a næst)) (VP (VP-AUX (s er)) (NP-SUBJ (n froðan)) (VP (s sett)) (PP (a á) (NP (n bökunarpappír))) (C (c og)) (VP (s bakað))))) (p .))
+(S0-X (S (IP (ADVP (NP-ADP (f Því)) (a næst)) (VP (VP-AUX (s er)) (NP-SUBJ (n froðan)) (VP (s sett)) (PP (a á) (NP (n bökunarpappír))) (C (c og)) (VP (s bakað))))) (p .))
 (S0 (S (IP (NP-SUBJ (n Íslandsbanki)) (VP (VP (s gefur)) (ADVP (a út)) (NP-OBJ (n skuldabréf) (PP (a til) (NP (t fjögurra) (n ára))) (PP (a að) (NP (n fjárhæð))) (n 1.000) (n milljónir) (n sænskra) (n króna))))))
 (S0 (S (IP (NP-SUBJ (f Það)) (VP (VP-AUX (s var)) (ADVP (a því)) (VP (s skrifað)) (ADVP (a undir)) (PP (a í) (NP (n Reykjavík))) (ADVP (a í) (NP (n dag)))))) (p .))
 (S0 (S (IP (NP-SUBJ (n Friðarsamkomulag) (NP-POSS (n Hekmatyars) (C (c og)) (l afganskra) (n stjórnvalda))) (VP (VP-AUX (s hefur)) (VP (s sætt)) (NP-OBJ (l harðri) (n gagnrýni))))) (p .))

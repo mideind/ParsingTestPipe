@@ -6,5 +6,5 @@
 (S0 (S (IP (NP-SUBJ (f Hann)) (VP (VP (s er)) (NP-PRD (l hávaxinn) (p ,) (l heilbrigður) (C (c og)) (a mjög) (l ljúfur) (n strákur))))) (p .))
 (S0 (S (IP (NP-SUBJ (n Gengi) (NP-POSS (n hlutabréfa) (NP-POSS (e Twitter)))) (VP (VP (s hrundi)) (PP (a um) (NP (n 20) (n prósent))) (ADVP (a í) (NP (n dag)))))) (p .))
 (S0 (S (IP (VP (VP (s Fékk)) (NP-SUBJ (n Steingrímur)) (NP-OBJ (t 54) (n atkvæði))))) (p ,) (C (c en)) (S (IP (NP-SUBJ (t fimm)) (VP (VP (s sögðu)) (NP-OBJ (n nei))))) (p .))
-(S0 (S (IP (NP-SUBJ (n Solla) (C (c og)) (n Tolli)) (VP (VP (s veittu)) (NP-IOBJ (l dæmdum) (n nauðgara)) (NP-OBJ (n meðmæli) (PP (a vegna) (NP (n uppreist) (NP-POSS (n æru)))))))))
-(S0 (S (IP (VP (VP (s Dett)) (PP (ADVP (a niður)) (a í) (NP (n vonbrigði))) (CP-ADV (C (c að)) (IP (NP-SUBJ (f það)) (VP (VP-AUX (s skuli)) (VP (s vera)) (NP-PRD (f annar)))))))) (p .))
+(S0-X (S (IP (NP-SUBJ (n Solla) (C (c og)) (n Tolli)) (VP (VP (s veittu)) (NP-IOBJ (l dæmdum) (n nauðgara)) (NP-OBJ (n meðmæli) (PP (a vegna) (NP (n uppreist) (NP-POSS (n æru)))))))))
+(S0-X (S (IP (VP (VP (s Dett)) (PP (ADVP (a niður)) (a í) (NP (n vonbrigði))) (CP-ADV (C (c að)) (IP (NP-SUBJ (f það)) (VP (VP-AUX (s skuli)) (VP (s vera)) (NP-PRD (f annar)))))))) (p .))
